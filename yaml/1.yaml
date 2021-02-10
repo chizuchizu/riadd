@@ -27,9 +27,9 @@ model:
 wandb:
   use: true
   project: "rfmd-exp-1"
-  name: "seresnext50_32x4d"
+  name: "efficientnet_b3"
   tags: [
           "rfmd",
-          "seresnext",
-          "seresnext50_32x4d"
+          "efficientnet",
+          "efficientnet_b3"
   ]

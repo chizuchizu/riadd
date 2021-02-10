@@ -297,6 +297,9 @@ class RANZCRModel(LightningModule):
             acc = accuracy_score(y_list, np.round(y_hat_list))
             auc_l += auc / 29
             acc_l += acc / 29
+
+            self.log(f"auc-{j+1}", auc, prog_bar=False)
+
             if j == 0:
                 auc_f = auc
 
@@ -304,7 +307,7 @@ class RANZCRModel(LightningModule):
             loss_list = np.append(loss_list, float(loss.cpu()))
         self.log("valid_loss", loss_list.mean(), prog_bar=True)
         self.log("valid auc", auc_l, prog_bar=True)
-        self.log("valid Acc", acc_l, prog_bar=True)
+        # self.log("valid Acc", acc_l, prog_bar=True)
         self.log("auc-1st", auc_f, prog_bar=True)
 
     def configure_optimizers(self):
