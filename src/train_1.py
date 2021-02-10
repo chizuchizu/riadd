@@ -48,7 +48,6 @@ import wandb
 # os.chdir("/home/jupyter/src")
 TRAIN_PATH = '../data/train_p'
 TEST_PATH = "../data/eval_p"
-STORAGE_CLIENT = storage.Client(project='ranzcr-301208')
 train = pd.read_csv('../data/Training_Set/RFMiD_Training_Labels.csv')
 test = train.iloc[:640, :]
 # test = pd.read_csv('../data/sample_submission.csv')
@@ -183,8 +182,7 @@ class TestDataset(Dataset):
             image = augmented['image']
         return image
 
-
-class RANZCRDataModule(LightningDataModule):
+class CHIZUDataModule(LightningDataModule):
     def __init__(
             self,
             cfg,
@@ -235,7 +233,7 @@ class RANZCRDataModule(LightningDataModule):
         )
 
 
-class RANZCRModel(LightningModule):
+class CHIZUModel(LightningModule):
     def __init__(self, cfg, model_name="resnext50_32x4d"):
         super().__init__()
 
@@ -358,7 +356,7 @@ def train_loop(cfg, folds, fold):
     train_folds = folds.loc[trn_idx].reset_index(drop=True)
     valid_folds = folds.loc[val_idx].reset_index(drop=True)
 
-    data_module = RANZCRDataModule(
+    data_module = CHIZUDataModule(
         cfg,
         train_folds,
         valid_folds,
@@ -368,7 +366,7 @@ def train_loop(cfg, folds, fold):
         num_workers=cfg.base.num_workers,
         # fold_id=fold,
     )
-    model = RANZCRModel(
+    model = CHIZUModel(
         cfg,
         model_name=cfg.model.model_name,
     )
