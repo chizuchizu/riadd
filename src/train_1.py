@@ -47,8 +47,8 @@ from pytorch_lightning.loggers import WandbLogger
 import wandb
 
 # os.chdir("/home/jupyter/src")
-TRAIN_PATH = '../data/train_p'
-TEST_PATH = "../data/eval_p"
+TRAIN_PATH = '../data/train_p_1'
+TEST_PATH = "../data/eval_p_1"
 train = pd.read_csv('../data/Training_Set/RFMiD_Training_Labels.csv')
 test = train.iloc[:640, :]
 # test = pd.read_csv('../data/sample_submission.csv')
@@ -236,7 +236,7 @@ class CHIZUModel(LightningModule):
             self.model.classifier = nn.Linear(self.model.num_features, cfg.base.target_size)
 
 
-        # self.model.avg_pool = GeM()
+        self.model.avg_pool = GeM()
 
         self.optimizer = Adam(self.model.parameters(), lr=cfg.model.lr, weight_decay=cfg.model.weight_decay,
                               amsgrad=False)

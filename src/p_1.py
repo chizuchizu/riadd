@@ -43,7 +43,7 @@ def circle_crop(img, sigmaX=10):
     circle_img = np.zeros((height, width), np.uint8)
     cv2.circle(circle_img, (x, y), int(r), 1, thickness=-1)
     img = cv2.bitwise_and(img, img, mask=circle_img)
-    # img = crop_image_from_gray(img)
+    img = crop_image_from_gray(img)
     img = cv2.addWeighted(img, 4, cv2.GaussianBlur(img, (0, 0), sigmaX), -4, 128)
     """
     plt.imshow(img)
@@ -53,7 +53,7 @@ def circle_crop(img, sigmaX=10):
 
 
 for x in tqdm(glob("../data/Training_Set/Training/*.png")):
-    cv2.imwrite(x.replace("Training_Set/Training", "train_p_2"), circle_crop(x))
+    cv2.imwrite(x.replace("Training_Set/Training", "train_p"), circle_crop(x))
 
 for x in tqdm(glob("../data/Evaluation_Set/*.png")):
-    cv2.imwrite(x.replace("Evaluation_Set", "eval_p_2"), circle_crop(x))
+    cv2.imwrite(x.replace("Evaluation_Set", "eval_p"), circle_crop(x))
