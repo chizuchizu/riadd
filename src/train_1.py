@@ -35,8 +35,9 @@ import timm
 from google.cloud import storage
 from torchvision import models
 import torch.nn as nn
+from torch.nn import functional as F
 import torch
-import torch.nn.functional as F
+from torch.nn.parameter import Parameter
 from torch.optim import Adam, SGD
 from torch.optim.lr_scheduler import CosineAnnealingWarmRestarts, CosineAnnealingLR, ReduceLROnPlateau
 import pytorch_lightning as pl
@@ -55,43 +56,9 @@ rand = random.randint(0, 100000)
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
+
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
-
-# ====================================================
-# Utils
-# ====================================================
-def get_score(y_true, y_pred):
-    scores = []
-    for i in range(y_true.shape[1]):
-        score = roc_auc_score(y_true[:, i].astype(int), y_pred[:, i])
-        scores.append(score)
-    avg_score = np.mean(scores)
-    return avg_score, scores
-
-
-@contextmanager
-def timer(name):
-    t0 = time.time()
-    LOGGER.info(f'[{name}] start')
-    yield
-    LOGGER.info(f'[{name}] done in {time.time() - t0:.0f} s.')
-
-
-def init_logger(log_file='train.log'):
-    from logging import getLogger, INFO, FileHandler, Formatter, StreamHandler
-    logger = getLogger(__name__)
-    logger.setLevel(INFO)
-    handler1 = StreamHandler()
-    handler1.setFormatter(Formatter("%(message)s"))
-    handler2 = FileHandler(filename=log_file)
-    handler2.setFormatter(Formatter("%(message)s"))
-    logger.addHandler(handler1)
-    logger.addHandler(handler2)
-    return logger
-
-
-LOGGER = init_logger()
 
 
 def seed_torch(seed=42):
@@ -182,6 +149,7 @@ class TestDataset(Dataset):
             image = augmented['image']
         return image
 
+
 class CHIZUDataModule(LightningDataModule):
     def __init__(
             self,
@@ -233,6 +201,24 @@ class CHIZUDataModule(LightningDataModule):
         )
 
 
+def gem(x, p=3, eps=1e-6):
+    return F.avg_pool2d(x.clamp(min=eps).pow(p), (x.size(-2), x.size(-1))).pow(1. / p)
+
+
+class GeM(nn.Module):
+    def __init__(self, p=3, eps=1e-6):
+        super(GeM, self).__init__()
+        self.p = Parameter(torch.ones(1) * p)
+        self.eps = eps
+
+    def forward(self, x):
+        return gem(x, p=self.p, eps=self.eps)
+
+    def __repr__(self):
+        return self.__class__.__name__ + '(' + 'p=' + '{:.4f}'.format(self.p.data.tolist()[0]) + ', ' + 'eps=' + str(
+            self.eps) + ')'
+
+
 class CHIZUModel(LightningModule):
     def __init__(self, cfg, model_name="resnext50_32x4d"):
         super().__init__()
@@ -248,6 +234,9 @@ class CHIZUModel(LightningModule):
         else:
             "efficient"
             self.model.classifier = nn.Linear(self.model.num_features, cfg.base.target_size)
+
+
+        # self.model.avg_pool = GeM()
 
         self.optimizer = Adam(self.model.parameters(), lr=cfg.model.lr, weight_decay=cfg.model.weight_decay,
                               amsgrad=False)
@@ -296,7 +285,7 @@ class CHIZUModel(LightningModule):
             auc_l += auc / 29
             acc_l += acc / 29
 
-            self.log(f"auc-{j+1}", auc, prog_bar=False)
+            self.log(f"{j + 1}-auc", auc, prog_bar=False)
 
             if j == 0:
                 auc_f = auc
