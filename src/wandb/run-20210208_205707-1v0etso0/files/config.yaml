@@ -1,0 +1,102 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.10.17
+    framework: lightning
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.7.9
+    t:
+      1:
+      - 1
+      - 5
+      - 9
+      4: 3.7.9
+      5: 0.10.17
+base/debug:
+  desc: null
+  value: true
+base/n_fold:
+  desc: null
+  value: 4
+base/num_workers:
+  desc: null
+  value: 8
+base/print_freq:
+  desc: null
+  value: 100
+base/seed:
+  desc: null
+  value: 42
+base/target_cols:
+  desc: null
+  value: all
+base/target_size:
+  desc: null
+  value: 29
+base/train:
+  desc: null
+  value: true
+base/trn_fold:
+  desc: null
+  value:
+  - 0
+fold:
+  desc: null
+  value: 0
+model/T_max:
+  desc: null
+  value: 6
+model/batch_size:
+  desc: null
+  value: 128
+model/epochs:
+  desc: null
+  value: 15
+model/gradient_accumulation_steps:
+  desc: null
+  value: 1
+model/lr:
+  desc: null
+  value: 5.0e-05
+model/max_grad_norm:
+  desc: null
+  value: 1000
+model/min_lr:
+  desc: null
+  value: 1.0e-07
+model/model_name:
+  desc: null
+  value: resnet18
+model/pretrained:
+  desc: null
+  value: true
+model/scheduler:
+  desc: null
+  value: CosineAnnealingLR
+model/size:
+  desc: null
+  value: 224
+model/weight_decay:
+  desc: null
+  value: 1.0e-06
+rand:
+  desc: null
+  value: 66607
+wandb/name:
+  desc: null
+  value: ResNet18
+wandb/project:
+  desc: null
+  value: rfmd-exp-1
+wandb/tags:
+  desc: null
+  value:
+  - ranzcr
+  - resnet
+  - resnet18
+wandb/use:
+  desc: null
+  value: true

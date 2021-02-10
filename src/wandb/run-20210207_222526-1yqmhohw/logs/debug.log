@@ -1,0 +1,57 @@
+2021-02-07 22:25:26,136 INFO    MainThread:470488 [wandb_setup.py:_flush():70] setting env: {}
+2021-02-07 22:25:26,136 INFO    MainThread:470488 [wandb_setup.py:_flush():70] multiprocessing start_methods=fork,spawn,forkserver
+2021-02-07 22:25:26,136 INFO    MainThread:470488 [wandb_setup.py:_flush():70] setting login settings: {}
+2021-02-07 22:25:26,136 INFO    MainThread:470488 [wandb_init.py:_log_setup():318] Logging user logs to /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210207_222526-1yqmhohw/logs/debug.log
+2021-02-07 22:25:26,136 INFO    MainThread:470488 [wandb_init.py:_log_setup():319] Logging internal logs to /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210207_222526-1yqmhohw/logs/debug-internal.log
+2021-02-07 22:25:28,456 INFO    MainThread:470488 [wandb_run.py:_console_start():1399] atexit reg
+2021-02-07 22:25:28,456 INFO    MainThread:470488 [wandb_run.py:_redirect():1262] redirect: SettingsConsole.REDIRECT
+2021-02-07 22:25:28,456 INFO    MainThread:470488 [wandb_run.py:_redirect():1267] Redirecting console.
+2021-02-07 22:25:28,456 INFO    MainThread:470488 [redirect.py:install():213] install start
+2021-02-07 22:25:28,457 INFO    MainThread:470488 [redirect.py:install():228] install stop
+2021-02-07 22:25:28,457 INFO    MainThread:470488 [redirect.py:install():213] install start
+2021-02-07 22:25:28,457 INFO    MainThread:470488 [redirect.py:install():228] install stop
+2021-02-07 22:25:28,457 INFO    MainThread:470488 [wandb_run.py:_redirect():1313] Redirects installed.
+2021-02-07 22:25:28,460 INFO    MainThread:470488 [wandb_run.py:_config_callback():663] config_cb None None {'base/debug': True, 'base/print_freq': 100, 'base/num_workers': 8, 'base/seed': 42, 'base/target_size': 29, 'base/target_cols': 'all', 'base/n_fold': 4, 'base/trn_fold': [0], 'base/train': True, 'model/model_name': 'resnet18', 'model/size': 300, 'model/scheduler': 'CosineAnnealingLR', 'model/T_max': 6, 'model/lr': 5e-05, 'model/min_lr': 1e-07, 'model/batch_size': 128, 'model/weight_decay': 1e-06, 'model/gradient_accumulation_steps': 1, 'model/max_grad_norm': 1000, 'model/epochs': 15, 'wandb/use': True, 'wandb/project': 'rfmd-exp-1', 'wandb/name': 'ResNet18', 'wandb/tags': ['ranzcr', 'resnet', 'resnet18']}
+2021-02-07 22:25:28,460 INFO    MainThread:470488 [wandb_run.py:_config_callback():663] config_cb None None {'rand': 36567, 'fold': 0}
+2021-02-07 22:25:29,891 INFO    MainThread:470488 [wandb_run.py:_config_callback():663] config_cb None None {}
+2021-02-07 22:32:04,731 INFO    MainThread:470488 [wandb_run.py:_atexit_cleanup():1369] got exitcode: 0
+2021-02-07 22:32:04,732 INFO    MainThread:470488 [wandb_run.py:_restore():1341] restore
+2021-02-07 22:32:04,732 INFO    MainThread:470488 [redirect.py:uninstall():232] uninstall start
+2021-02-07 22:32:04,732 INFO    MainThread:470488 [redirect.py:_stop():287] _stop: stdout
+2021-02-07 22:32:04,732 INFO    MainThread:470488 [redirect.py:_stop():293] _stop closed: stdout
+2021-02-07 22:32:04,732 INFO    stdout    :470488 [redirect.py:_pipe_relay():129] relay done saw last write: stdout
+2021-02-07 22:32:04,732 INFO    stdout    :470488 [redirect.py:_pipe_relay():145] relay done done: stdout
+2021-02-07 22:32:04,732 INFO    MainThread:470488 [redirect.py:_stop():299] _stop joined: stdout
+2021-02-07 22:32:04,732 INFO    MainThread:470488 [redirect.py:_stop():301] _stop rd closed: stdout
+2021-02-07 22:32:04,732 INFO    MainThread:470488 [redirect.py:uninstall():236] uninstall done
+2021-02-07 22:32:04,732 INFO    MainThread:470488 [redirect.py:uninstall():232] uninstall start
+2021-02-07 22:32:04,732 INFO    MainThread:470488 [redirect.py:_stop():287] _stop: stderr
+2021-02-07 22:32:04,733 INFO    MainThread:470488 [redirect.py:_stop():293] _stop closed: stderr
+2021-02-07 22:32:04,733 INFO    stderr    :470488 [redirect.py:_pipe_relay():129] relay done saw last write: stderr
+2021-02-07 22:32:04,733 INFO    stderr    :470488 [redirect.py:_pipe_relay():145] relay done done: stderr
+2021-02-07 22:32:04,733 INFO    MainThread:470488 [redirect.py:_stop():299] _stop joined: stderr
+2021-02-07 22:32:04,733 INFO    MainThread:470488 [redirect.py:_stop():301] _stop rd closed: stderr
+2021-02-07 22:32:04,733 INFO    MainThread:470488 [redirect.py:uninstall():236] uninstall done
+2021-02-07 22:32:04,955 INFO    MainThread:470488 [wandb_run.py:_wait_for_finish():1492] got exit ret: file_counts {
+  wandb_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 552
+  total_bytes: 552
+}
+
+2021-02-07 22:32:06,959 INFO    MainThread:470488 [wandb_run.py:_wait_for_finish():1492] got exit ret: done: true
+exit_result {
+}
+file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 64139
+  total_bytes: 64139
+}
+
+2021-02-07 22:32:08,376 INFO    MainThread:470488 [wandb_run.py:_show_summary():1647] rendering summary
+2021-02-07 22:32:08,376 INFO    MainThread:470488 [wandb_run.py:_show_history():1685] rendering history
+2021-02-07 22:32:08,377 INFO    MainThread:470488 [wandb_run.py:_show_files():1714] logging synced files
+2021-02-07 22:32:08,379 INFO    MainThread:470488 [internal.py:handle_exit():156] Internal process exited

@@ -1,0 +1,49 @@
+Downloading: "https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/efficientnet_b3_ra2-cf984f9c.pth" to /home/yuma/.cache/torch/hub/checkpoints/efficientnet_b3_ra2-cf984f9c.pth
+GPU available: True, used: True
+TPU available: None, using: 0 TPU cores
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Using native 16bit precision.
+
+  | Name      | Type              | Params
+------------------------------------------------
+0 | model     | EfficientNet      | 12.3 M
+1 | criterion | BCEWithLogitsLoss | 0     
+2 | sigmoid   | Sigmoid           | 0     
+------------------------------------------------
+12.3 M    Trainable params
+0         Non-trainable params
+12.3 M    Total params
+Validation sanity check: 0it [00:00, ?it/s]Traceback (most recent call last):
+  File "/home/yuma/PycharmProjects/rfmd/src/train_1.py", line 439, in <module>
+    main(cfg)
+  File "/home/yuma/PycharmProjects/rfmd/src/train_1.py", line 435, in main
+    _oof_df = train_loop(cfg, folds, fold)
+  File "/home/yuma/PycharmProjects/rfmd/src/train_1.py", line 385, in train_loop
+    trainer.fit(model=model, datamodule=data_module)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/trainer/trainer.py", line 470, in fit
+    results = self.accelerator_backend.train()
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/accelerators/gpu_accelerator.py", line 68, in train
+    results = self.train_or_test()
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/accelerators/accelerator.py", line 69, in train_or_test
+    results = self.trainer.train()
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/trainer/trainer.py", line 492, in train
+    self.run_sanity_check(self.get_model())
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/trainer/trainer.py", line 690, in run_sanity_check
+    _, eval_results = self.run_evaluation(test_mode=False, max_batches=self.num_sanity_val_batches)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/trainer/trainer.py", line 606, in run_evaluation
+    output = self.evaluation_loop.evaluation_step(test_mode, batch, batch_idx, dataloader_idx)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/trainer/evaluation_loop.py", line 178, in evaluation_step
+    output = self.trainer.accelerator_backend.validation_step(args)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/accelerators/gpu_accelerator.py", line 86, in validation_step
+    return self._step(self.trainer.model.validation_step, args)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/accelerators/gpu_accelerator.py", line 76, in _step
+    output = model_step(*args)
+  File "/home/yuma/PycharmProjects/rfmd/src/train_1.py", line 274, in validation_step
+    loss = self.criterion(y_hat, y)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/torch/nn/modules/loss.py", line 632, in forward
+    reduction=self.reduction)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/torch/nn/functional.py", line 2580, in binary_cross_entropy_with_logits
+    raise ValueError("Target size ({}) must be the same as input size ({})".format(target.size(), input.size()))
+ValueError: Target size (torch.Size([16, 29])) must be the same as input size (torch.Size([16, 1000]))

@@ -1,0 +1,18 @@
+{
+    "os": "Linux-5.8.0-41-generic-x86_64-with-debian-bullseye-sid",
+    "python": "3.7.9",
+    "heartbeatAt": "2021-02-09T11:55:19.249728",
+    "startedAt": "2021-02-09T11:55:17.682351",
+    "docker": null,
+    "gpu": "GeForce RTX 2080",
+    "gpu_count": 1,
+    "cpu_count": 16,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "codePath": "train_1.py",
+    "program": "/home/yuma/PycharmProjects/rfmd/src/train_1.py",
+    "host": "yuma-desktop",
+    "username": "yuma",
+    "executable": "/home/yuma/anaconda3/envs/RANZCR/bin/python"
+}

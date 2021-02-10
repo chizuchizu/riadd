@@ -1,0 +1,316 @@
+2021-02-09 20:55:18,070 INFO    MainThread:231737 [internal.py:wandb_internal():81] W&B internal server running at pid: 231737
+2021-02-09 20:55:18,071 DEBUG   HandlerThread:231737 [handler.py:handle_request():93] handle_request: check_version
+2021-02-09 20:55:18,071 INFO    WriterThread:231737 [datastore.py:open_for_write():77] open: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/run-3bwtxto3.wandb
+2021-02-09 20:55:18,072 DEBUG   SenderThread:231737 [sender.py:send():117] send: header
+2021-02-09 20:55:18,072 DEBUG   SenderThread:231737 [sender.py:send():117] send: request
+2021-02-09 20:55:18,072 DEBUG   SenderThread:231737 [sender.py:send_request():126] send_request: check_version
+2021-02-09 20:55:18,073 DEBUG   Thread-4  :231737 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): pypi.org:443
+2021-02-09 20:55:18,103 DEBUG   Thread-4  :231737 [connectionpool.py:_make_request():461] https://pypi.org:443 "GET /pypi/wandb/json HTTP/1.1" 200 53965
+2021-02-09 20:55:18,120 DEBUG   SenderThread:231737 [sender.py:send():117] send: run
+2021-02-09 20:55:18,124 DEBUG   SenderThread:231737 [git.py:repo():33] git repository is invalid
+2021-02-09 20:55:18,132 DEBUG   SenderThread:231737 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:55:18,327 DEBUG   SenderThread:231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:55:18,340 INFO    SenderThread:231737 [dir_watcher.py:__init__():165] watching files in: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files
+2021-02-09 20:55:18,340 INFO    SenderThread:231737 [sender.py:_start_run_threads():596] run started: 3bwtxto3 with start time 1612871717
+2021-02-09 20:55:18,341 DEBUG   SenderThread:231737 [sender.py:send():117] send: summary
+2021-02-09 20:55:18,342 DEBUG   HandlerThread:231737 [handler.py:handle_request():93] handle_request: run_start
+2021-02-09 20:55:18,342 INFO    SenderThread:231737 [sender.py:_save_file():682] saving file wandb-summary.json with policy end
+2021-02-09 20:55:18,798 DEBUG   HandlerThread:231737 [tpu_cluster_resolver.py:<module>():36] Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2021-02-09 20:55:19,249 DEBUG   HandlerThread:231737 [meta.py:__init__():34] meta init
+2021-02-09 20:55:19,249 DEBUG   HandlerThread:231737 [meta.py:__init__():48] meta init done
+2021-02-09 20:55:19,249 DEBUG   HandlerThread:231737 [meta.py:probe():190] probe
+2021-02-09 20:55:19,255 DEBUG   HandlerThread:231737 [git.py:repo():33] git repository is invalid
+2021-02-09 20:55:19,255 DEBUG   HandlerThread:231737 [meta.py:_save_pip():52] save pip
+2021-02-09 20:55:19,255 DEBUG   HandlerThread:231737 [meta.py:_save_pip():66] save pip done
+2021-02-09 20:55:19,255 DEBUG   HandlerThread:231737 [meta.py:probe():231] probe done
+2021-02-09 20:55:19,256 DEBUG   SenderThread:231737 [sender.py:send():117] send: files
+2021-02-09 20:55:19,256 INFO    SenderThread:231737 [sender.py:_save_file():682] saving file wandb-metadata.json with policy now
+2021-02-09 20:55:19,259 DEBUG   HandlerThread:231737 [handler.py:handle_request():93] handle_request: status
+2021-02-09 20:55:19,260 DEBUG   Thread-11 :231737 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:55:19,260 DEBUG   SenderThread:231737 [sender.py:send():117] send: request
+2021-02-09 20:55:19,260 DEBUG   SenderThread:231737 [sender.py:send_request():126] send_request: status
+2021-02-09 20:55:19,261 DEBUG   SenderThread:231737 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:55:19,340 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_created():213] file/dir created: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:19,340 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_created():213] file/dir created: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/requirements.txt
+2021-02-09 20:55:19,340 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_created():213] file/dir created: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/wandb-metadata.json
+2021-02-09 20:55:19,341 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_created():213] file/dir created: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/wandb-summary.json
+2021-02-09 20:55:19,421 DEBUG   SenderThread:231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:55:19,422 DEBUG   SenderThread:231737 [sender.py:send():117] send: config
+2021-02-09 20:55:19,425 DEBUG   SenderThread:231737 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:55:19,425 DEBUG   Thread-11 :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:55:19,427 DEBUG   Thread-11 :231737 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): storage.googleapis.com:443
+2021-02-09 20:55:19,604 DEBUG   SenderThread:231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:55:19,610 DEBUG   SenderThread:231737 [sender.py:send():117] send: config
+2021-02-09 20:55:19,614 DEBUG   SenderThread:231737 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:55:19,753 DEBUG   Thread-11 :231737 [connectionpool.py:_make_request():461] https://storage.googleapis.com:443 "PUT /wandb-production.appspot.com/chizuchizu/rfmd-exp-1/3bwtxto3/wandb-metadata.json?Expires=1612958119&GoogleAccessId=wandb-production%40appspot.gserviceaccount.com&Signature=fo2u4T67zTAnmk9lYlgosSBHOP2EipALTCg9GyePG%2BArObQfvyqBmLinDtPxakBZ9wk1DBLeDQHhoJEaQEkDyhPhe2ZvewafVmTq79UY2puWDbjgCHRP%2BX5gzrQ9WjczLPNLVBmfHIFMpwy4uWgdrvGgIxJkR7NpTvEJz8MTi3mpPW5ludKKRUhkHiQzEBYRDyB3Pgjv6WYshrcBI3o3eXBUQs%2B05CjDfxKHfMwPbUY1%2BmoX4FRKtnZqK%2F1RVmsYmNQ6foTMLBJmFgR5TgQEF%2FDgUWT1Cge1zHgEXzKMNUEDEv6q7pYgFmwwRN78IziP3uKbPoaTxalQZ5QrblUuDg%3D%3D HTTP/1.1" 200 0
+2021-02-09 20:55:19,754 INFO    Thread-11 :231737 [upload_job.py:push():133] Uploaded file /tmp/tmpo31k984twandb/33srr54p-wandb-metadata.json
+2021-02-09 20:55:19,795 DEBUG   SenderThread:231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:55:20,340 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:20,340 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/config.yaml
+2021-02-09 20:55:20,858 DEBUG   SenderThread:231737 [sender.py:send():117] send: config
+2021-02-09 20:55:20,861 DEBUG   SenderThread:231737 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:55:21,042 DEBUG   SenderThread:231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:55:21,053 DEBUG   Thread-5  :231737 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:55:21,244 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:55:21,340 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:21,340 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/config.yaml
+2021-02-09 20:55:22,660 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:55:23,341 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:24,850 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:55:27,156 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:55:27,326 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:55:27,341 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:29,342 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:30,343 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:31,343 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:31,671 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:55:31,847 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:55:32,343 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:33,343 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:34,344 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:34,426 DEBUG   HandlerThread:231737 [handler.py:handle_request():93] handle_request: status
+2021-02-09 20:55:34,426 DEBUG   SenderThread:231737 [sender.py:send():117] send: request
+2021-02-09 20:55:34,426 DEBUG   SenderThread:231737 [sender.py:send_request():126] send_request: status
+2021-02-09 20:55:34,428 DEBUG   SenderThread:231737 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:55:34,597 DEBUG   SenderThread:231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:55:35,344 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:36,193 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:55:36,344 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:36,395 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:55:37,345 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:38,345 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:39,345 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:40,345 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:40,668 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:55:40,678 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:55:41,346 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:42,346 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:43,346 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:43,476 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:55:44,346 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:45,162 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:55:46,347 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:46,413 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:55:47,347 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:48,605 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:55:49,603 DEBUG   HandlerThread:231737 [handler.py:handle_request():93] handle_request: status
+2021-02-09 20:55:49,603 DEBUG   SenderThread:231737 [sender.py:send():117] send: request
+2021-02-09 20:55:49,603 DEBUG   SenderThread:231737 [sender.py:send_request():126] send_request: status
+2021-02-09 20:55:49,606 DEBUG   SenderThread:231737 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:55:49,764 DEBUG   SenderThread:231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:55:49,766 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:55:50,151 DEBUG   SenderThread:231737 [sender.py:send():117] send: history
+2021-02-09 20:55:50,151 DEBUG   SenderThread:231737 [sender.py:send():117] send: summary
+2021-02-09 20:55:50,151 INFO    SenderThread:231737 [sender.py:_save_file():682] saving file wandb-summary.json with policy end
+2021-02-09 20:55:50,348 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:50,348 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/wandb-summary.json
+2021-02-09 20:55:51,348 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:52,320 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:55:52,349 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:53,349 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:54,198 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:55:54,349 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:54,390 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:55:55,350 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:56,350 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:57,350 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:58,351 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:55:58,689 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:55:58,879 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:55:59,351 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:00,351 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:01,817 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:56:02,352 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:03,184 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:56:03,352 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:04,767 DEBUG   HandlerThread:231737 [handler.py:handle_request():93] handle_request: status
+2021-02-09 20:56:04,767 DEBUG   SenderThread:231737 [sender.py:send():117] send: request
+2021-02-09 20:56:04,767 DEBUG   SenderThread:231737 [sender.py:send_request():126] send_request: status
+2021-02-09 20:56:04,768 DEBUG   SenderThread:231737 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:56:04,933 DEBUG   SenderThread:231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:56:05,381 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:56:06,101 DEBUG   SenderThread:231737 [sender.py:send():117] send: history
+2021-02-09 20:56:06,102 DEBUG   SenderThread:231737 [sender.py:send():117] send: summary
+2021-02-09 20:56:06,102 INFO    SenderThread:231737 [sender.py:_save_file():682] saving file wandb-summary.json with policy end
+2021-02-09 20:56:06,353 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:06,353 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/wandb-summary.json
+2021-02-09 20:56:07,664 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:56:07,849 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:56:09,354 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:10,354 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:10,573 DEBUG   SenderThread:231737 [sender.py:send():117] send: history
+2021-02-09 20:56:10,573 DEBUG   SenderThread:231737 [sender.py:send():117] send: summary
+2021-02-09 20:56:10,576 INFO    SenderThread:231737 [sender.py:_save_file():682] saving file wandb-summary.json with policy end
+2021-02-09 20:56:10,747 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:56:11,354 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:11,355 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/wandb-summary.json
+2021-02-09 20:56:12,173 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:56:12,355 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:13,355 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:14,353 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:56:14,355 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:15,355 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:16,356 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:16,678 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:56:16,854 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:56:17,356 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:18,356 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:19,357 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:19,935 DEBUG   HandlerThread:231737 [handler.py:handle_request():93] handle_request: status
+2021-02-09 20:56:19,935 DEBUG   SenderThread:231737 [sender.py:send():117] send: request
+2021-02-09 20:56:19,935 DEBUG   SenderThread:231737 [sender.py:send_request():126] send_request: status
+2021-02-09 20:56:19,937 DEBUG   SenderThread:231737 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:56:20,100 DEBUG   SenderThread:231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:56:21,152 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:56:21,357 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:22,357 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:24,358 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:24,896 DEBUG   SenderThread:231737 [sender.py:send():117] send: history
+2021-02-09 20:56:24,896 DEBUG   SenderThread:231737 [sender.py:send():117] send: summary
+2021-02-09 20:56:24,896 INFO    SenderThread:231737 [sender.py:_save_file():682] saving file wandb-summary.json with policy end
+2021-02-09 20:56:25,358 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:25,359 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/wandb-summary.json
+2021-02-09 20:56:25,628 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:56:27,359 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:28,359 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:29,360 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:30,179 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:56:30,360 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:56:30,362 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:30,720 DEBUG   SenderThread:231737 [sender.py:send():117] send: history
+2021-02-09 20:56:30,720 DEBUG   SenderThread:231737 [sender.py:send():117] send: summary
+2021-02-09 20:56:30,720 INFO    SenderThread:231737 [sender.py:_save_file():682] saving file wandb-summary.json with policy end
+2021-02-09 20:56:31,361 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:31,362 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/wandb-summary.json
+2021-02-09 20:56:32,362 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:33,362 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:34,362 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:34,695 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:56:35,103 DEBUG   HandlerThread:231737 [handler.py:handle_request():93] handle_request: status
+2021-02-09 20:56:35,103 DEBUG   SenderThread:231737 [sender.py:send():117] send: request
+2021-02-09 20:56:35,103 DEBUG   SenderThread:231737 [sender.py:send_request():126] send_request: status
+2021-02-09 20:56:35,105 DEBUG   SenderThread:231737 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:56:35,263 DEBUG   SenderThread:231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:56:35,363 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:36,363 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:37,363 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:38,364 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:39,185 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:56:40,364 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:40,797 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:56:41,365 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:43,365 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:43,648 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:56:43,911 DEBUG   SenderThread:231737 [sender.py:send():117] send: history
+2021-02-09 20:56:43,911 DEBUG   SenderThread:231737 [sender.py:send():117] send: summary
+2021-02-09 20:56:43,912 INFO    SenderThread:231737 [sender.py:_save_file():682] saving file wandb-summary.json with policy end
+2021-02-09 20:56:44,365 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:44,365 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/wandb-summary.json
+2021-02-09 20:56:46,366 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:47,367 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:48,162 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:56:48,367 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:49,367 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:50,266 DEBUG   HandlerThread:231737 [handler.py:handle_request():93] handle_request: status
+2021-02-09 20:56:50,267 DEBUG   SenderThread:231737 [sender.py:send():117] send: request
+2021-02-09 20:56:50,267 DEBUG   SenderThread:231737 [sender.py:send_request():126] send_request: status
+2021-02-09 20:56:50,269 DEBUG   SenderThread:231737 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:56:50,368 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:50,428 DEBUG   SenderThread:231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:56:50,897 DEBUG   SenderThread:231737 [sender.py:send():117] send: history
+2021-02-09 20:56:50,897 DEBUG   SenderThread:231737 [sender.py:send():117] send: summary
+2021-02-09 20:56:50,897 INFO    SenderThread:231737 [sender.py:_save_file():682] saving file wandb-summary.json with policy end
+2021-02-09 20:56:51,077 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:56:51,368 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:51,368 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/wandb-summary.json
+2021-02-09 20:56:52,368 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:52,681 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:56:53,369 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:54,369 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:55,369 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:56,369 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:57,164 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:56:57,370 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:56:59,371 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:00,371 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:01,656 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:57:01,832 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:57:03,261 DEBUG   SenderThread:231737 [sender.py:send():117] send: history
+2021-02-09 20:57:03,261 DEBUG   SenderThread:231737 [sender.py:send():117] send: summary
+2021-02-09 20:57:03,262 INFO    SenderThread:231737 [sender.py:_save_file():682] saving file wandb-summary.json with policy end
+2021-02-09 20:57:03,371 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:03,371 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/wandb-summary.json
+2021-02-09 20:57:05,431 DEBUG   HandlerThread:231737 [handler.py:handle_request():93] handle_request: status
+2021-02-09 20:57:05,431 DEBUG   SenderThread:231737 [sender.py:send():117] send: request
+2021-02-09 20:57:05,431 DEBUG   SenderThread:231737 [sender.py:send_request():126] send_request: status
+2021-02-09 20:57:05,433 DEBUG   SenderThread:231737 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:57:05,603 DEBUG   SenderThread:231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:57:06,145 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:57:06,372 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:07,373 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:08,375 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:09,373 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:10,374 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:10,661 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:57:11,374 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:11,827 DEBUG   SenderThread:231737 [sender.py:send():117] send: history
+2021-02-09 20:57:11,827 DEBUG   SenderThread:231737 [sender.py:send():117] send: summary
+2021-02-09 20:57:11,827 INFO    SenderThread:231737 [sender.py:_save_file():682] saving file wandb-summary.json with policy end
+2021-02-09 20:57:12,014 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:57:12,374 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:12,375 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/wandb-summary.json
+2021-02-09 20:57:13,375 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:14,375 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:15,159 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:57:15,375 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:16,375 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:17,384 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:18,384 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:19,384 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:19,649 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:57:20,385 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:20,605 DEBUG   HandlerThread:231737 [handler.py:handle_request():93] handle_request: status
+2021-02-09 20:57:20,605 DEBUG   SenderThread:231737 [sender.py:send():117] send: request
+2021-02-09 20:57:20,605 DEBUG   SenderThread:231737 [sender.py:send_request():126] send_request: status
+2021-02-09 20:57:20,607 DEBUG   SenderThread:231737 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:57:20,766 DEBUG   SenderThread:231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:57:22,357 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:57:22,385 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:22,778 DEBUG   SenderThread:231737 [sender.py:send():117] send: history
+2021-02-09 20:57:22,778 DEBUG   SenderThread:231737 [sender.py:send():117] send: summary
+2021-02-09 20:57:22,778 INFO    SenderThread:231737 [sender.py:_save_file():682] saving file wandb-summary.json with policy end
+2021-02-09 20:57:23,385 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:23,385 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/wandb-summary.json
+2021-02-09 20:57:24,129 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:57:25,386 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:26,386 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:27,386 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:28,387 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:28,640 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:57:29,387 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:30,387 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:31,388 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:32,388 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:33,180 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:57:33,300 DEBUG   SenderThread:231737 [sender.py:send():117] send: history
+2021-02-09 20:57:33,300 DEBUG   SenderThread:231737 [sender.py:send():117] send: summary
+2021-02-09 20:57:33,301 INFO    SenderThread:231737 [sender.py:_save_file():682] saving file wandb-summary.json with policy end
+2021-02-09 20:57:33,388 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:33,388 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/wandb-summary.json
+2021-02-09 20:57:34,388 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:35,034 DEBUG   Thread-5  :231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/3bwtxto3/file_stream HTTP/1.1" 200 None
+2021-02-09 20:57:35,388 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:35,768 DEBUG   HandlerThread:231737 [handler.py:handle_request():93] handle_request: status
+2021-02-09 20:57:35,768 DEBUG   SenderThread:231737 [sender.py:send():117] send: request
+2021-02-09 20:57:35,768 DEBUG   SenderThread:231737 [sender.py:send_request():126] send_request: status
+2021-02-09 20:57:35,769 DEBUG   SenderThread:231737 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:57:35,928 DEBUG   SenderThread:231737 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:57:36,389 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:37,389 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:37,664 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:57:39,390 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:40,390 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:41,390 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log
+2021-02-09 20:57:42,018 WARNING MainThread:231737 [internal.py:wandb_internal():135] Internal process interrupt: 1
+2021-02-09 20:57:42,162 DEBUG   SenderThread:231737 [sender.py:send():117] send: stats
+2021-02-09 20:57:42,390 INFO    Thread-8  :231737 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205517-3bwtxto3/files/output.log

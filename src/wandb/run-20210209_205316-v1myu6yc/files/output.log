@@ -1,0 +1,81 @@
+GPU available: True, used: True
+TPU available: None, using: 0 TPU cores
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Using native 16bit precision.
+
+  | Name      | Type              | Params
+------------------------------------------------
+0 | model     | ResNet            | 21.3 M
+1 | criterion | BCEWithLogitsLoss | 0     
+2 | sigmoid   | Sigmoid           | 0     
+------------------------------------------------
+21.3 M    Trainable params
+0         Non-trainable params
+21.3 M    Total params
+Validation sanity check: 0it [00:00, ?it/s]Validation sanity check:  50%|█████     | 1/2 [00:05<00:05,  5.08s/it]Validation sanity check: 100%|██████████| 2/2 [00:05<00:00,  3.60s/it]                                                                      Training: 0it [00:00, ?it/s]Training:   0%|          | 0/15 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/15 [00:00<?, ?it/s] Epoch 0:   0%|          | 0/15 [00:09<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/yuma/PycharmProjects/rfmd/src/train_1.py", line 439, in <module>
+    main(cfg)
+  File "/home/yuma/PycharmProjects/rfmd/src/train_1.py", line 435, in main
+    _oof_df = train_loop(cfg, folds, fold)
+  File "/home/yuma/PycharmProjects/rfmd/src/train_1.py", line 385, in train_loop
+    trainer.fit(model=model, datamodule=data_module)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/trainer/trainer.py", line 470, in fit
+    results = self.accelerator_backend.train()
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/accelerators/gpu_accelerator.py", line 68, in train
+    results = self.train_or_test()
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/accelerators/accelerator.py", line 69, in train_or_test
+    results = self.trainer.train()
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/trainer/trainer.py", line 521, in train
+    self.train_loop.run_training_epoch()
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/trainer/training_loop.py", line 560, in run_training_epoch
+    batch_output = self.run_training_batch(batch, batch_idx, dataloader_idx)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/trainer/training_loop.py", line 718, in run_training_batch
+    self.optimizer_step(optimizer, opt_idx, batch_idx, train_step_and_backward_closure)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/trainer/training_loop.py", line 501, in optimizer_step
+    using_lbfgs=is_lbfgs,
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/core/lightning.py", line 1257, in optimizer_step
+    optimizer.step(closure=optimizer_closure)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/core/optimizer.py", line 278, in step
+    self.__optimizer_step(*args, closure=closure, profiler_name=profiler_name, **kwargs)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/core/optimizer.py", line 132, in __optimizer_step
+    trainer.precision_connector.backend.optimizer_step(trainer, optimizer, closure)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/plugins/native_amp.py", line 71, in optimizer_step
+    closure()
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/trainer/training_loop.py", line 713, in train_step_and_backward_closure
+    self.trainer.hiddens
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/trainer/training_loop.py", line 806, in training_step_and_backward
+    result = self.training_step(split_batch, batch_idx, opt_idx, hiddens)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/trainer/training_loop.py", line 330, in training_step
+    training_step_output = self.trainer.accelerator_backend.training_step(args)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/accelerators/gpu_accelerator.py", line 83, in training_step
+    return self._step(self.trainer.model.training_step, args)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/accelerators/gpu_accelerator.py", line 76, in _step
+    output = model_step(*args)
+  File "/home/yuma/PycharmProjects/rfmd/src/train_1.py", line 266, in training_step
+    y_hat = self(x)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/yuma/PycharmProjects/rfmd/src/train_1.py", line 260, in forward
+    x = self.model(x)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/timm/models/resnet.py", line 606, in forward
+    x = self.forward_features(x)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/timm/models/resnet.py", line 602, in forward_features
+    x = self.layer4(x)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/torch/nn/modules/container.py", line 117, in forward
+    input = module(input)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/timm/models/resnet.py", line 264, in forward
+    x = self.bn1(x)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/torch/nn/modules/module.py", line 727, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/torch/nn/modules/batchnorm.py", line 136, in forward
+    self.weight, self.bias, bn_training, exponential_average_factor, self.eps)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/torch/nn/functional.py", line 2058, in batch_norm
+    training, momentum, eps, torch.backends.cudnn.enabled
+RuntimeError: CUDA out of memory. Tried to allocate 18.00 MiB (GPU 0; 7.79 GiB total capacity; 5.53 GiB already allocated; 20.88 MiB free; 5.62 GiB reserved in total by PyTorch)

@@ -1,0 +1,935 @@
+GPU available: True, used: True
+TPU available: None, using: 0 TPU cores
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Using native 16bit precision.
+
+  | Name      | Type    | Params
+--------------------------------------
+0 | model     | ResNet  | 11.2 M
+1 | criterion | MSELoss | 0     
+--------------------------------------
+11.2 M    Trainable params
+0         Non-trainable params
+11.2 M    Total params
+Validation sanity check: 0it [00:00, ?it/s]Validation sanity check:  50%|█████     | 1/2 [00:09<00:09,  9.33s/it]                                                                      Training: 0it [00:00, ?it/s]Training:   0%|          | 0/15 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/15 [00:00<?, ?it/s] Epoch 0:   7%|▋         | 1/15 [00:10<02:31, 10.84s/it]Epoch 0:   7%|▋         | 1/15 [00:10<02:31, 10.84s/it, loss=0.116, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928]Epoch 0:  13%|█▎        | 2/15 [00:11<01:12,  5.58s/it, loss=0.116, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928]Epoch 0:  13%|█▎        | 2/15 [00:11<01:12,  5.58s/it, loss=0.115, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.116]Epoch 0:  20%|██        | 3/15 [00:11<00:45,  3.82s/it, loss=0.115, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.116]Epoch 0:  20%|██        | 3/15 [00:11<00:45,  3.82s/it, loss=0.114, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.115]Epoch 0:  27%|██▋       | 4/15 [00:11<00:32,  2.94s/it, loss=0.114, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.115]Epoch 0:  27%|██▋       | 4/15 [00:11<00:32,  2.94s/it, loss=0.113, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.111]Epoch 0:  33%|███▎      | 5/15 [00:12<00:24,  2.42s/it, loss=0.113, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.111]Epoch 0:  33%|███▎      | 5/15 [00:12<00:24,  2.42s/it, loss=0.112, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.109]Epoch 0:  40%|████      | 6/15 [00:12<00:18,  2.07s/it, loss=0.112, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.109]Epoch 0:  40%|████      | 6/15 [00:12<00:18,  2.07s/it, loss=0.111, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.107]Epoch 0:  47%|████▋     | 7/15 [00:12<00:14,  1.82s/it, loss=0.111, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.107]Epoch 0:  47%|████▋     | 7/15 [00:12<00:14,  1.82s/it, loss=0.109, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.108]Epoch 0:  53%|█████▎    | 8/15 [00:17<00:14,  2.13s/it, loss=0.109, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.108]Epoch 0:  53%|█████▎    | 8/15 [00:17<00:14,  2.13s/it, loss=0.108, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.101]Epoch 0:  60%|██████    | 9/15 [00:17<00:11,  1.93s/it, loss=0.108, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.101]Epoch 0:  60%|██████    | 9/15 [00:17<00:11,  1.93s/it, loss=0.107, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.0973]Epoch 0:  67%|██████▋   | 10/15 [00:17<00:08,  1.77s/it, loss=0.107, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.0973]Epoch 0:  67%|██████▋   | 10/15 [00:17<00:08,  1.77s/it, loss=0.105, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.0953]Epoch 0:  73%|███████▎  | 11/15 [00:18<00:06,  1.69s/it, loss=0.105, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.0953]Epoch 0:  73%|███████▎  | 11/15 [00:18<00:06,  1.69s/it, loss=0.104, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.0904]
+Validating: 0it [00:00, ?it/s][A
+Validating:  25%|██▌       | 1/4 [00:04<00:12,  4.33s/it][AEpoch 0:  87%|████████▋ | 13/15 [00:22<00:03,  1.76s/it, loss=0.104, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.0904]
+Validating:  50%|█████     | 2/4 [00:04<00:06,  3.07s/it][A
+Validating:  75%|███████▌  | 3/4 [00:04<00:02,  2.28s/it][AEpoch 0: 100%|██████████| 15/15 [00:23<00:00,  1.57s/it, loss=0.104, v_num=y27s, valid_loss=0.0689, valid auc=0.75, valid Acc=0.928, train_loss=0.0904]
+Validating: 100%|██████████| 4/4 [00:08<00:00,  2.73s/it][AEpoch 0: 100%|██████████| 15/15 [00:28<00:00,  1.88s/it, loss=0.104, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0938]
+                                                         [AEpoch 0:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.104, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0938]         Epoch 1:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.104, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0938]Epoch 1:   7%|▋         | 1/15 [00:07<01:44,  7.46s/it, loss=0.102, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0938]Epoch 1:  13%|█▎        | 2/15 [00:08<00:53,  4.09s/it, loss=0.102, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0938]Epoch 1:  13%|█▎        | 2/15 [00:08<00:53,  4.09s/it, loss=0.102, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0865]Epoch 1:  20%|██        | 3/15 [00:08<00:34,  2.84s/it, loss=0.101, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0932]Epoch 1:  27%|██▋       | 4/15 [00:08<00:24,  2.22s/it, loss=0.101, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0932]Epoch 1:  27%|██▋       | 4/15 [00:08<00:24,  2.22s/it, loss=0.0995, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0875]Epoch 1:  33%|███▎      | 5/15 [00:09<00:18,  1.85s/it, loss=0.0988, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0827]Epoch 1:  40%|████      | 6/15 [00:09<00:14,  1.59s/it, loss=0.0988, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0827]Epoch 1:  40%|████      | 6/15 [00:09<00:14,  1.59s/it, loss=0.0977, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0875]Epoch 1:  47%|████▋     | 7/15 [00:09<00:11,  1.41s/it, loss=0.0967, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0816]Epoch 1:  53%|█████▎    | 8/15 [00:13<00:11,  1.69s/it, loss=0.0967, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0816]Epoch 1:  53%|█████▎    | 8/15 [00:13<00:11,  1.69s/it, loss=0.0959, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0785]Epoch 1:  60%|██████    | 9/15 [00:13<00:09,  1.54s/it, loss=0.0952, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0816]Epoch 1:  67%|██████▋   | 10/15 [00:14<00:07,  1.48s/it, loss=0.0952, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0816]Epoch 1:  67%|██████▋   | 10/15 [00:14<00:07,  1.48s/it, loss=0.0931, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0819]Epoch 1:  73%|███████▎  | 11/15 [00:15<00:05,  1.42s/it, loss=0.0911, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0744]Epoch 1:  80%|████████  | 12/15 [00:15<00:03,  1.31s/it, loss=0.0911, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0744]
+Validating: 0it [00:00, ?it/s][A
+Validating:  25%|██▌       | 1/4 [00:04<00:13,  4.38s/it][AEpoch 1:  93%|█████████▎| 14/15 [00:20<00:01,  1.43s/it, loss=0.0911, v_num=y27s, valid_loss=0.0688, valid auc=0.471, valid Acc=0.934, train_loss=0.0744]
+Validating:  75%|███████▌  | 3/4 [00:04<00:03,  3.10s/it][A
+Validating: 100%|██████████| 4/4 [00:08<00:00,  3.40s/it][AEpoch 1: 100%|██████████| 15/15 [00:25<00:00,  1.69s/it, loss=0.0911, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0748]
+                                                         [AEpoch 1:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0911, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0748]         Epoch 2:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0911, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0748]Epoch 2:   7%|▋         | 1/15 [00:08<02:02,  8.73s/it, loss=0.0893, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0748]Epoch 2:  13%|█▎        | 2/15 [00:09<00:58,  4.52s/it, loss=0.0893, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0748]Epoch 2:  13%|█▎        | 2/15 [00:09<00:58,  4.52s/it, loss=0.0876, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0752]Epoch 2:  20%|██        | 3/15 [00:09<00:37,  3.12s/it, loss=0.0861, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0754]Epoch 2:  27%|██▋       | 4/15 [00:09<00:26,  2.42s/it, loss=0.0861, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0754]Epoch 2:  27%|██▋       | 4/15 [00:09<00:26,  2.42s/it, loss=0.0841, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0759]Epoch 2:  33%|███▎      | 5/15 [00:09<00:19,  2.00s/it, loss=0.0825, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0687]Epoch 2:  40%|████      | 6/15 [00:10<00:15,  1.71s/it, loss=0.0825, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0687]Epoch 2:  40%|████      | 6/15 [00:10<00:15,  1.71s/it, loss=0.0812, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0686]Epoch 2:  47%|████▋     | 7/15 [00:10<00:12,  1.51s/it, loss=0.0796, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0697]Epoch 2:  53%|█████▎    | 8/15 [00:13<00:12,  1.73s/it, loss=0.0796, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0697]Epoch 2:  53%|█████▎    | 8/15 [00:13<00:12,  1.73s/it, loss=0.0784, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0634]Epoch 2:  60%|██████    | 9/15 [00:14<00:09,  1.61s/it, loss=0.077, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0662] Epoch 2:  67%|██████▋   | 10/15 [00:14<00:07,  1.48s/it, loss=0.077, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0662]Epoch 2:  67%|██████▋   | 10/15 [00:14<00:07,  1.48s/it, loss=0.0757, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0657]Epoch 2:  73%|███████▎  | 11/15 [00:15<00:05,  1.42s/it, loss=0.0741, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0621]Epoch 2:  80%|████████  | 12/15 [00:15<00:03,  1.31s/it, loss=0.0741, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0621]
+Validating: 0it [00:00, ?it/s][A
+Validating:  25%|██▌       | 1/4 [00:04<00:12,  4.16s/it][AEpoch 2:  93%|█████████▎| 14/15 [00:19<00:01,  1.42s/it, loss=0.0741, v_num=y27s, valid_loss=0.0696, valid auc=0.504, valid Acc=0.934, train_loss=0.0621]
+Validating:  75%|███████▌  | 3/4 [00:04<00:02,  2.98s/it][A
+Validating: 100%|██████████| 4/4 [00:08<00:00,  3.25s/it][AEpoch 2: 100%|██████████| 15/15 [00:24<00:00,  1.66s/it, loss=0.0741, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0613]
+                                                         [AEpoch 2:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0741, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0613]         Epoch 3:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0741, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0613]Epoch 3:   7%|▋         | 1/15 [00:07<01:46,  7.61s/it, loss=0.0728, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0613]Epoch 3:  13%|█▎        | 2/15 [00:07<00:51,  3.98s/it, loss=0.0728, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0613]Epoch 3:  13%|█▎        | 2/15 [00:07<00:51,  3.98s/it, loss=0.0718, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0604]Epoch 3:  20%|██        | 3/15 [00:08<00:33,  2.80s/it, loss=0.0704, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0622]Epoch 3:  27%|██▋       | 4/15 [00:08<00:24,  2.18s/it, loss=0.0704, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0622]Epoch 3:  27%|██▋       | 4/15 [00:08<00:24,  2.19s/it, loss=0.0693, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0603]Epoch 3:  33%|███▎      | 5/15 [00:09<00:18,  1.81s/it, loss=0.0682, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0586]Epoch 3:  40%|████      | 6/15 [00:09<00:14,  1.56s/it, loss=0.0682, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0586]Epoch 3:  40%|████      | 6/15 [00:09<00:14,  1.56s/it, loss=0.0671, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0577]Epoch 3:  47%|████▋     | 7/15 [00:09<00:11,  1.38s/it, loss=0.0657, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0591]Epoch 3:  53%|█████▎    | 8/15 [00:13<00:12,  1.74s/it, loss=0.0657, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0591]Epoch 3:  53%|█████▎    | 8/15 [00:13<00:12,  1.74s/it, loss=0.0649, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0546]Epoch 3:  60%|██████    | 9/15 [00:14<00:09,  1.61s/it, loss=0.064, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0575] Epoch 3:  67%|██████▋   | 10/15 [00:15<00:07,  1.52s/it, loss=0.064, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0575]Epoch 3:  67%|██████▋   | 10/15 [00:15<00:07,  1.52s/it, loss=0.0632, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0566]Epoch 3:  73%|███████▎  | 11/15 [00:16<00:05,  1.47s/it, loss=0.0624, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0604]Epoch 3:  80%|████████  | 12/15 [00:16<00:04,  1.34s/it, loss=0.0624, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0604]
+Validating: 0it [00:00, ?it/s][A
+Validating:  25%|██▌       | 1/4 [00:04<00:12,  4.29s/it][AEpoch 3:  93%|█████████▎| 14/15 [00:20<00:01,  1.46s/it, loss=0.0624, v_num=y27s, valid_loss=0.0649, valid auc=0.626, valid Acc=0.934, train_loss=0.0604]
+Validating:  75%|███████▌  | 3/4 [00:04<00:03,  3.05s/it][A
+Validating: 100%|██████████| 4/4 [00:08<00:00,  3.39s/it][AEpoch 3: 100%|██████████| 15/15 [00:25<00:00,  1.72s/it, loss=0.0624, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.0587]
+                                                         [AEpoch 3:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0624, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.0587]         Epoch 4:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0624, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.0587]Epoch 4:   7%|▋         | 1/15 [00:09<02:13,  9.55s/it, loss=0.0613, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.0587]Epoch 4:  13%|█▎        | 2/15 [00:09<01:04,  4.93s/it, loss=0.0613, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.0587]Epoch 4:  13%|█▎        | 2/15 [00:09<01:04,  4.93s/it, loss=0.0605, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.0548]Epoch 4:  20%|██        | 3/15 [00:10<00:40,  3.39s/it, loss=0.0598, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.0527]Epoch 4:  27%|██▋       | 4/15 [00:10<00:28,  2.63s/it, loss=0.0598, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.0527]Epoch 4:  27%|██▋       | 4/15 [00:10<00:28,  2.63s/it, loss=0.0589, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.0532]Epoch 4:  33%|███▎      | 5/15 [00:10<00:21,  2.16s/it, loss=0.0585, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.0529]Epoch 4:  40%|████      | 6/15 [00:11<00:16,  1.86s/it, loss=0.0585, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.0529]Epoch 4:  40%|████      | 6/15 [00:11<00:16,  1.86s/it, loss=0.0577, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.0552]Epoch 4:  47%|████▋     | 7/15 [00:11<00:13,  1.64s/it, loss=0.057, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.0508] Epoch 4:  53%|█████▎    | 8/15 [00:14<00:13,  1.87s/it, loss=0.057, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.0508]Epoch 4:  53%|█████▎    | 8/15 [00:14<00:13,  1.87s/it, loss=0.0564, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.0518]Epoch 4:  60%|██████    | 9/15 [00:15<00:10,  1.76s/it, loss=0.056, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.05]   Epoch 4:  67%|██████▋   | 10/15 [00:16<00:08,  1.61s/it, loss=0.056, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.05]Epoch 4:  67%|██████▋   | 10/15 [00:16<00:08,  1.61s/it, loss=0.0557, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.0527]Epoch 4:  73%|███████▎  | 11/15 [00:17<00:06,  1.55s/it, loss=0.0551, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.0542]Epoch 4:  80%|████████  | 12/15 [00:17<00:04,  1.42s/it, loss=0.0551, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.0542]
+Validating: 0it [00:00, ?it/s][A
+Validating:  25%|██▌       | 1/4 [00:04<00:12,  4.17s/it][AEpoch 4:  93%|█████████▎| 14/15 [00:21<00:01,  1.52s/it, loss=0.0551, v_num=y27s, valid_loss=0.0578, valid auc=0.741, valid Acc=0.934, train_loss=0.0542]
+Validating:  75%|███████▌  | 3/4 [00:04<00:02,  3.00s/it][A
+Validating: 100%|██████████| 4/4 [00:08<00:00,  3.35s/it][AEpoch 4: 100%|██████████| 15/15 [00:26<00:00,  1.79s/it, loss=0.0551, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0498]
+                                                         [AEpoch 4:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0551, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0498]         Epoch 5:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0551, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0498]Epoch 5:   7%|▋         | 1/15 [00:07<01:47,  7.69s/it, loss=0.0545, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0498]Epoch 5:  13%|█▎        | 2/15 [00:08<00:52,  4.00s/it, loss=0.0545, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0498]Epoch 5:  13%|█▎        | 2/15 [00:08<00:52,  4.00s/it, loss=0.0542, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0486]Epoch 5:  20%|██        | 3/15 [00:08<00:33,  2.78s/it, loss=0.0538, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0519]Epoch 5:  27%|██▋       | 4/15 [00:08<00:23,  2.16s/it, loss=0.0538, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0519]Epoch 5:  27%|██▋       | 4/15 [00:08<00:23,  2.16s/it, loss=0.0533, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0513]Epoch 5:  33%|███▎      | 5/15 [00:08<00:17,  1.79s/it, loss=0.0531, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0485]Epoch 5:  40%|████      | 6/15 [00:09<00:13,  1.55s/it, loss=0.0531, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0485]Epoch 5:  40%|████      | 6/15 [00:09<00:13,  1.55s/it, loss=0.0523, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0496]Epoch 5:  47%|████▋     | 7/15 [00:09<00:10,  1.37s/it, loss=0.0519, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0425]Epoch 5:  53%|█████▎    | 8/15 [00:13<00:11,  1.69s/it, loss=0.0519, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0425]Epoch 5:  53%|█████▎    | 8/15 [00:13<00:11,  1.69s/it, loss=0.0513, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0492]Epoch 5:  60%|██████    | 9/15 [00:15<00:10,  1.73s/it, loss=0.0508, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0476]Epoch 5:  67%|██████▋   | 10/15 [00:15<00:07,  1.59s/it, loss=0.0508, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0476]Epoch 5:  67%|██████▋   | 10/15 [00:15<00:07,  1.59s/it, loss=0.0505, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0497]Epoch 5:  73%|███████▎  | 11/15 [00:16<00:06,  1.53s/it, loss=0.0503, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0474]Epoch 5:  80%|████████  | 12/15 [00:16<00:04,  1.40s/it, loss=0.0503, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0474]
+Validating: 0it [00:00, ?it/s][A
+Validating:  25%|██▌       | 1/4 [00:04<00:13,  4.37s/it][AEpoch 5:  93%|█████████▎| 14/15 [00:21<00:01,  1.52s/it, loss=0.0503, v_num=y27s, valid_loss=0.0518, valid auc=0.781, valid Acc=0.934, train_loss=0.0474]
+Validating:  75%|███████▌  | 3/4 [00:05<00:03,  3.15s/it][A
+Validating: 100%|██████████| 4/4 [00:09<00:00,  3.43s/it][AEpoch 5: 100%|██████████| 15/15 [00:26<00:00,  1.77s/it, loss=0.0503, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0488]
+                                                         [AEpoch 5:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0503, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0488]         Epoch 6:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0503, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0488]Epoch 6:   7%|▋         | 1/15 [00:08<01:58,  8.48s/it, loss=0.0499, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0488]Epoch 6:  13%|█▎        | 2/15 [00:08<00:57,  4.40s/it, loss=0.0499, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0488]Epoch 6:  13%|█▎        | 2/15 [00:08<00:57,  4.40s/it, loss=0.0495, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0451]Epoch 6:  20%|██        | 3/15 [00:09<00:36,  3.04s/it, loss=0.0492, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0452]Epoch 6:  27%|██▋       | 4/15 [00:09<00:25,  2.36s/it, loss=0.0492, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0452]Epoch 6:  27%|██▋       | 4/15 [00:09<00:25,  2.36s/it, loss=0.049, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0492] Epoch 6:  33%|███▎      | 5/15 [00:09<00:19,  1.96s/it, loss=0.0488, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0474]Epoch 6:  40%|████      | 6/15 [00:10<00:15,  1.69s/it, loss=0.0488, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0474]Epoch 6:  40%|████      | 6/15 [00:10<00:15,  1.69s/it, loss=0.0486, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0476]Epoch 6:  47%|████▋     | 7/15 [00:10<00:11,  1.49s/it, loss=0.0482, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0456]Epoch 6:  53%|█████▎    | 8/15 [00:14<00:12,  1.77s/it, loss=0.0482, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0456]Epoch 6:  53%|█████▎    | 8/15 [00:14<00:12,  1.77s/it, loss=0.0477, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0444]Epoch 6:  60%|██████    | 9/15 [00:14<00:09,  1.61s/it, loss=0.0477, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0455]Epoch 6:  67%|██████▋   | 10/15 [00:14<00:07,  1.48s/it, loss=0.0477, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0455]Epoch 6:  67%|██████▋   | 10/15 [00:14<00:07,  1.48s/it, loss=0.0475, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0496]Epoch 6:  73%|███████▎  | 11/15 [00:15<00:05,  1.42s/it, loss=0.0474, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0443]Epoch 6:  80%|████████  | 12/15 [00:15<00:03,  1.31s/it, loss=0.0474, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0443]
+Validating: 0it [00:00, ?it/s][A
+Validating:  25%|██▌       | 1/4 [00:04<00:12,  4.26s/it][A
+Validating:  50%|█████     | 2/4 [00:04<00:06,  3.04s/it][AEpoch 6:  93%|█████████▎| 14/15 [00:20<00:01,  1.44s/it, loss=0.0474, v_num=y27s, valid_loss=0.0474, valid auc=0.828, valid Acc=0.934, train_loss=0.0443]
+Validating:  75%|███████▌  | 3/4 [00:04<00:02,  2.18s/it][A
+Validating: 100%|██████████| 4/4 [00:08<00:00,  2.82s/it][AEpoch 6: 100%|██████████| 15/15 [00:25<00:00,  1.70s/it, loss=0.0474, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.05]  
+                                                         [AEpoch 6:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0474, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.05]         Epoch 7:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0474, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.05]Epoch 7:   7%|▋         | 1/15 [00:08<01:53,  8.08s/it, loss=0.047, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.05]Epoch 7:  13%|█▎        | 2/15 [00:08<00:54,  4.21s/it, loss=0.047, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.05]Epoch 7:  13%|█▎        | 2/15 [00:08<00:54,  4.21s/it, loss=0.0468, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.0422]Epoch 7:  20%|██        | 3/15 [00:08<00:35,  2.92s/it, loss=0.0467, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.0446]Epoch 7:  27%|██▋       | 4/15 [00:09<00:24,  2.27s/it, loss=0.0467, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.0446]Epoch 7:  27%|██▋       | 4/15 [00:09<00:24,  2.27s/it, loss=0.0468, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.0481]Epoch 7:  33%|███▎      | 5/15 [00:09<00:18,  1.88s/it, loss=0.0464, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.0444]Epoch 7:  40%|████      | 6/15 [00:09<00:14,  1.62s/it, loss=0.0464, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.0444]Epoch 7:  40%|████      | 6/15 [00:09<00:14,  1.62s/it, loss=0.0463, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.0413]Epoch 7:  47%|████▋     | 7/15 [00:10<00:11,  1.44s/it, loss=0.046, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.0456] Epoch 7:  53%|█████▎    | 8/15 [00:13<00:12,  1.72s/it, loss=0.046, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.0456]Epoch 7:  53%|█████▎    | 8/15 [00:13<00:12,  1.72s/it, loss=0.0458, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.0447]Epoch 7:  60%|██████    | 9/15 [00:14<00:09,  1.64s/it, loss=0.0456, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.0421]Epoch 7:  67%|██████▋   | 10/15 [00:15<00:07,  1.51s/it, loss=0.0456, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.0421]Epoch 7:  67%|██████▋   | 10/15 [00:15<00:07,  1.51s/it, loss=0.0456, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.0454]Epoch 7:  73%|███████▎  | 11/15 [00:15<00:05,  1.45s/it, loss=0.0456, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.0444]Epoch 7:  80%|████████  | 12/15 [00:16<00:04,  1.33s/it, loss=0.0456, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.0444]
+Validating: 0it [00:00, ?it/s][A
+Validating:  25%|██▌       | 1/4 [00:04<00:13,  4.37s/it][AEpoch 7:  93%|█████████▎| 14/15 [00:20<00:01,  1.46s/it, loss=0.0456, v_num=y27s, valid_loss=0.0446, valid auc=0.858, valid Acc=0.934, train_loss=0.0444]
+Validating:  75%|███████▌  | 3/4 [00:04<00:03,  3.09s/it][A
+Validating: 100%|██████████| 4/4 [00:08<00:00,  3.41s/it][AEpoch 7: 100%|██████████| 15/15 [00:25<00:00,  1.71s/it, loss=0.0456, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.0447]
+                                                         [AEpoch 7:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0456, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.0447]         Epoch 8:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0456, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.0447]Epoch 8:   7%|▋         | 1/15 [00:08<02:03,  8.79s/it, loss=0.0451, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.0447]Epoch 8:  13%|█▎        | 2/15 [00:09<00:59,  4.56s/it, loss=0.0451, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.0447]Epoch 8:  13%|█▎        | 2/15 [00:09<00:59,  4.56s/it, loss=0.0451, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.0408]Epoch 8:  20%|██        | 3/15 [00:09<00:37,  3.15s/it, loss=0.0448, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.0463]Epoch 8:  27%|██▋       | 4/15 [00:09<00:26,  2.44s/it, loss=0.0448, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.0463]Epoch 8:  27%|██▋       | 4/15 [00:09<00:26,  2.44s/it, loss=0.0448, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.0424]Epoch 8:  33%|███▎      | 5/15 [00:10<00:20,  2.02s/it, loss=0.0449, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.0454]Epoch 8:  40%|████      | 6/15 [00:10<00:15,  1.74s/it, loss=0.0449, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.0454]Epoch 8:  40%|████      | 6/15 [00:10<00:15,  1.74s/it, loss=0.0448, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.0454]Epoch 8:  47%|████▋     | 7/15 [00:10<00:12,  1.53s/it, loss=0.0443, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.0445]Epoch 8:  53%|█████▎    | 8/15 [00:13<00:11,  1.68s/it, loss=0.0443, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.0445]Epoch 8:  53%|█████▎    | 8/15 [00:13<00:11,  1.68s/it, loss=0.0441, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.0394]Epoch 8:  60%|██████    | 9/15 [00:14<00:09,  1.60s/it, loss=0.0438, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.0409]Epoch 8:  67%|██████▋   | 10/15 [00:14<00:07,  1.47s/it, loss=0.0438, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.0409]Epoch 8:  67%|██████▋   | 10/15 [00:14<00:07,  1.47s/it, loss=0.0439, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.0438]Epoch 8:  73%|███████▎  | 11/15 [00:15<00:05,  1.42s/it, loss=0.0439, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.044] Epoch 8:  80%|████████  | 12/15 [00:15<00:03,  1.31s/it, loss=0.0439, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.044]
+Validating: 0it [00:00, ?it/s][A
+Validating:  25%|██▌       | 1/4 [00:04<00:12,  4.27s/it][A
+Validating:  50%|█████     | 2/4 [00:04<00:06,  3.03s/it][AEpoch 8:  93%|█████████▎| 14/15 [00:20<00:01,  1.43s/it, loss=0.0439, v_num=y27s, valid_loss=0.0428, valid auc=0.864, valid Acc=0.943, train_loss=0.044]
+Validating:  75%|███████▌  | 3/4 [00:04<00:02,  2.21s/it][A
+Validating: 100%|██████████| 4/4 [00:08<00:00,  2.75s/it][AEpoch 8: 100%|██████████| 15/15 [00:25<00:00,  1.69s/it, loss=0.0439, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0446]
+                                                         [AEpoch 8:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0439, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0446]         Epoch 9:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0439, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0446]Epoch 9:   7%|▋         | 1/15 [00:07<01:49,  7.83s/it, loss=0.0436, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0446]Epoch 9:  13%|█▎        | 2/15 [00:08<00:55,  4.28s/it, loss=0.0436, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0446]Epoch 9:  13%|█▎        | 2/15 [00:08<00:55,  4.28s/it, loss=0.0435, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0425]Epoch 9:  20%|██        | 3/15 [00:08<00:35,  2.96s/it, loss=0.0434, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0412]Epoch 9:  27%|██▋       | 4/15 [00:09<00:25,  2.31s/it, loss=0.0434, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0412]Epoch 9:  27%|██▋       | 4/15 [00:09<00:25,  2.31s/it, loss=0.0433, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0404]Epoch 9:  33%|███▎      | 5/15 [00:09<00:19,  1.91s/it, loss=0.0432, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0432]Epoch 9:  40%|████      | 6/15 [00:09<00:14,  1.65s/it, loss=0.0432, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0432]Epoch 9:  40%|████      | 6/15 [00:09<00:14,  1.65s/it, loss=0.0434, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0432]Epoch 9:  47%|████▋     | 7/15 [00:10<00:11,  1.46s/it, loss=0.0431, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0461]Epoch 9:  53%|█████▎    | 8/15 [00:13<00:11,  1.68s/it, loss=0.0431, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0461]Epoch 9:  53%|█████▎    | 8/15 [00:13<00:11,  1.68s/it, loss=0.0432, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0397]Epoch 9:  60%|██████    | 9/15 [00:13<00:09,  1.53s/it, loss=0.0431, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0461]Epoch 9:  67%|██████▋   | 10/15 [00:14<00:07,  1.42s/it, loss=0.0431, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0461]Epoch 9:  67%|██████▋   | 10/15 [00:14<00:07,  1.42s/it, loss=0.0432, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0425]Epoch 9:  73%|███████▎  | 11/15 [00:15<00:05,  1.37s/it, loss=0.043, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0418] Epoch 9:  80%|████████  | 12/15 [00:15<00:03,  1.26s/it, loss=0.043, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0418]
+Validating: 0it [00:00, ?it/s][A
+Validating:  25%|██▌       | 1/4 [00:04<00:13,  4.55s/it][AEpoch 9:  93%|█████████▎| 14/15 [00:19<00:01,  1.40s/it, loss=0.043, v_num=y27s, valid_loss=0.0418, valid auc=0.868, valid Acc=0.954, train_loss=0.0418]
+Validating:  75%|███████▌  | 3/4 [00:04<00:03,  3.23s/it][A
+Validating: 100%|██████████| 4/4 [00:08<00:00,  3.41s/it][AEpoch 9: 100%|██████████| 15/15 [00:24<00:00,  1.65s/it, loss=0.043, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.0422]
+                                                         [AEpoch 9:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.043, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.0422]         Epoch 10:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.043, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.0422]Epoch 10:   7%|▋         | 1/15 [00:09<02:12,  9.47s/it, loss=0.043, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.0422]Epoch 10:  13%|█▎        | 2/15 [00:09<01:03,  4.89s/it, loss=0.043, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.0422]Epoch 10:  13%|█▎        | 2/15 [00:09<01:03,  4.89s/it, loss=0.0429, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.0432]Epoch 10:  20%|██        | 3/15 [00:10<00:40,  3.37s/it, loss=0.0427, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.0427]Epoch 10:  27%|██▋       | 4/15 [00:10<00:28,  2.60s/it, loss=0.0427, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.0427]Epoch 10:  27%|██▋       | 4/15 [00:10<00:28,  2.61s/it, loss=0.0426, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.0411]Epoch 10:  33%|███▎      | 5/15 [00:10<00:21,  2.15s/it, loss=0.0428, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.043] Epoch 10:  40%|████      | 6/15 [00:11<00:16,  1.84s/it, loss=0.0428, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.043]Epoch 10:  40%|████      | 6/15 [00:11<00:16,  1.84s/it, loss=0.0429, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.0435]Epoch 10:  47%|████▋     | 7/15 [00:11<00:13,  1.63s/it, loss=0.0427, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.0434]Epoch 10:  53%|█████▎    | 8/15 [00:14<00:12,  1.77s/it, loss=0.0427, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.0434]Epoch 10:  53%|█████▎    | 8/15 [00:14<00:12,  1.77s/it, loss=0.0425, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.0396]Epoch 10:  60%|██████    | 9/15 [00:15<00:10,  1.69s/it, loss=0.0424, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.0392]Epoch 10:  67%|██████▋   | 10/15 [00:15<00:07,  1.56s/it, loss=0.0424, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.0392]Epoch 10:  67%|██████▋   | 10/15 [00:15<00:07,  1.56s/it, loss=0.0425, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.0436]Epoch 10:  73%|███████▎  | 11/15 [00:16<00:05,  1.50s/it, loss=0.0424, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.0439]Epoch 10:  80%|████████  | 12/15 [00:16<00:04,  1.37s/it, loss=0.0424, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.0439]
+Validating: 0it [00:00, ?it/s][A
+Validating:  25%|██▌       | 1/4 [00:04<00:12,  4.26s/it][A
+Validating:  50%|█████     | 2/4 [00:04<00:06,  3.02s/it][AEpoch 10:  93%|█████████▎| 14/15 [00:20<00:01,  1.49s/it, loss=0.0424, v_num=y27s, valid_loss=0.0411, valid auc=0.871, valid Acc=0.954, train_loss=0.0439]
+Validating:  75%|███████▌  | 3/4 [00:04<00:02,  2.20s/it][A
+Validating: 100%|██████████| 4/4 [00:08<00:00,  2.83s/it][AEpoch 10: 100%|██████████| 15/15 [00:26<00:00,  1.76s/it, loss=0.0424, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.0403]
+                                                         [AEpoch 10:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0424, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.0403]         Epoch 11:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0424, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.0403]Epoch 11:   7%|▋         | 1/15 [00:09<02:06,  9.01s/it, loss=0.0423, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.0403]Epoch 11:  13%|█▎        | 2/15 [00:09<01:00,  4.66s/it, loss=0.0423, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.0403]Epoch 11:  13%|█▎        | 2/15 [00:09<01:00,  4.67s/it, loss=0.0422, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.0381]Epoch 11:  20%|██        | 3/15 [00:09<00:38,  3.22s/it, loss=0.0423, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.0412]Epoch 11:  27%|██▋       | 4/15 [00:09<00:27,  2.49s/it, loss=0.0423, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.0412]Epoch 11:  27%|██▋       | 4/15 [00:09<00:27,  2.50s/it, loss=0.0422, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.0454]Epoch 11:  33%|███▎      | 5/15 [00:10<00:20,  2.06s/it, loss=0.0424, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.0425]Epoch 11:  40%|████      | 6/15 [00:10<00:15,  1.77s/it, loss=0.0424, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.0425]Epoch 11:  40%|████      | 6/15 [00:10<00:15,  1.77s/it, loss=0.0422, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.0444]Epoch 11:  47%|████▋     | 7/15 [00:10<00:12,  1.57s/it, loss=0.0422, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.0422]Epoch 11:  53%|█████▎    | 8/15 [00:15<00:13,  1.88s/it, loss=0.0422, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.0422]Epoch 11:  53%|█████▎    | 8/15 [00:15<00:13,  1.88s/it, loss=0.0421, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.0418]Epoch 11:  60%|██████    | 9/15 [00:15<00:10,  1.71s/it, loss=0.042, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.04]   Epoch 11:  67%|██████▋   | 10/15 [00:15<00:07,  1.57s/it, loss=0.042, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.04]Epoch 11:  67%|██████▋   | 10/15 [00:15<00:07,  1.57s/it, loss=0.042, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.0409]Epoch 11:  73%|███████▎  | 11/15 [00:16<00:06,  1.51s/it, loss=0.0418, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.0437]Epoch 11:  80%|████████  | 12/15 [00:16<00:04,  1.38s/it, loss=0.0418, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.0437]
+Validating: 0it [00:00, ?it/s][A
+Validating:  25%|██▌       | 1/4 [00:04<00:13,  4.40s/it][AEpoch 11:  93%|█████████▎| 14/15 [00:21<00:01,  1.51s/it, loss=0.0418, v_num=y27s, valid_loss=0.0407, valid auc=0.873, valid Acc=0.954, train_loss=0.0437]
+Validating:  75%|███████▌  | 3/4 [00:04<00:03,  3.13s/it][A
+Validating: 100%|██████████| 4/4 [00:08<00:00,  3.43s/it][AEpoch 11: 100%|██████████| 15/15 [00:26<00:00,  1.76s/it, loss=0.0418, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.0386]
+                                                         [AEpoch 11:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0418, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.0386]         Epoch 12:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0418, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.0386]Epoch 12:   7%|▋         | 1/15 [00:08<02:04,  8.88s/it, loss=0.0418, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.0386]Epoch 12:  13%|█▎        | 2/15 [00:09<00:59,  4.61s/it, loss=0.0418, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.0386]Epoch 12:  13%|█▎        | 2/15 [00:09<00:59,  4.61s/it, loss=0.0416, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.0406]Epoch 12:  20%|██        | 3/15 [00:09<00:38,  3.18s/it, loss=0.0416, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.0388]Epoch 12:  27%|██▋       | 4/15 [00:09<00:27,  2.47s/it, loss=0.0416, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.0388]Epoch 12:  27%|██▋       | 4/15 [00:09<00:27,  2.47s/it, loss=0.0414, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.043] Epoch 12:  33%|███▎      | 5/15 [00:10<00:20,  2.04s/it, loss=0.0415, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.0405]Epoch 12:  40%|████      | 6/15 [00:10<00:15,  1.75s/it, loss=0.0415, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.0405]Epoch 12:  40%|████      | 6/15 [00:10<00:15,  1.75s/it, loss=0.0417, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.0411]Epoch 12:  47%|████▋     | 7/15 [00:10<00:12,  1.55s/it, loss=0.0417, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.0427]Epoch 12:  53%|█████▎    | 8/15 [00:14<00:13,  1.86s/it, loss=0.0417, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.0427]Epoch 12:  53%|█████▎    | 8/15 [00:14<00:13,  1.86s/it, loss=0.0415, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.043] Epoch 12:  60%|██████    | 9/15 [00:15<00:10,  1.69s/it, loss=0.0417, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.0416]Epoch 12:  67%|██████▋   | 10/15 [00:15<00:07,  1.55s/it, loss=0.0417, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.0416]Epoch 12:  67%|██████▋   | 10/15 [00:15<00:07,  1.55s/it, loss=0.0419, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.0437]Epoch 12:  73%|███████▎  | 11/15 [00:16<00:06,  1.50s/it, loss=0.0419, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.0416]Epoch 12:  80%|████████  | 12/15 [00:16<00:04,  1.38s/it, loss=0.0419, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.0416]
+Validating: 0it [00:00, ?it/s][A
+Validating:  25%|██▌       | 1/4 [00:04<00:13,  4.36s/it][AEpoch 12:  93%|█████████▎| 14/15 [00:20<00:01,  1.49s/it, loss=0.0419, v_num=y27s, valid_loss=0.0406, valid auc=0.874, valid Acc=0.954, train_loss=0.0416]
+Validating:  75%|███████▌  | 3/4 [00:04<00:03,  3.09s/it][A
+Validating: 100%|██████████| 4/4 [00:08<00:00,  3.42s/it][AEpoch 12: 100%|██████████| 15/15 [00:26<00:00,  1.74s/it, loss=0.0419, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0425]
+                                                         [AEpoch 12:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0419, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0425]         Epoch 13:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.0419, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0425]Epoch 13:   7%|▋         | 1/15 [00:10<02:26, 10.44s/it, loss=0.0417, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0425]Epoch 13:  13%|█▎        | 2/15 [00:10<01:09,  5.38s/it, loss=0.0417, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0425]Epoch 13:  13%|█▎        | 2/15 [00:10<01:09,  5.38s/it, loss=0.0417, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0411]Epoch 13:  20%|██        | 3/15 [00:11<00:44,  3.69s/it, loss=0.0417, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0411]Epoch 13:  20%|██        | 3/15 [00:11<00:44,  3.69s/it, loss=0.0418, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0417]Epoch 13:  27%|██▋       | 4/15 [00:11<00:31,  2.85s/it, loss=0.0418, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0417]Epoch 13:  27%|██▋       | 4/15 [00:11<00:31,  2.85s/it, loss=0.0417, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0473]Epoch 13:  33%|███▎      | 5/15 [00:11<00:23,  2.34s/it, loss=0.0417, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0473]Epoch 13:  33%|███▎      | 5/15 [00:11<00:23,  2.34s/it, loss=0.0417, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0395]Epoch 13:  40%|████      | 6/15 [00:12<00:18,  2.01s/it, loss=0.0417, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0395]Epoch 13:  40%|████      | 6/15 [00:12<00:18,  2.01s/it, loss=0.0419, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0427]Epoch 13:  47%|████▋     | 7/15 [00:12<00:14,  1.77s/it, loss=0.0419, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0427]Epoch 13:  47%|████▋     | 7/15 [00:12<00:14,  1.77s/it, loss=0.0419, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0431]Epoch 13:  53%|█████▎    | 8/15 [00:16<00:14,  2.06s/it, loss=0.0419, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0431]Epoch 13:  53%|█████▎    | 8/15 [00:16<00:14,  2.06s/it, loss=0.0419, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0421]Epoch 13:  60%|██████    | 9/15 [00:16<00:11,  1.86s/it, loss=0.0419, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0421]Epoch 13:  60%|██████    | 9/15 [00:16<00:11,  1.86s/it, loss=0.0419, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0421]Epoch 13:  67%|██████▋   | 10/15 [00:17<00:08,  1.71s/it, loss=0.0419, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0421]Epoch 13:  67%|██████▋   | 10/15 [00:17<00:08,  1.71s/it, loss=0.0419, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0399]Epoch 13:  73%|███████▎  | 11/15 [00:18<00:06,  1.64s/it, loss=0.0419, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0399]Epoch 13:  73%|███████▎  | 11/15 [00:18<00:06,  1.64s/it, loss=0.042, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0407] 
+Validating: 0it [00:00, ?it/s][A
+Validating:  25%|██▌       | 1/4 [00:04<00:13,  4.34s/it][AEpoch 13:  87%|████████▋ | 13/15 [00:22<00:03,  1.72s/it, loss=0.042, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0407]
+Validating:  50%|█████     | 2/4 [00:04<00:06,  3.09s/it][AEpoch 13: 100%|██████████| 15/15 [00:22<00:00,  1.51s/it, loss=0.042, v_num=y27s, valid_loss=0.0405, valid auc=0.875, valid Acc=0.954, train_loss=0.0407]
+Validating: 100%|██████████| 4/4 [00:08<00:00,  2.80s/it][AEpoch 13: 100%|██████████| 15/15 [00:27<00:00,  1.85s/it, loss=0.042, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0396]
+                                                         [AEpoch 13:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.042, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0396]         Epoch 14:   0%|          | 0/15 [00:00<?, ?it/s, loss=0.042, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0396]Epoch 14:   7%|▋         | 1/15 [00:09<02:09,  9.23s/it, loss=0.042, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0396]Epoch 14:  13%|█▎        | 2/15 [00:09<01:02,  4.78s/it, loss=0.042, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0396]Epoch 14:  13%|█▎        | 2/15 [00:09<01:02,  4.78s/it, loss=0.0421, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0426]Epoch 14:  20%|██        | 3/15 [00:09<00:39,  3.30s/it, loss=0.0422, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0432]Epoch 14:  27%|██▋       | 4/15 [00:10<00:28,  2.56s/it, loss=0.0422, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0432]Epoch 14:  27%|██▋       | 4/15 [00:10<00:28,  2.56s/it, loss=0.0421, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0434]Epoch 14:  33%|███▎      | 5/15 [00:10<00:21,  2.11s/it, loss=0.0419, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0402]Epoch 14:  40%|████      | 6/15 [00:10<00:16,  1.81s/it, loss=0.0419, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0402]Epoch 14:  40%|████      | 6/15 [00:10<00:16,  1.81s/it, loss=0.042, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.04]   Epoch 14:  47%|████▋     | 7/15 [00:11<00:12,  1.60s/it, loss=0.0418, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0427]Epoch 14:  53%|█████▎    | 8/15 [00:14<00:12,  1.81s/it, loss=0.0418, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0427]Epoch 14:  53%|█████▎    | 8/15 [00:14<00:12,  1.81s/it, loss=0.0419, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0395]Epoch 14:  60%|██████    | 9/15 [00:15<00:10,  1.68s/it, loss=0.0417, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0436]Epoch 14:  67%|██████▋   | 10/15 [00:15<00:07,  1.54s/it, loss=0.0417, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0436]Epoch 14:  67%|██████▋   | 10/15 [00:15<00:07,  1.54s/it, loss=0.0417, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0391]Epoch 14:  73%|███████▎  | 11/15 [00:16<00:05,  1.48s/it, loss=0.0418, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0411]Epoch 14:  80%|████████  | 12/15 [00:16<00:04,  1.36s/it, loss=0.0418, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0411]
+Validating: 0it [00:00, ?it/s][A
+Validating:  25%|██▌       | 1/4 [00:04<00:13,  4.41s/it][AEpoch 14:  93%|█████████▎| 14/15 [00:20<00:01,  1.48s/it, loss=0.0418, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0411]
+Validating:  75%|███████▌  | 3/4 [00:04<00:03,  3.13s/it][A
+Validating: 100%|██████████| 4/4 [00:08<00:00,  3.46s/it][AEpoch 14: 100%|██████████| 15/15 [00:26<00:00,  1.74s/it, loss=0.0418, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0435]
+                                                         [AEpoch 14: 100%|██████████| 15/15 [00:26<00:00,  1.74s/it, loss=0.0418, v_num=y27s, valid_loss=0.0404, valid auc=0.875, valid Acc=0.954, train_loss=0.0435]
+Python 3.7.9 (default, Aug 31 2020, 12:42:55) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.19.0 -- An enhanced Interactive Python. Type '?' for help.
+PyDev console: using IPython 7.19.0
+
+Traceback (most recent call last):
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/IPython/core/interactiveshell.py", line 3418, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-1-80b25a93ba9c>", line 1, in <module>
+    model.load_from_checkpoint(model_path).to(device)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/core/saving.py", line 152, in load_from_checkpoint
+    model = cls._load_model_state(checkpoint, strict=strict, **kwargs)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/core/saving.py", line 192, in _load_model_state
+    model = cls(**_cls_kwargs)
+TypeError: __init__() missing 1 required positional argument: 'cfg'
+Traceback (most recent call last):
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/IPython/core/interactiveshell.py", line 3418, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-2-0bf3ae26a145>", line 1, in <module>
+    model.load_from_checkpoint(model_path, cfg).to(device)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/core/saving.py", line 128, in load_from_checkpoint
+    checkpoint = pl_load(checkpoint_path, map_location=map_location)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/utilities/cloud_io.py", line 32, in load
+    return torch.load(f, map_location=map_location)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/torch/serialization.py", line 594, in load
+    return _load(opened_zipfile, map_location, pickle_module, **pickle_load_args)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/torch/serialization.py", line 853, in _load
+    result = unpickler.load()
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/torch/serialization.py", line 845, in persistent_load
+    load_tensor(data_type, size, key, _maybe_decode_ascii(location))
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/torch/serialization.py", line 834, in load_tensor
+    loaded_storages[key] = restore_location(storage, location)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/torch/serialization.py", line 817, in restore_location
+    result = map_location(storage, location)
+TypeError: 'DictConfig' object is not callable
+Traceback (most recent call last):
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/IPython/core/interactiveshell.py", line 3418, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-3-ab751378ae17>", line 1, in <module>
+    model.load_from_checkpoint(model_path, cfg=cfg).to(device)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/core/saving.py", line 152, in load_from_checkpoint
+    model = cls._load_model_state(checkpoint, strict=strict, **kwargs)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pytorch_lightning/core/saving.py", line 198, in _load_model_state
+    model.load_state_dict(checkpoint['state_dict'], strict=strict)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1052, in load_state_dict
+    self.__class__.__name__, "\n\t".join(error_msgs)))
+RuntimeError: Error(s) in loading state_dict for RANZCRModel:
+	Missing key(s) in state_dict: "model.layer1.0.conv3.weight", "model.layer1.0.bn3.weight", "model.layer1.0.bn3.bias", "model.layer1.0.bn3.running_mean", "model.layer1.0.bn3.running_var", "model.layer1.0.downsample.0.weight", "model.layer1.0.downsample.1.weight", "model.layer1.0.downsample.1.bias", "model.layer1.0.downsample.1.running_mean", "model.layer1.0.downsample.1.running_var", "model.layer1.1.conv3.weight", "model.layer1.1.bn3.weight", "model.layer1.1.bn3.bias", "model.layer1.1.bn3.running_mean", "model.layer1.1.bn3.running_var", "model.layer1.2.conv1.weight", "model.layer1.2.bn1.weight", "model.layer1.2.bn1.bias", "model.layer1.2.bn1.running_mean", "model.layer1.2.bn1.running_var", "model.layer1.2.conv2.weight", "model.layer1.2.bn2.weight", "model.layer1.2.bn2.bias", "model.layer1.2.bn2.running_mean", "model.layer1.2.bn2.running_var", "model.layer1.2.conv3.weight", "model.layer1.2.bn3.weight", "model.layer1.2.bn3.bias", "model.layer1.2.bn3.running_mean", "model.layer1.2.bn3.running_var", "model.layer2.0.conv3.weight", "model.layer2.0.bn3.weight", "model.layer2.0.bn3.bias", "model.layer2.0.bn3.running_mean", "model.layer2.0.bn3.running_var", "model.layer2.1.conv3.weight", "model.layer2.1.bn3.weight", "model.layer2.1.bn3.bias", "model.layer2.1.bn3.running_mean", "model.layer2.1.bn3.running_var", "model.layer2.2.conv1.weight", "model.layer2.2.bn1.weight", "model.layer2.2.bn1.bias", "model.layer2.2.bn1.running_mean", "model.layer2.2.bn1.running_var", "model.layer2.2.conv2.weight", "model.layer2.2.bn2.weight", "model.layer2.2.bn2.bias", "model.layer2.2.bn2.running_mean", "model.layer2.2.bn2.running_var", "model.layer2.2.conv3.weight", "model.layer2.2.bn3.weight", "model.layer2.2.bn3.bias", "model.layer2.2.bn3.running_mean", "model.layer2.2.bn3.running_var", "model.layer2.3.conv1.weight", "model.layer2.3.bn1.weight", "model.layer2.3.bn1.bias", "model.layer2.3.bn1.running_mean", "model.layer2.3.bn1.running_var", "model.layer2.3.conv2.weight", "model.layer2.3.bn2.weight", "model.layer2.3.bn2.bias", "model.layer2.3.bn2.running_mean", "model.layer2.3.bn2.running_var", "model.layer2.3.conv3.weight", "model.layer2.3.bn3.weight", "model.layer2.3.bn3.bias", "model.layer2.3.bn3.running_mean", "model.layer2.3.bn3.running_var", "model.layer3.0.conv3.weight", "model.layer3.0.bn3.weight", "model.layer3.0.bn3.bias", "model.layer3.0.bn3.running_mean", "model.layer3.0.bn3.running_var", "model.layer3.1.conv3.weight", "model.layer3.1.bn3.weight", "model.layer3.1.bn3.bias", "model.layer3.1.bn3.running_mean", "model.layer3.1.bn3.running_var", "model.layer3.2.conv1.weight", "model.layer3.2.bn1.weight", "model.layer3.2.bn1.bias", "model.layer3.2.bn1.running_mean", "model.layer3.2.bn1.running_var", "model.layer3.2.conv2.weight", "model.layer3.2.bn2.weight", "model.layer3.2.bn2.bias", "model.layer3.2.bn2.running_mean", "model.layer3.2.bn2.running_var", "model.layer3.2.conv3.weight", "model.layer3.2.bn3.weight", "model.layer3.2.bn3.bias", "model.layer3.2.bn3.running_mean", "model.layer3.2.bn3.running_var", "model.layer3.3.conv1.weight", "model.layer3.3.bn1.weight", "model.layer3.3.bn1.bias", "model.layer3.3.bn1.running_mean", "model.layer3.3.bn1.running_var", "model.layer3.3.conv2.weight", "model.layer3.3.bn2.weight", "model.layer3.3.bn2.bias", "model.layer3.3.bn2.running_mean", "model.layer3.3.bn2.running_var", "model.layer3.3.conv3.weight", "model.layer3.3.bn3.weight", "model.layer3.3.bn3.bias", "model.layer3.3.bn3.running_mean", "model.layer3.3.bn3.running_var", "model.layer3.4.conv1.weight", "model.layer3.4.bn1.weight", "model.layer3.4.bn1.bias", "model.layer3.4.bn1.running_mean", "model.layer3.4.bn1.running_var", "model.layer3.4.conv2.weight", "model.layer3.4.bn2.weight", "model.layer3.4.bn2.bias", "model.layer3.4.bn2.running_mean", "model.layer3.4.bn2.running_var", "model.layer3.4.conv3.weight", "model.layer3.4.bn3.weight", "model.layer3.4.bn3.bias", "model.layer3.4.bn3.running_mean", "model.layer3.4.bn3.running_var", "model.layer3.5.conv1.weight", "model.layer3.5.bn1.weight", "model.layer3.5.bn1.bias", "model.layer3.5.bn1.running_mean", "model.layer3.5.bn1.running_var", "model.layer3.5.conv2.weight", "model.layer3.5.bn2.weight", "model.layer3.5.bn2.bias", "model.layer3.5.bn2.running_mean", "model.layer3.5.bn2.running_var", "model.layer3.5.conv3.weight", "model.layer3.5.bn3.weight", "model.layer3.5.bn3.bias", "model.layer3.5.bn3.running_mean", "model.layer3.5.bn3.running_var", "model.layer4.0.conv3.weight", "model.layer4.0.bn3.weight", "model.layer4.0.bn3.bias", "model.layer4.0.bn3.running_mean", "model.layer4.0.bn3.running_var", "model.layer4.1.conv3.weight", "model.layer4.1.bn3.weight", "model.layer4.1.bn3.bias", "model.layer4.1.bn3.running_mean", "model.layer4.1.bn3.running_var", "model.layer4.2.conv1.weight", "model.layer4.2.bn1.weight", "model.layer4.2.bn1.bias", "model.layer4.2.bn1.running_mean", "model.layer4.2.bn1.running_var", "model.layer4.2.conv2.weight", "model.layer4.2.bn2.weight", "model.layer4.2.bn2.bias", "model.layer4.2.bn2.running_mean", "model.layer4.2.bn2.running_var", "model.layer4.2.conv3.weight", "model.layer4.2.bn3.weight", "model.layer4.2.bn3.bias", "model.layer4.2.bn3.running_mean", "model.layer4.2.bn3.running_var". 
+	size mismatch for model.layer1.0.conv1.weight: copying a param with shape torch.Size([64, 64, 3, 3]) from checkpoint, the shape in current model is torch.Size([128, 64, 1, 1]).
+	size mismatch for model.layer1.0.bn1.weight: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([128]).
+	size mismatch for model.layer1.0.bn1.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([128]).
+	size mismatch for model.layer1.0.bn1.running_mean: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([128]).
+	size mismatch for model.layer1.0.bn1.running_var: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([128]).
+	size mismatch for model.layer1.0.conv2.weight: copying a param with shape torch.Size([64, 64, 3, 3]) from checkpoint, the shape in current model is torch.Size([128, 4, 3, 3]).
+	size mismatch for model.layer1.0.bn2.weight: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([128]).
+	size mismatch for model.layer1.0.bn2.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([128]).
+	size mismatch for model.layer1.0.bn2.running_mean: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([128]).
+	size mismatch for model.layer1.0.bn2.running_var: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([128]).
+	size mismatch for model.layer1.1.conv1.weight: copying a param with shape torch.Size([64, 64, 3, 3]) from checkpoint, the shape in current model is torch.Size([128, 256, 1, 1]).
+	size mismatch for model.layer1.1.bn1.weight: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([128]).
+	size mismatch for model.layer1.1.bn1.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([128]).
+	size mismatch for model.layer1.1.bn1.running_mean: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([128]).
+	size mismatch for model.layer1.1.bn1.running_var: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([128]).
+	size mismatch for model.layer1.1.conv2.weight: copying a param with shape torch.Size([64, 64, 3, 3]) from checkpoint, the shape in current model is torch.Size([128, 4, 3, 3]).
+	size mismatch for model.layer1.1.bn2.weight: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([128]).
+	size mismatch for model.layer1.1.bn2.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([128]).
+	size mismatch for model.layer1.1.bn2.running_mean: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([128]).
+	size mismatch for model.layer1.1.bn2.running_var: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([128]).
+	size mismatch for model.layer2.0.conv1.weight: copying a param with shape torch.Size([128, 64, 3, 3]) from checkpoint, the shape in current model is torch.Size([256, 256, 1, 1]).
+	size mismatch for model.layer2.0.bn1.weight: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for model.layer2.0.bn1.bias: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for model.layer2.0.bn1.running_mean: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for model.layer2.0.bn1.running_var: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for model.layer2.0.conv2.weight: copying a param with shape torch.Size([128, 128, 3, 3]) from checkpoint, the shape in current model is torch.Size([256, 8, 3, 3]).
+	size mismatch for model.layer2.0.bn2.weight: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for model.layer2.0.bn2.bias: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for model.layer2.0.bn2.running_mean: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for model.layer2.0.bn2.running_var: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for model.layer2.0.downsample.0.weight: copying a param with shape torch.Size([128, 64, 1, 1]) from checkpoint, the shape in current model is torch.Size([512, 256, 1, 1]).
+	size mismatch for model.layer2.0.downsample.1.weight: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for model.layer2.0.downsample.1.bias: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for model.layer2.0.downsample.1.running_mean: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for model.layer2.0.downsample.1.running_var: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for model.layer2.1.conv1.weight: copying a param with shape torch.Size([128, 128, 3, 3]) from checkpoint, the shape in current model is torch.Size([256, 512, 1, 1]).
+	size mismatch for model.layer2.1.bn1.weight: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for model.layer2.1.bn1.bias: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for model.layer2.1.bn1.running_mean: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for model.layer2.1.bn1.running_var: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for model.layer2.1.conv2.weight: copying a param with shape torch.Size([128, 128, 3, 3]) from checkpoint, the shape in current model is torch.Size([256, 8, 3, 3]).
+	size mismatch for model.layer2.1.bn2.weight: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for model.layer2.1.bn2.bias: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for model.layer2.1.bn2.running_mean: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for model.layer2.1.bn2.running_var: copying a param with shape torch.Size([128]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for model.layer3.0.conv1.weight: copying a param with shape torch.Size([256, 128, 3, 3]) from checkpoint, the shape in current model is torch.Size([512, 512, 1, 1]).
+	size mismatch for model.layer3.0.bn1.weight: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for model.layer3.0.bn1.bias: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for model.layer3.0.bn1.running_mean: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for model.layer3.0.bn1.running_var: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for model.layer3.0.conv2.weight: copying a param with shape torch.Size([256, 256, 3, 3]) from checkpoint, the shape in current model is torch.Size([512, 16, 3, 3]).
+	size mismatch for model.layer3.0.bn2.weight: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for model.layer3.0.bn2.bias: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for model.layer3.0.bn2.running_mean: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for model.layer3.0.bn2.running_var: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for model.layer3.0.downsample.0.weight: copying a param with shape torch.Size([256, 128, 1, 1]) from checkpoint, the shape in current model is torch.Size([1024, 512, 1, 1]).
+	size mismatch for model.layer3.0.downsample.1.weight: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([1024]).
+	size mismatch for model.layer3.0.downsample.1.bias: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([1024]).
+	size mismatch for model.layer3.0.downsample.1.running_mean: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([1024]).
+	size mismatch for model.layer3.0.downsample.1.running_var: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([1024]).
+	size mismatch for model.layer3.1.conv1.weight: copying a param with shape torch.Size([256, 256, 3, 3]) from checkpoint, the shape in current model is torch.Size([512, 1024, 1, 1]).
+	size mismatch for model.layer3.1.bn1.weight: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for model.layer3.1.bn1.bias: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for model.layer3.1.bn1.running_mean: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for model.layer3.1.bn1.running_var: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for model.layer3.1.conv2.weight: copying a param with shape torch.Size([256, 256, 3, 3]) from checkpoint, the shape in current model is torch.Size([512, 16, 3, 3]).
+	size mismatch for model.layer3.1.bn2.weight: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for model.layer3.1.bn2.bias: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for model.layer3.1.bn2.running_mean: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for model.layer3.1.bn2.running_var: copying a param with shape torch.Size([256]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for model.layer4.0.conv1.weight: copying a param with shape torch.Size([512, 256, 3, 3]) from checkpoint, the shape in current model is torch.Size([1024, 1024, 1, 1]).
+	size mismatch for model.layer4.0.bn1.weight: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([1024]).
+	size mismatch for model.layer4.0.bn1.bias: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([1024]).
+	size mismatch for model.layer4.0.bn1.running_mean: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([1024]).
+	size mismatch for model.layer4.0.bn1.running_var: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([1024]).
+	size mismatch for model.layer4.0.conv2.weight: copying a param with shape torch.Size([512, 512, 3, 3]) from checkpoint, the shape in current model is torch.Size([1024, 32, 3, 3]).
+	size mismatch for model.layer4.0.bn2.weight: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([1024]).
+	size mismatch for model.layer4.0.bn2.bias: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([1024]).
+	size mismatch for model.layer4.0.bn2.running_mean: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([1024]).
+	size mismatch for model.layer4.0.bn2.running_var: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([1024]).
+	size mismatch for model.layer4.0.downsample.0.weight: copying a param with shape torch.Size([512, 256, 1, 1]) from checkpoint, the shape in current model is torch.Size([2048, 1024, 1, 1]).
+	size mismatch for model.layer4.0.downsample.1.weight: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([2048]).
+	size mismatch for model.layer4.0.downsample.1.bias: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([2048]).
+	size mismatch for model.layer4.0.downsample.1.running_mean: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([2048]).
+	size mismatch for model.layer4.0.downsample.1.running_var: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([2048]).
+	size mismatch for model.layer4.1.conv1.weight: copying a param with shape torch.Size([512, 512, 3, 3]) from checkpoint, the shape in current model is torch.Size([1024, 2048, 1, 1]).
+	size mismatch for model.layer4.1.bn1.weight: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([1024]).
+	size mismatch for model.layer4.1.bn1.bias: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([1024]).
+	size mismatch for model.layer4.1.bn1.running_mean: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([1024]).
+	size mismatch for model.layer4.1.bn1.running_var: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([1024]).
+	size mismatch for model.layer4.1.conv2.weight: copying a param with shape torch.Size([512, 512, 3, 3]) from checkpoint, the shape in current model is torch.Size([1024, 32, 3, 3]).
+	size mismatch for model.layer4.1.bn2.weight: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([1024]).
+	size mismatch for model.layer4.1.bn2.bias: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([1024]).
+	size mismatch for model.layer4.1.bn2.running_mean: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([1024]).
+	size mismatch for model.layer4.1.bn2.running_var: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([1024]).
+	size mismatch for model.fc.weight: copying a param with shape torch.Size([29, 512]) from checkpoint, the shape in current model is torch.Size([29, 2048]).
+Out[4]: 
+RANZCRModel(
+  (model): ResNet(
+    (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (act1): ReLU(inplace=True)
+    (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): ReLU(inplace=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): ReLU(inplace=True)
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): ReLU(inplace=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): ReLU(inplace=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): ReLU(inplace=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): ReLU(inplace=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): ReLU(inplace=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): ReLU(inplace=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): ReLU(inplace=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): ReLU(inplace=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): ReLU(inplace=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): ReLU(inplace=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): ReLU(inplace=True)
+      )
+    )
+    (global_pool): SelectAdaptivePool2d (pool_type=avg, flatten=True)
+    (fc): Linear(in_features=512, out_features=29, bias=True)
+  )
+  (criterion): MSELoss()
+)
+Out[5]: 
+RANZCRModel(
+  (model): ResNet(
+    (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (act1): ReLU(inplace=True)
+    (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): ReLU(inplace=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): ReLU(inplace=True)
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): ReLU(inplace=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): ReLU(inplace=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): ReLU(inplace=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): ReLU(inplace=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): ReLU(inplace=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): ReLU(inplace=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): ReLU(inplace=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): ReLU(inplace=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): ReLU(inplace=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act1): ReLU(inplace=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (act2): ReLU(inplace=True)
+      )
+    )
+    (global_pool): SelectAdaptivePool2d (pool_type=avg, flatten=True)
+    (fc): Linear(in_features=512, out_features=29, bias=True)
+  )
+  (criterion): MSELoss()
+)
+0it [00:00, ?it/s]0it [00:05, ?it/s]
+Out[8]: 
+tensor([[ 0.6522,  0.1718,  0.0618,  ...,  0.0040,  0.0133,  0.0267],
+        [ 0.6413,  0.1722,  0.0510,  ...,  0.0140,  0.0217,  0.0166],
+        [ 0.6507,  0.1750,  0.0506,  ...,  0.0092,  0.0182,  0.0276],
+        ...,
+        [ 0.6563,  0.1712,  0.0619,  ...,  0.0014,  0.0227,  0.0319],
+        [ 0.6552,  0.1742,  0.0662,  ..., -0.0030,  0.0232,  0.0358],
+        [ 0.6498,  0.1726,  0.0623,  ...,  0.0026,  0.0259,  0.0283]],
+       device='cuda:0')
+Exception ignored in: <function _ConnectionBase.__del__ at 0x7fef29f384d0>
+Traceback (most recent call last):
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/connection.py", line 132, in __del__
+    self._close()
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/connection.py", line 361, in _close
+    _close(self._handle)
+OSError: [Errno 9] Bad file descriptor
+Out[9]: torch.Size([128, 29])
+Traceback (most recent call last):
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/IPython/core/interactiveshell.py", line 3418, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-10-df75e4dc7838>", line 1, in <module>
+    np.append(pred, y_hat.cpu().numpy())
+NameError: name 'pred' is not defined
+Out[11]: 
+array([0.65224189, 0.17178753, 0.06175511, ..., 0.00262044, 0.02585817,
+       0.02828735])
+Out[12]: (3712,)
+Out[13]: 
+array([[ 0.6522419 ,  0.17178753,  0.06175511, ...,  0.00402276,
+         0.01326845,  0.02669486],
+       [ 0.64126116,  0.17219383,  0.05100874, ...,  0.01399416,
+         0.02170657,  0.01661298],
+       [ 0.65070105,  0.17496154,  0.0505928 , ...,  0.00922921,
+         0.01820096,  0.02763391],
+       ...,
+       [ 0.6562735 ,  0.17120755,  0.06188449, ...,  0.00135776,
+         0.02266217,  0.03186318],
+       [ 0.655167  ,  0.17419696,  0.06616541, ..., -0.00303634,
+         0.02319133,  0.03577371],
+       [ 0.64983815,  0.17260805,  0.06229988, ...,  0.00262044,
+         0.02585817,  0.02828735]], dtype=float32)
+Out[14]: (128, 29)
+0it [00:00, ?it/s]1it [00:05,  5.67s/it]2it [00:06,  4.32s/it]3it [00:06,  3.07s/it]4it [00:07,  2.20s/it]5it [00:07,  1.58s/it]5it [00:07,  1.59s/it]
+Out[16]: (18560,)
+0it [00:00, ?it/s]0it [00:06, ?it/s]
+Out[18]: Traceback (most recent call last):
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/IPython/core/interactiveshell.py", line 3418, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-17-17c15f3477e5>", line 7, in <module>
+    pred = np.append(pred, y_hat.cpu().numpy(), axis=0)
+  File "<__array_function__ internals>", line 6, in append
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/numpy/lib/function_base.py", line 4671, in append
+    return concatenate((arr, values), axis=axis)
+  File "<__array_function__ internals>", line 6, in concatenate
+ValueError: all the input arrays must have same number of dimensions, but the array at index 0 has 1 dimension(s) and the array at index 1 has 2 dimension(s)
+0it [00:00, ?it/s]Traceback (most recent call last):
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/queues.py", line 232, in _feed
+Traceback (most recent call last):
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/queues.py", line 232, in _feed
+Traceback (most recent call last):
+array([], dtype=float64)
+Out[19]: (0,)
+Out[20]: 1
+Out[21]: 1
+Out[22]: 2
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/queues.py", line 232, in _feed
+    close()
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/connection.py", line 177, in close
+    close()
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/connection.py", line 177, in close
+    close()
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/connection.py", line 177, in close
+    self._close()        self._close()self._close()
+
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/connection.py", line 361, in _close
+
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/connection.py", line 361, in _close
+    _close(self._handle)
+OSError: [Errno 9] Bad file descriptor
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/threading.py", line 870, in run
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/connection.py", line 361, in _close
+    _close(self._handle)
+OSError: [Errno 9] Bad file descriptor
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/threading.py", line 870, in run
+    _close(self._handle)
+OSError: [Errno 9] Bad file descriptor
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/queues.py", line 263, in _feed
+    self._target(*self._args, **self._kwargs)
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/queues.py", line 263, in _feed
+        self._target(*self._args, **self._kwargs)queue_sem.release()
+
+    ValueErrorqueue_sem.release()  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/queues.py", line 263, in _feed
+: 
+semaphore or lock released too many times    
+queue_sem.release()
+ValueError: semaphore or lock released too many times
+ValueError: semaphore or lock released too many times
+0it [00:06, ?it/s]
+Traceback (most recent call last):
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/IPython/core/interactiveshell.py", line 3418, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-23-5c294447015e>", line 15, in <module>
+    pred = np.append(pred, y_hat.cpu().numpy(), axis=0)
+  File "<__array_function__ internals>", line 6, in append
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/numpy/lib/function_base.py", line 4671, in append
+    return concatenate((arr, values), axis=axis)
+  File "<__array_function__ internals>", line 6, in concatenate
+ValueError: all the input arrays must have same number of dimensions, but the array at index 0 has 1 dimension(s) and the array at index 1 has 2 dimension(s)
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 213, in resolve
+    return dict[key]
+KeyError: '_11'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_comm.py", line 1847, in do_it
+    var_obj = pydevd_vars.getVariable(self.thread_id, self.frame_id, scope, attrs)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_vars.py", line 240, in getVariable
+    var = resolver.resolve(var, k)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 215, in resolve
+    return getattr(dict, key)
+AttributeError: 'dict' object has no attribute '_11'
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 213, in resolve
+    return dict[key]
+KeyError: '_16'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_comm.py", line 1847, in do_it
+    var_obj = pydevd_vars.getVariable(self.thread_id, self.frame_id, scope, attrs)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_vars.py", line 240, in getVariable
+    var = resolver.resolve(var, k)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 215, in resolve
+    return getattr(dict, key)
+AttributeError: 'dict' object has no attribute '_16'
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 213, in resolve
+    return dict[key]
+KeyError: '_19'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_comm.py", line 1847, in do_it
+    var_obj = pydevd_vars.getVariable(self.thread_id, self.frame_id, scope, attrs)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_vars.py", line 240, in getVariable
+    var = resolver.resolve(var, k)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 215, in resolve
+    return getattr(dict, key)
+AttributeError: 'dict' object has no attribute '_19'
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 213, in resolve
+    return dict[key]
+KeyError: 'In'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_comm.py", line 1847, in do_it
+    var_obj = pydevd_vars.getVariable(self.thread_id, self.frame_id, scope, attrs)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_vars.py", line 240, in getVariable
+    var = resolver.resolve(var, k)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 215, in resolve
+    return getattr(dict, key)
+AttributeError: 'dict' object has no attribute 'In'
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 213, in resolve
+    return dict[key]
+KeyError: '_9'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_comm.py", line 1847, in do_it
+    var_obj = pydevd_vars.getVariable(self.thread_id, self.frame_id, scope, attrs)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_vars.py", line 240, in getVariable
+    var = resolver.resolve(var, k)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 215, in resolve
+    return getattr(dict, key)
+AttributeError: 'dict' object has no attribute '_9'
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 213, in resolve
+    return dict[key]
+KeyError: '_5'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_comm.py", line 1847, in do_it
+    var_obj = pydevd_vars.getVariable(self.thread_id, self.frame_id, scope, attrs)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_vars.py", line 240, in getVariable
+    var = resolver.resolve(var, k)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 215, in resolve
+    return getattr(dict, key)
+AttributeError: 'dict' object has no attribute '_5'
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 213, in resolve
+    return dict[key]
+KeyError: '_ih'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_comm.py", line 1847, in do_it
+    var_obj = pydevd_vars.getVariable(self.thread_id, self.frame_id, scope, attrs)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_vars.py", line 240, in getVariable
+    var = resolver.resolve(var, k)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 215, in resolve
+    return getattr(dict, key)
+AttributeError: 'dict' object has no attribute '_ih'
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 213, in resolve
+    return dict[key]
+KeyError: '_13'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_comm.py", line 1847, in do_it
+    var_obj = pydevd_vars.getVariable(self.thread_id, self.frame_id, scope, attrs)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_vars.py", line 240, in getVariable
+    var = resolver.resolve(var, k)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 215, in resolve
+    return getattr(dict, key)
+AttributeError: 'dict' object has no attribute '_13'
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 213, in resolve
+    return dict[key]
+KeyError: 'folds'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_comm.py", line 1847, in do_it
+    var_obj = pydevd_vars.getVariable(self.thread_id, self.frame_id, scope, attrs)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_vars.py", line 240, in getVariable
+    var = resolver.resolve(var, k)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 215, in resolve
+    return getattr(dict, key)
+AttributeError: 'dict' object has no attribute 'folds'
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 213, in resolve
+    return dict[key]
+KeyError: 'data_module'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_comm.py", line 1847, in do_it
+    var_obj = pydevd_vars.getVariable(self.thread_id, self.frame_id, scope, attrs)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_vars.py", line 240, in getVariable
+    var = resolver.resolve(var, k)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 215, in resolve
+    return getattr(dict, key)
+AttributeError: 'dict' object has no attribute 'data_module'
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 213, in resolve
+    return dict[key]
+KeyError: 'model'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_comm.py", line 1847, in do_it
+    var_obj = pydevd_vars.getVariable(self.thread_id, self.frame_id, scope, attrs)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_vars.py", line 240, in getVariable
+    var = resolver.resolve(var, k)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 215, in resolve
+    return getattr(dict, key)
+AttributeError: 'dict' object has no attribute 'model'
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 213, in resolve
+    return dict[key]
+KeyError: 'cfg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_comm.py", line 1847, in do_it
+    var_obj = pydevd_vars.getVariable(self.thread_id, self.frame_id, scope, attrs)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_vars.py", line 240, in getVariable
+    var = resolver.resolve(var, k)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 215, in resolve
+    return getattr(dict, key)
+AttributeError: 'dict' object has no attribute 'cfg'
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 213, in resolve
+    return dict[key]
+KeyError: 'test_loader'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_comm.py", line 1847, in do_it
+    var_obj = pydevd_vars.getVariable(self.thread_id, self.frame_id, scope, attrs)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_vars.py", line 240, in getVariable
+    var = resolver.resolve(var, k)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 215, in resolve
+    return getattr(dict, key)
+AttributeError: 'dict' object has no attribute 'test_loader'
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 213, in resolve
+    return dict[key]
+KeyError: 'pred'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_comm.py", line 1847, in do_it
+    var_obj = pydevd_vars.getVariable(self.thread_id, self.frame_id, scope, attrs)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_vars.py", line 240, in getVariable
+    var = resolver.resolve(var, k)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 215, in resolve
+    return getattr(dict, key)
+AttributeError: 'dict' object has no attribute 'pred'
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 213, in resolve
+    return dict[key]
+KeyError: 'train_folds'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_comm.py", line 1847, in do_it
+    var_obj = pydevd_vars.getVariable(self.thread_id, self.frame_id, scope, attrs)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_vars.py", line 240, in getVariable
+    var = resolver.resolve(var, k)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 215, in resolve
+    return getattr(dict, key)
+AttributeError: 'dict' object has no attribute 'train_folds'
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 213, in resolve
+    return dict[key]
+KeyError: 'trn_idx'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_comm.py", line 1847, in do_it
+    var_obj = pydevd_vars.getVariable(self.thread_id, self.frame_id, scope, attrs)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_vars.py", line 240, in getVariable
+    var = resolver.resolve(var, k)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 215, in resolve
+    return getattr(dict, key)
+AttributeError: 'dict' object has no attribute 'trn_idx'
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 213, in resolve
+    return dict[key]
+KeyError: 'valid_folds'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_comm.py", line 1847, in do_it
+    var_obj = pydevd_vars.getVariable(self.thread_id, self.frame_id, scope, attrs)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_vars.py", line 240, in getVariable
+    var = resolver.resolve(var, k)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 215, in resolve
+    return getattr(dict, key)
+AttributeError: 'dict' object has no attribute 'valid_folds'
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 213, in resolve
+    return dict[key]
+KeyError: 'y_hat'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_comm.py", line 1847, in do_it
+    var_obj = pydevd_vars.getVariable(self.thread_id, self.frame_id, scope, attrs)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_vars.py", line 240, in getVariable
+    var = resolver.resolve(var, k)
+  File "/home/yuma/.local/share/JetBrains/Toolbox/apps/PyCharm-P/ch-0/203.7148.72/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_resolver.py", line 215, in resolve
+    return getattr(dict, key)
+AttributeError: 'dict' object has no attribute 'y_hat'
+
+0it [00:00, ?it/s]0it [00:07, ?it/s]
+Traceback (most recent call last):
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/IPython/core/interactiveshell.py", line 3418, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-24-4083c5312346>", line 23, in <module>
+    pred = np.append(pred, y_hat.cpu().numpy(), axis=0)
+  File "<__array_function__ internals>", line 6, in append
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/numpy/lib/function_base.py", line 4671, in append
+    return concatenate((arr, values), axis=axis)
+  File "<__array_function__ internals>", line 6, in concatenate
+ValueError: all the input arrays must have same number of dimensions, but the array at index 0 has 1 dimension(s) and the array at index 1 has 2 dimension(s)
+0it [00:00, ?it/s]1it [00:28, 28.89s/it]2it [00:35, 22.11s/it]3it [00:35, 15.53s/it]4it [00:35, 10.91s/it]5it [00:35,  7.68s/it]5it [00:36,  7.25s/it]
+Out[26]: (640, 29)
+Out[27]: 
+      ID  Disease_Risk  DR  ARMD  MH  DN  ...  CRS  EDN  RPEC  MHL  RP  OTHER
+0      1             1   1     0   0   0  ...    0    0     0    0   0      0
+1      2             1   1     0   0   0  ...    0    0     0    0   0      0
+2      3             1   1     0   0   0  ...    0    0     0    0   0      0
+3      4             1   0     0   1   0  ...    0    0     0    0   0      0
+4      5             1   1     0   0   0  ...    0    0     0    0   0      0
+..   ...           ...  ..   ...  ..  ..  ...  ...  ...   ...  ...  ..    ...
+635  636             1   0     0   0   0  ...    0    0     0    0   0      0
+636  637             1   0     0   0   0  ...    0    0     0    0   0      0
+637  638             1   0     0   0   0  ...    0    0     0    0   0      1
+638  639             1   0     0   0   0  ...    0    0     0    0   0      0
+639  640             1   0     0   1   0  ...    0    0     0    0   0      0
+
+[640 rows x 30 columns]
+/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pandas/core/indexing.py:1734: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  isetter(loc, value[:, i].tolist())
+/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pandas/core/indexing.py:1734: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  isetter(loc, value[:, i].tolist())
+Out[30]: (640, 29)
+Out[31]: (640, 29)
+/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/site-packages/pandas/core/indexing.py:1734: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  isetter(loc, value[:, i].tolist())
+Out[33]: 
+      ID  Disease_Risk        DR  ...       MHL        RP     OTHER
+0      1      0.651064  0.175517  ... -0.002255  0.022583  0.032853
+1      2      0.655540  0.174150  ...  0.003194  0.021314  0.033152
+2      3      0.656731  0.174473  ... -0.001834  0.019422  0.033541
+3      4      0.663756  0.174476  ...  0.002735  0.019401  0.036480
+4      5      0.649434  0.174770  ...  0.010552  0.023974  0.025200
+..   ...           ...       ...  ...       ...       ...       ...
+635  636      0.662738  0.179830  ... -0.006859  0.023405  0.042286
+636  637      0.649586  0.167830  ...  0.010677  0.018161  0.022979
+637  638      0.645400  0.172990  ...  0.018460  0.017962  0.021918
+638  639      0.649271  0.174126  ...  0.003036  0.018954  0.033108
+639  640      0.648052  0.169371  ...  0.006824  0.018998  0.025797
+
+[640 rows x 30 columns]
+Traceback (most recent call last):
+  File "/home/yuma/PycharmProjects/rfmd/src/train_1.py", line 412, in <module>
+    )
+  File "/home/yuma/PycharmProjects/rfmd/src/train_1.py", line 408, in main
+    img_sz=cfg.model.size,
+  File "/home/yuma/PycharmProjects/rfmd/src/train_1.py", line 368, in train_loop
+    patience=self.cfg.model.patience,
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/queues.py", line 232, in _feed
+    close()
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/connection.py", line 177, in close
+    self._close()
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/connection.py", line 361, in _close
+    _close(self._handle)
+OSError: [Errno 9] Bad file descriptor
+Traceback (most recent call last):
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/queues.py", line 232, in _feed
+    close()
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/connection.py", line 177, in close
+    self._close()
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/connection.py", line 361, in _close
+    _close(self._handle)
+OSError: [Errno 9] Bad file descriptor
+Traceback (most recent call last):
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/queues.py", line 232, in _feed
+    close()
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/connection.py", line 177, in close
+    self._close()
+  File "/home/yuma/anaconda3/envs/RANZCR/lib/python3.7/multiprocessing/connection.py", line 361, in _close
+    _close(self._handle)
+OSError: [Errno 9] Bad file descriptor

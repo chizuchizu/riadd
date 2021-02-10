@@ -1,0 +1,187 @@
+2021-02-09 20:53:17,275 INFO    MainThread:229493 [internal.py:wandb_internal():81] W&B internal server running at pid: 229493
+2021-02-09 20:53:17,276 DEBUG   HandlerThread:229493 [handler.py:handle_request():93] handle_request: check_version
+2021-02-09 20:53:17,277 DEBUG   SenderThread:229493 [sender.py:send():117] send: header
+2021-02-09 20:53:17,277 DEBUG   SenderThread:229493 [sender.py:send():117] send: request
+2021-02-09 20:53:17,277 DEBUG   SenderThread:229493 [sender.py:send_request():126] send_request: check_version
+2021-02-09 20:53:17,277 INFO    WriterThread:229493 [datastore.py:open_for_write():77] open: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/run-v1myu6yc.wandb
+2021-02-09 20:53:17,278 DEBUG   Thread-4  :229493 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): pypi.org:443
+2021-02-09 20:53:17,312 DEBUG   Thread-4  :229493 [connectionpool.py:_make_request():461] https://pypi.org:443 "GET /pypi/wandb/json HTTP/1.1" 200 53965
+2021-02-09 20:53:17,335 DEBUG   SenderThread:229493 [sender.py:send():117] send: run
+2021-02-09 20:53:17,341 DEBUG   SenderThread:229493 [git.py:repo():33] git repository is invalid
+2021-02-09 20:53:17,356 DEBUG   SenderThread:229493 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:53:17,569 DEBUG   SenderThread:229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:53:17,578 INFO    SenderThread:229493 [dir_watcher.py:__init__():165] watching files in: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files
+2021-02-09 20:53:17,578 INFO    SenderThread:229493 [sender.py:_start_run_threads():596] run started: v1myu6yc with start time 1612871596
+2021-02-09 20:53:17,578 DEBUG   SenderThread:229493 [sender.py:send():117] send: summary
+2021-02-09 20:53:17,578 INFO    SenderThread:229493 [sender.py:_save_file():682] saving file wandb-summary.json with policy end
+2021-02-09 20:53:17,579 DEBUG   HandlerThread:229493 [handler.py:handle_request():93] handle_request: run_start
+2021-02-09 20:53:18,740 INFO    Thread-8  :229493 [dir_watcher.py:_on_file_created():213] file/dir created: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/wandb-summary.json
+2021-02-09 20:53:19,547 DEBUG   HandlerThread:229493 [tpu_cluster_resolver.py:<module>():36] Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+2021-02-09 20:53:19,581 DEBUG   Thread-5  :229493 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:53:19,739 DEBUG   Thread-5  :229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/v1myu6yc/file_stream HTTP/1.1" 200 None
+2021-02-09 20:53:20,580 DEBUG   HandlerThread:229493 [meta.py:__init__():34] meta init
+2021-02-09 20:53:20,580 DEBUG   HandlerThread:229493 [meta.py:__init__():48] meta init done
+2021-02-09 20:53:20,581 DEBUG   HandlerThread:229493 [meta.py:probe():190] probe
+2021-02-09 20:53:20,589 DEBUG   HandlerThread:229493 [git.py:repo():33] git repository is invalid
+2021-02-09 20:53:20,589 DEBUG   HandlerThread:229493 [meta.py:_save_pip():52] save pip
+2021-02-09 20:53:20,590 DEBUG   HandlerThread:229493 [meta.py:_save_pip():66] save pip done
+2021-02-09 20:53:20,590 DEBUG   HandlerThread:229493 [meta.py:probe():231] probe done
+2021-02-09 20:53:20,600 DEBUG   SenderThread:229493 [sender.py:send():117] send: files
+2021-02-09 20:53:20,601 INFO    SenderThread:229493 [sender.py:_save_file():682] saving file wandb-metadata.json with policy now
+2021-02-09 20:53:20,614 DEBUG   Thread-11 :229493 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:53:20,615 DEBUG   HandlerThread:229493 [handler.py:handle_request():93] handle_request: status
+2021-02-09 20:53:20,616 DEBUG   SenderThread:229493 [sender.py:send():117] send: request
+2021-02-09 20:53:20,616 DEBUG   SenderThread:229493 [sender.py:send_request():126] send_request: status
+2021-02-09 20:53:20,628 DEBUG   SenderThread:229493 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:53:20,735 INFO    Thread-8  :229493 [dir_watcher.py:_on_file_created():213] file/dir created: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/wandb-metadata.json
+2021-02-09 20:53:20,735 INFO    Thread-8  :229493 [dir_watcher.py:_on_file_created():213] file/dir created: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/requirements.txt
+2021-02-09 20:53:20,736 INFO    Thread-8  :229493 [dir_watcher.py:_on_file_created():213] file/dir created: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/output.log
+2021-02-09 20:53:20,801 DEBUG   SenderThread:229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:53:20,802 DEBUG   SenderThread:229493 [sender.py:send():117] send: config
+2021-02-09 20:53:20,805 DEBUG   SenderThread:229493 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:53:20,806 DEBUG   Thread-11 :229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:53:20,808 DEBUG   Thread-11 :229493 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): storage.googleapis.com:443
+2021-02-09 20:53:20,984 DEBUG   SenderThread:229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:53:20,989 DEBUG   SenderThread:229493 [sender.py:send():117] send: config
+2021-02-09 20:53:20,993 DEBUG   SenderThread:229493 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:53:21,193 DEBUG   SenderThread:229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:53:21,202 DEBUG   Thread-11 :229493 [connectionpool.py:_make_request():461] https://storage.googleapis.com:443 "PUT /wandb-production.appspot.com/chizuchizu/rfmd-exp-1/v1myu6yc/wandb-metadata.json?Expires=1612958000&GoogleAccessId=wandb-production%40appspot.gserviceaccount.com&Signature=JTzGbfLxkvrFU45rIEwlP3b03tDMDfjB7%2F1r4LNiiujf1QbomZKSmJeh6T%2BoM%2F%2BVCHhnEdvvOoYnIfYCw51NvlkqZJkTTmSbVRwtdalXgkc%2F6R5nNdcXiITC7DL1uBC4o%2F%2F40nl%2F0kLB6472fzzBapQhxtksFIk7W72xlQH440mDYSqCtdr91RGvspqP8cRaYnkhpp1f%2FqU0j1YohS3XtvoMzG5oUXb6qC1B9eHIYh9Ct5E%2F9TKdYcQnUbha%2FyzWO0PPkJv5zeCZsCXJ4f3Obtm%2BDJpQBZwiY5ena8IGuMwM%2FJinE8fEqNTmS%2BiUjoHaJlGbs7v6WMPPZ0gAIsBljQ%3D%3D HTTP/1.1" 200 0
+2021-02-09 20:53:21,203 INFO    Thread-11 :229493 [upload_job.py:push():133] Uploaded file /tmp/tmp7b6ey6l5wandb/3ola7uy3-wandb-metadata.json
+2021-02-09 20:53:21,736 INFO    Thread-8  :229493 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/output.log
+2021-02-09 20:53:21,736 INFO    Thread-8  :229493 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/config.yaml
+2021-02-09 20:53:22,507 DEBUG   SenderThread:229493 [sender.py:send():117] send: config
+2021-02-09 20:53:22,512 DEBUG   SenderThread:229493 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:53:22,685 DEBUG   SenderThread:229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:53:22,736 INFO    Thread-8  :229493 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/output.log
+2021-02-09 20:53:22,736 INFO    Thread-8  :229493 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/config.yaml
+2021-02-09 20:53:22,871 DEBUG   Thread-5  :229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/v1myu6yc/file_stream HTTP/1.1" 200 None
+2021-02-09 20:53:24,036 DEBUG   SenderThread:229493 [sender.py:send():117] send: stats
+2021-02-09 20:53:26,206 DEBUG   Thread-5  :229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/v1myu6yc/file_stream HTTP/1.1" 200 None
+2021-02-09 20:53:27,737 INFO    Thread-8  :229493 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/output.log
+2021-02-09 20:53:28,534 DEBUG   SenderThread:229493 [sender.py:send():117] send: stats
+2021-02-09 20:53:28,726 DEBUG   Thread-5  :229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/v1myu6yc/file_stream HTTP/1.1" 200 None
+2021-02-09 20:53:28,737 INFO    Thread-8  :229493 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/output.log
+2021-02-09 20:53:31,738 INFO    Thread-8  :229493 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/output.log
+2021-02-09 20:53:33,017 DEBUG   SenderThread:229493 [sender.py:send():117] send: stats
+2021-02-09 20:53:33,205 DEBUG   Thread-5  :229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/v1myu6yc/file_stream HTTP/1.1" 200 None
+2021-02-09 20:53:35,806 DEBUG   HandlerThread:229493 [handler.py:handle_request():93] handle_request: status
+2021-02-09 20:53:35,807 DEBUG   SenderThread:229493 [sender.py:send():117] send: request
+2021-02-09 20:53:35,807 DEBUG   SenderThread:229493 [sender.py:send_request():126] send_request: status
+2021-02-09 20:53:35,809 DEBUG   SenderThread:229493 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:53:35,973 DEBUG   SenderThread:229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:53:37,543 DEBUG   SenderThread:229493 [sender.py:send():117] send: stats
+2021-02-09 20:53:37,722 DEBUG   Thread-5  :229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/v1myu6yc/file_stream HTTP/1.1" 200 None
+2021-02-09 20:53:41,105 DEBUG   SenderThread:229493 [sender.py:send():117] send: telemetry
+2021-02-09 20:53:41,105 DEBUG   HandlerThread:229493 [handler.py:handle_request():93] handle_request: poll_exit
+2021-02-09 20:53:41,112 DEBUG   SenderThread:229493 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:53:41,131 DEBUG   Thread-5  :229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/v1myu6yc/file_stream HTTP/1.1" 200 None
+2021-02-09 20:53:41,300 DEBUG   SenderThread:229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:53:41,304 DEBUG   SenderThread:229493 [sender.py:send():117] send: exit
+2021-02-09 20:53:41,304 INFO    SenderThread:229493 [sender.py:send_exit():195] handling exit code: 1
+2021-02-09 20:53:41,304 INFO    SenderThread:229493 [sender.py:send_exit():203] send defer
+2021-02-09 20:53:41,305 DEBUG   SenderThread:229493 [sender.py:send():117] send: request
+2021-02-09 20:53:41,305 DEBUG   SenderThread:229493 [sender.py:send_request():126] send_request: poll_exit
+2021-02-09 20:53:41,305 DEBUG   HandlerThread:229493 [handler.py:handle_request():93] handle_request: defer
+2021-02-09 20:53:41,305 INFO    HandlerThread:229493 [handler.py:handle_request_defer():107] handle defer: 0
+2021-02-09 20:53:41,305 DEBUG   SenderThread:229493 [sender.py:send():117] send: request
+2021-02-09 20:53:41,305 DEBUG   SenderThread:229493 [sender.py:send_request():126] send_request: defer
+2021-02-09 20:53:41,305 INFO    SenderThread:229493 [sender.py:send_request_defer():212] handle sender defer: 0
+2021-02-09 20:53:41,305 INFO    SenderThread:229493 [sender.py:send_request_defer():248] send defer: 1
+2021-02-09 20:53:41,305 DEBUG   HandlerThread:229493 [handler.py:handle_request():93] handle_request: defer
+2021-02-09 20:53:41,305 INFO    HandlerThread:229493 [handler.py:handle_request_defer():107] handle defer: 1
+2021-02-09 20:53:41,324 DEBUG   SenderThread:229493 [sender.py:send():117] send: request
+2021-02-09 20:53:41,324 DEBUG   SenderThread:229493 [sender.py:send_request():126] send_request: defer
+2021-02-09 20:53:41,324 INFO    SenderThread:229493 [sender.py:send_request_defer():212] handle sender defer: 1
+2021-02-09 20:53:41,324 INFO    SenderThread:229493 [sender.py:send_request_defer():248] send defer: 2
+2021-02-09 20:53:41,324 DEBUG   SenderThread:229493 [sender.py:send():117] send: stats
+2021-02-09 20:53:41,325 DEBUG   HandlerThread:229493 [handler.py:handle_request():93] handle_request: defer
+2021-02-09 20:53:41,325 INFO    HandlerThread:229493 [handler.py:handle_request_defer():107] handle defer: 2
+2021-02-09 20:53:41,325 DEBUG   SenderThread:229493 [sender.py:send():117] send: request
+2021-02-09 20:53:41,325 DEBUG   SenderThread:229493 [sender.py:send_request():126] send_request: defer
+2021-02-09 20:53:41,325 INFO    SenderThread:229493 [sender.py:send_request_defer():212] handle sender defer: 2
+2021-02-09 20:53:41,325 INFO    SenderThread:229493 [sender.py:send_request_defer():248] send defer: 3
+2021-02-09 20:53:41,325 DEBUG   HandlerThread:229493 [handler.py:handle_request():93] handle_request: defer
+2021-02-09 20:53:41,325 INFO    HandlerThread:229493 [handler.py:handle_request_defer():107] handle defer: 3
+2021-02-09 20:53:41,325 DEBUG   SenderThread:229493 [sender.py:send():117] send: summary
+2021-02-09 20:53:41,326 INFO    SenderThread:229493 [sender.py:_save_file():682] saving file wandb-summary.json with policy end
+2021-02-09 20:53:41,326 DEBUG   SenderThread:229493 [sender.py:send():117] send: request
+2021-02-09 20:53:41,326 DEBUG   SenderThread:229493 [sender.py:send_request():126] send_request: defer
+2021-02-09 20:53:41,326 INFO    SenderThread:229493 [sender.py:send_request_defer():212] handle sender defer: 3
+2021-02-09 20:53:41,326 INFO    SenderThread:229493 [sender.py:send_request_defer():248] send defer: 4
+2021-02-09 20:53:41,326 DEBUG   HandlerThread:229493 [handler.py:handle_request():93] handle_request: defer
+2021-02-09 20:53:41,326 INFO    HandlerThread:229493 [handler.py:handle_request_defer():107] handle defer: 4
+2021-02-09 20:53:41,326 DEBUG   SenderThread:229493 [sender.py:send():117] send: request
+2021-02-09 20:53:41,326 DEBUG   SenderThread:229493 [sender.py:send_request():126] send_request: defer
+2021-02-09 20:53:41,326 INFO    SenderThread:229493 [sender.py:send_request_defer():212] handle sender defer: 4
+2021-02-09 20:53:41,326 INFO    SenderThread:229493 [dir_watcher.py:finish():279] shutting down directory watcher
+2021-02-09 20:53:41,740 INFO    SenderThread:229493 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/wandb-summary.json
+2021-02-09 20:53:41,740 INFO    SenderThread:229493 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/output.log
+2021-02-09 20:53:41,740 INFO    SenderThread:229493 [dir_watcher.py:_on_file_modified():226] file/dir modified: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/config.yaml
+2021-02-09 20:53:41,740 INFO    SenderThread:229493 [dir_watcher.py:finish():309] scan: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files
+2021-02-09 20:53:41,740 INFO    SenderThread:229493 [dir_watcher.py:finish():315] scan save: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/config.yaml config.yaml
+2021-02-09 20:53:41,741 INFO    SenderThread:229493 [dir_watcher.py:finish():315] scan save: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/output.log output.log
+2021-02-09 20:53:41,741 INFO    SenderThread:229493 [dir_watcher.py:finish():315] scan save: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/requirements.txt requirements.txt
+2021-02-09 20:53:41,743 INFO    SenderThread:229493 [dir_watcher.py:finish():315] scan save: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/wandb-metadata.json wandb-metadata.json
+2021-02-09 20:53:41,743 INFO    SenderThread:229493 [dir_watcher.py:finish():315] scan save: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/wandb-summary.json wandb-summary.json
+2021-02-09 20:53:41,743 INFO    SenderThread:229493 [sender.py:send_request_defer():248] send defer: 5
+2021-02-09 20:53:41,743 DEBUG   Thread-12 :229493 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:53:41,745 DEBUG   Thread-13 :229493 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:53:41,748 DEBUG   HandlerThread:229493 [handler.py:handle_request():93] handle_request: defer
+2021-02-09 20:53:41,748 INFO    HandlerThread:229493 [handler.py:handle_request_defer():107] handle defer: 5
+2021-02-09 20:53:41,749 DEBUG   SenderThread:229493 [sender.py:send():117] send: request
+2021-02-09 20:53:41,749 DEBUG   Thread-14 :229493 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:53:41,750 DEBUG   SenderThread:229493 [sender.py:send_request():126] send_request: defer
+2021-02-09 20:53:41,750 INFO    SenderThread:229493 [sender.py:send_request_defer():212] handle sender defer: 5
+2021-02-09 20:53:41,750 INFO    SenderThread:229493 [file_pusher.py:finish():176] shutting down file pusher
+2021-02-09 20:53:41,750 INFO    SenderThread:229493 [sender.py:send_request_defer():248] send defer: 6
+2021-02-09 20:53:41,750 DEBUG   HandlerThread:229493 [handler.py:handle_request():93] handle_request: defer
+2021-02-09 20:53:41,750 INFO    HandlerThread:229493 [handler.py:handle_request_defer():107] handle defer: 6
+2021-02-09 20:53:41,752 DEBUG   Thread-15 :229493 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): api.wandb.ai:443
+2021-02-09 20:53:41,753 DEBUG   SenderThread:229493 [sender.py:send():117] send: request
+2021-02-09 20:53:41,753 DEBUG   SenderThread:229493 [sender.py:send_request():126] send_request: defer
+2021-02-09 20:53:41,753 INFO    SenderThread:229493 [sender.py:send_request_defer():212] handle sender defer: 6
+2021-02-09 20:53:41,912 DEBUG   Thread-15 :229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:53:41,914 DEBUG   Thread-12 :229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:53:41,915 DEBUG   Thread-15 :229493 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): storage.googleapis.com:443
+2021-02-09 20:53:41,917 DEBUG   Thread-12 :229493 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): storage.googleapis.com:443
+2021-02-09 20:53:41,917 DEBUG   Thread-13 :229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:53:41,920 DEBUG   Thread-13 :229493 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): storage.googleapis.com:443
+2021-02-09 20:53:41,925 DEBUG   Thread-14 :229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2021-02-09 20:53:41,928 DEBUG   Thread-14 :229493 [connectionpool.py:_new_conn():975] Starting new HTTPS connection (1): storage.googleapis.com:443
+2021-02-09 20:53:41,936 DEBUG   Thread-5  :229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/v1myu6yc/file_stream HTTP/1.1" 200 None
+2021-02-09 20:53:42,097 DEBUG   Thread-5  :229493 [connectionpool.py:_make_request():461] https://api.wandb.ai:443 "POST /files/chizuchizu/rfmd-exp-1/v1myu6yc/file_stream HTTP/1.1" 200 None
+2021-02-09 20:53:42,098 INFO    SenderThread:229493 [sender.py:send_request_defer():248] send defer: 7
+2021-02-09 20:53:42,098 DEBUG   HandlerThread:229493 [handler.py:handle_request():93] handle_request: defer
+2021-02-09 20:53:42,098 INFO    HandlerThread:229493 [handler.py:handle_request_defer():107] handle defer: 7
+2021-02-09 20:53:42,099 DEBUG   SenderThread:229493 [sender.py:send():117] send: request
+2021-02-09 20:53:42,099 DEBUG   SenderThread:229493 [sender.py:send_request():126] send_request: defer
+2021-02-09 20:53:42,099 INFO    SenderThread:229493 [sender.py:send_request_defer():212] handle sender defer: 7
+2021-02-09 20:53:42,099 INFO    SenderThread:229493 [sender.py:send_request_defer():248] send defer: 8
+2021-02-09 20:53:42,099 DEBUG   HandlerThread:229493 [handler.py:handle_request():93] handle_request: defer
+2021-02-09 20:53:42,099 INFO    HandlerThread:229493 [handler.py:handle_request_defer():107] handle defer: 8
+2021-02-09 20:53:42,099 DEBUG   SenderThread:229493 [sender.py:send():117] send: final
+2021-02-09 20:53:42,099 DEBUG   SenderThread:229493 [sender.py:send():117] send: footer
+2021-02-09 20:53:42,099 DEBUG   SenderThread:229493 [sender.py:send():117] send: request
+2021-02-09 20:53:42,099 DEBUG   SenderThread:229493 [sender.py:send_request():126] send_request: defer
+2021-02-09 20:53:42,099 INFO    SenderThread:229493 [sender.py:send_request_defer():212] handle sender defer: 8
+2021-02-09 20:53:42,243 DEBUG   Thread-14 :229493 [connectionpool.py:_make_request():461] https://storage.googleapis.com:443 "PUT /wandb-production.appspot.com/chizuchizu/rfmd-exp-1/v1myu6yc/requirements.txt?Expires=1612958021&GoogleAccessId=wandb-production%40appspot.gserviceaccount.com&Signature=VawaBFtex6LNjxhwRD9RlUz6vEci09XD3lC4jwbvgItn74PX4ENd%2FvOpsp7p%2Brr33E8alx7C3no6FUuGo3LDAfO61TChoUnJ1gABJtbCP97fWwYvh%2BCqD9JxbCH1APQ39mwD5e6uvgIupclQC189NFN6cLvrBlaPL4x4H%2BcVw%2B5p4DUix%2F9TQBV3DutaA6%2Bp%2BTa3YuVXaTv3hyfVnjn27usBdlzdgAt4V1UsrVmF1%2FPPLzep3iloQqMaWWN7QiAjaq2TbALSioQgpM2nGodEWiBcaAYol16w57VVpDJmXtx6J8tgYFmUjqYDfES8lJAkQ9ekYEO0LC4bw19%2BXHWT%2Bw%3D%3D HTTP/1.1" 200 0
+2021-02-09 20:53:42,245 INFO    Thread-14 :229493 [upload_job.py:push():133] Uploaded file /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/requirements.txt
+2021-02-09 20:53:42,258 DEBUG   Thread-15 :229493 [connectionpool.py:_make_request():461] https://storage.googleapis.com:443 "PUT /wandb-production.appspot.com/chizuchizu/rfmd-exp-1/v1myu6yc/wandb-summary.json?Expires=1612958021&GoogleAccessId=wandb-production%40appspot.gserviceaccount.com&Signature=HErga8iP0iVbvpoJRzrThS6NYtPzM2jSoE3KypoNY3dkqAMwsUN8Fc2Wk%2BycPz9zoCJ2r%2FrVB5TakxpjZjohPTMOSCA2fMOMI3TnH7JOuLhVXmoxIRbtK6mAv2uoBEyDJC55KI9tjq3Ech7l1ZcKWiBcB3S1zRhxULpU3lOgz6cC2%2F2UukHkbyegsEEzq0A5MqPLaQ%2FK%2FXzpUotnVyseGeILfM19b%2BhlLWfmkvYy3IjwNuSqni45zkg%2BgigNg%2BVJ9kuQjZZou72TQHIXLMr72FcrULv%2FvBySkYPiCZnsVAul2OudKmG0t3jvGnKwSKtzE6J1gnrLNKxMBZQsCnhquQ%3D%3D HTTP/1.1" 200 0
+2021-02-09 20:53:42,258 INFO    Thread-15 :229493 [upload_job.py:push():133] Uploaded file /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/wandb-summary.json
+2021-02-09 20:53:42,275 DEBUG   Thread-13 :229493 [connectionpool.py:_make_request():461] https://storage.googleapis.com:443 "PUT /wandb-production.appspot.com/chizuchizu/rfmd-exp-1/v1myu6yc/output.log?Expires=1612958021&GoogleAccessId=wandb-production%40appspot.gserviceaccount.com&Signature=T44rGM07jm5TC0tGS0ljntAZFf61Dfcnv6BXGe%2F8NqXHxrU9MtttDJPMpLVLbS59OTUYDiM9w3ZCubvN0c2ANP8q2QJc%2FjV3FeYoMys3QkjE0J7vsJUOtik3ZQdWf%2FAavvUIQjF%2BL6aonZH2IxwnTnZ%2F8IWhBef45%2BCZPq7CaWu4qbDOwQSFwH6DDAVPLtatR1B8sF%2BdDE2c7Wv3j%2F5HlMkz9%2FtPjStLaNcP%2BkwtNLew%2F%2BZRD13aacz1O%2FWdFw8s5muSntqD54ZACQcPSlV9crtDKNtkRqJ3c8EbOqNNmNh%2F%2FuJkuZjC3zUoKc93jb4HNeNHLj31nFXn0QzexK6cAA%3D%3D HTTP/1.1" 200 0
+2021-02-09 20:53:42,276 INFO    Thread-13 :229493 [upload_job.py:push():133] Uploaded file /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/output.log
+2021-02-09 20:53:42,283 DEBUG   Thread-12 :229493 [connectionpool.py:_make_request():461] https://storage.googleapis.com:443 "PUT /wandb-production.appspot.com/chizuchizu/rfmd-exp-1/v1myu6yc/config.yaml?Expires=1612958021&GoogleAccessId=wandb-production%40appspot.gserviceaccount.com&Signature=GIz3iWdnsAqTSDG%2Bd1zcd9lwc8rNfR2zuU7t4svMwBN7lW4lpr%2BA%2F%2B7GrZDFwTb3qjLQz5KTdjoq9iGpd0SseDY0VIaLtJWB%2Bayyxq5Uk1ptXPyYKBxzx4juk%2Fb7LRQWujVV4OiAAqj%2BxB%2B8PBbzCibfjOOKvAKI%2FRowW0yRnaAD%2FD6c2rHiBwmbLMZ%2F%2FUVhV9XfM8OTThV1PlhW0qbYFCnbYtCFymCp8adyro1dYTDvPFlqs5502tvoBV5TbfG2gqGi66CrkRz7X49BKvp7GYJoLF9HWKi6H239CO7xJkiGC8QmbyDDu%2BxbarbadVLt%2BQc38TPoqdNyUa7adzyUNA%3D%3D HTTP/1.1" 200 0
+2021-02-09 20:53:42,284 INFO    Thread-12 :229493 [upload_job.py:push():133] Uploaded file /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/files/config.yaml
+2021-02-09 20:53:43,308 DEBUG   HandlerThread:229493 [handler.py:handle_request():93] handle_request: poll_exit
+2021-02-09 20:53:43,308 DEBUG   SenderThread:229493 [sender.py:send():117] send: request
+2021-02-09 20:53:43,308 DEBUG   SenderThread:229493 [sender.py:send_request():126] send_request: poll_exit
+2021-02-09 20:53:43,308 INFO    SenderThread:229493 [file_pusher.py:join():181] waiting for file pusher
+2021-02-09 20:53:43,309 DEBUG   HandlerThread:229493 [handler.py:handle_request():93] handle_request: get_summary
+2021-02-09 20:53:43,309 DEBUG   HandlerThread:229493 [handler.py:handle_request():93] handle_request: sampled_history
+2021-02-09 20:53:43,310 DEBUG   HandlerThread:229493 [handler.py:handle_request():93] handle_request: shutdown
+2021-02-09 20:53:43,310 INFO    HandlerThread:229493 [handler.py:finish():312] shutting down handler
+2021-02-09 20:53:44,099 INFO    WriterThread:229493 [datastore.py:close():258] close: /home/yuma/PycharmProjects/rfmd/src/wandb/run-20210209_205316-v1myu6yc/run-v1myu6yc.wandb
+2021-02-09 20:53:44,308 INFO    SenderThread:229493 [sender.py:finish():766] shutting down sender
+2021-02-09 20:53:44,309 INFO    SenderThread:229493 [file_pusher.py:finish():176] shutting down file pusher
+2021-02-09 20:53:44,309 INFO    SenderThread:229493 [file_pusher.py:join():181] waiting for file pusher
+2021-02-09 20:53:44,309 INFO    MainThread:229493 [internal.py:handle_exit():156] Internal process exited
