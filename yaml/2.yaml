@@ -1,0 +1,65 @@
+base:
+  debug: true
+  print_freq: 100
+  num_workers: 8
+  seed: 42
+  target_size: 29
+  target_cols: [
+      "Disease_Risk", "DR", "ARMD", "MH", "DN",
+      "MYA", "BRVO", "TSLN", "ERM", "LS", "MS",
+      "CSR", "ODC", "CRVO", "TV", "AH", "ODP",
+      "ODE", "ST", "AION", "PT", "RT", "RS", "CRS",
+      "EDN", "RPEC", "MHL", "RP", "OTHER"
+  ]
+  n_fold: 4
+  trn_fold: [0]
+  train: True
+  oof: False
+
+model:
+  model_name: "tf_efficientnet_b0_ns"
+  size: 224  # 480
+  batch_size: 64
+  pretrained: true
+  epochs: 15
+
+loss:
+  name: "BCEFocalLoss"
+  param: {}
+
+optimizer:
+  name: "AdamW"
+  param: {
+           "lr": 0.001,
+           "weight_decay": 1e-6,
+           "amsgrad": False
+  }
+
+scheduler:
+  name: "CosineAnnealingLR"
+  param: {
+            "T_max": 6,
+            "eta_min": 1e-6,
+            "last_epoch": -1
+  }
+
+wandb:
+  use: true
+  project: "rfmd-exp-2"
+  name: "focal-1"
+  tags: [
+          # "tf_efficientnet_b0_ns",
+          "tf_efficientnet_b0_ns",
+          "focal_loss"
+          # "aug_7"
+  ]
+
+#wandb:
+#  use: true
+#  project: "rfmd-exp-1"
+#  name: "seresnet50"
+#  tags: [
+#          "rfmd",
+#          "seresnet",
+#          "seresnet50"
+#  ]
