@@ -25,14 +25,16 @@ model:
   epochs: 15
 
 wandb:
-  use: true
+  use: false
   project: "rfmd-exp-1"
-  name: "efficientnet_b3_gem_train_p1"
+  name: "efficientnet_b3_gem_train_p1_aug_7"
   tags: [
           "rfmd",
           "efficientnet",
           "efficientnet_b3",
-          "gem"
+          "gem",
+          "p1",
+          "aug_7"
   ]
 
 #wandb:

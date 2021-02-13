@@ -119,7 +119,21 @@ class TrainDataset(Dataset):
         file_name = self.file_names[idx]
         file_path = f'{TRAIN_PATH}/{file_name}.png'
         image = cv2.imread(file_path)
+        # kernel = np.array([
+        #     [-1, -3, -4, -3, -1],
+        #     [-3, 0, 6, 0, -3],
+        #     [-4, 6, 20, 6, -4],
+        #     [-3, 0, 6, 0, -3],
+        #     [-1, -3, -4, -3, -1]
+        # ], np.float32)
+        # image = cv2.filter2D(image.astype(float), -1, kernel)
+        # image /= image.max()
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+        # try:
+        #     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        # except:
+        #     print()
         # image = circle_crop(image)
         if self.transform:
             augmented = self.transform(image=image)
@@ -234,7 +248,6 @@ class CHIZUModel(LightningModule):
         else:
             "efficient"
             self.model.classifier = nn.Linear(self.model.num_features, cfg.base.target_size)
-
 
         self.model.avg_pool = GeM()
 
