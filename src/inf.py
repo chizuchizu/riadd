@@ -37,6 +37,7 @@ from torchvision import models
 import torch.nn as nn
 import torch
 import torch.nn.functional as F
+from torch.nn.parameter import Parameter
 from torch.optim import Adam, SGD
 from torch.optim.lr_scheduler import CosineAnnealingWarmRestarts, CosineAnnealingLR, ReduceLROnPlateau
 import pytorch_lightning as pl
@@ -47,11 +48,10 @@ import wandb
 
 # os.chdir("/home/jupyter/src")
 TRAIN_PATH = '../data/train_p'
-rand = 55647
+rand = 98677
 
-model_path = f"../outputs/{rand}/fold-0.ckpt"
+# model_path = f"../outputs/{rand}/fold-0.ckpt"
 TEST_PATH = "../data/eval_p"
-STORAGE_CLIENT = storage.Client(project='ranzcr-301208')
 train = pd.read_csv('../data/Training_Set/RFMiD_Training_Labels.csv')
 test = train.iloc[:640, :]
 # test = pd.read_csv('../data/sample_submission.csv')
@@ -143,12 +143,13 @@ def get_transforms(img_size, data):
 # Dataset
 # ====================================================
 class TrainDataset(Dataset):
-    def __init__(self, df, target_cols, transform=None):
+    def __init__(self, df, target_cols, transform=None, inference=True):
         self.df = df
         self.file_names = df['ID'].values
         target_cols = df.drop(columns=["ID", "fold"]).columns if target_cols == "all" else target_cols
         self.labels = df[target_cols].values
         self.transform = transform
+        self.inference = inference
 
     def __len__(self):
         return len(self.df)
@@ -164,7 +165,10 @@ class TrainDataset(Dataset):
             image = augmented['image']
 
         label = torch.tensor(self.labels[idx]).float()
-        return image, label
+        if self.inference:
+            return image
+        else:
+            return image, label
 
 
 class TestDataset(Dataset):
@@ -239,6 +243,24 @@ class RANZCRDataModule(LightningDataModule):
         )
 
 
+def gem(x, p=3, eps=1e-6):
+    return F.avg_pool2d(x.clamp(min=eps).pow(p), (x.size(-2), x.size(-1))).pow(1. / p)
+
+
+class GeM(nn.Module):
+    def __init__(self, p=3, eps=1e-6):
+        super(GeM, self).__init__()
+        self.p = Parameter(torch.ones(1) * p)
+        self.eps = eps
+
+    def forward(self, x):
+        return gem(x, p=self.p, eps=self.eps)
+
+    def __repr__(self):
+        return self.__class__.__name__ + '(' + 'p=' + '{:.4f}'.format(self.p.data.tolist()[0]) + ', ' + 'eps=' + str(
+            self.eps) + ')'
+
+
 class RANZCRModel(LightningModule):
     def __init__(self, cfg, model_name="resnext50_32x4d", pretrained=False):
         super().__init__()
@@ -248,11 +270,17 @@ class RANZCRModel(LightningModule):
         self.model_name = model_name
         self.model = timm.create_model(model_name, pretrained=pretrained)
 
-        n_features = self.model.fc.in_features if "efficient" not in self.model_name else 1000
-        self.model.fc = nn.Linear(n_features, cfg.base.target_size)
+        if "efficient" not in self.model_name:
+            n_features = self.model.fc.in_features
+            self.model.fc = nn.Linear(n_features, cfg.base.target_size)
+        else:
+            "efficient"
+            self.model.classifier = nn.Linear(self.model.num_features, cfg.base.target_size)
 
         self.optimizer = Adam(self.model.parameters(), lr=cfg.model.lr, weight_decay=cfg.model.weight_decay,
                               amsgrad=False)
+        self.model.avg_pool = GeM()
+
         self.criterion = nn.BCEWithLogitsLoss()
         # self.criterion = CB_loss
 
@@ -315,7 +343,36 @@ class RANZCRModel(LightningModule):
         return scheduler
 
 
+def test_inf(dataset, model, model_path):
+    model = model.load_from_checkpoint(model_path, cfg=cfg, model_name=cfg.model.model_name).to(device)
+    model.freeze()
+    model.eval()
+    test_loader = DataLoader(
+        dataset,
+        batch_size=cfg.model.batch_size,
+        num_workers=cfg.base.num_workers,
+        shuffle=False,
+        pin_memory=True,
+        drop_last=False
+    )
+
+    for i, img in tqdm(enumerate(test_loader)):
+        y_hat = model(img.to(device))
+        if i == 0:
+            pred = y_hat.cpu().numpy()
+        else:
+            pred = np.append(pred, y_hat.cpu().numpy(), axis=0)
+
+    pred = sigmoid(pred)
+
+    return pred
+
+
 def train_loop(cfg, folds, fold):
+    model_path = f"../outputs/{rand}/fold-{fold}.ckpt"
+    val_idx = folds[folds['fold'] == fold].index
+    valid_folds = folds.loc[val_idx].reset_index(drop=True)
+
     model = RANZCRModel(
         cfg,
         model_name=cfg.model.model_name,
@@ -332,28 +389,21 @@ def train_loop(cfg, folds, fold):
             "valid"
         )
     )
+    pred = test_inf(test_set, model, model_path)
+    oof = None
 
-    test_loader = DataLoader(
-        test_set,
-        batch_size=cfg.model.batch_size,
-        num_workers=cfg.base.num_workers,
-        shuffle=False,
-        pin_memory=True,
-        drop_last=True
-    )
-
-    for i, img in tqdm(enumerate(test_loader)):
-        y_hat = pr_model(img.to(device))
-        if i == 0:
-            pred = y_hat.cpu().numpy()
-        else:
-            pred = np.append(pred, y_hat.cpu().numpy(), axis=0)
-
-    test_c = test.copy()
-    test_c.iloc[:, 1:] = sigmoid(pred)
-    test_c.to_csv(f"../outputs/{rand}/{fold}.csv", index=False)
-
-    return pred
+    if cfg.base.oof:
+        val_set = TrainDataset(
+            valid_folds,
+            cfg.base.target_cols,
+            get_transforms(
+                cfg.model.size,
+                "valid"
+            ),
+            inference=True
+        )
+        oof = test_inf(val_set, model, model_path)
+    return pred, oof
 
 
 def main(cfg):
@@ -365,10 +415,20 @@ def main(cfg):
         folds.loc[val_index, 'fold'] = int(n)
     folds['fold'] = folds['fold'].astype(int)
 
-    oof_df = pd.DataFrame()
+    oof_df = train.copy()
+    test_pred = test.copy()
+    test_pred.iloc[:, 1:] = 0
+
     for fold in range(cfg.base.n_fold):
         if fold in cfg.base.trn_fold:
-            _oof_df = train_loop(cfg, folds, fold)
+            fold_pred, fold_oof = train_loop(cfg, folds, fold)
+            if cfg.base.oof:
+                oof_df.iloc[folds["fold"] == fold, 1:] = fold_oof
+
+            test_pred.iloc[:, 1:] += fold_pred / len(cfg.base.trn_fold)
+
+    test_pred.to_csv(f"../outputs/{rand}/{rand}-{cfg.base.n_fold}-{len(cfg.base.trn_fold)}-inf.csv", index=False)
+    oof_df.to_csv(f"../outputs/{rand}/{rand}-oof-inf.csv", index=False)
 
 
 cfg = OmegaConf.load("../yaml/1.yaml")

@@ -6,17 +6,18 @@ base:
   target_size: 29
   target_cols: "all"
   n_fold: 4
-  trn_fold: [0]
+  trn_fold: [0, 1, 2, 3]
   train: True
+  oof: True
 
 model:
   model_name: "efficientnet_b3"
-  size: 480
+  size: 480  # 480
   scheduler: "CosineAnnealingLR"
   T_max: 6
   lr: 1e-3
   min_lr: 1e-6
-  batch_size: 16
+  batch_size: 8
   weight_decay: 1e-6
   gradient_accumulation_steps: 1
   max_grad_norm: 1000
@@ -25,16 +26,16 @@ model:
   epochs: 15
 
 wandb:
-  use: false
+  use: True
   project: "rfmd-exp-1"
-  name: "efficientnet_b3_gem_train_p1_aug_7"
+  name: "efficientnet_b3_gem_train_p1"
   tags: [
           "rfmd",
           "efficientnet",
           "efficientnet_b3",
           "gem",
           "p1",
-          "aug_7"
+          # "aug_7"
   ]
 
 #wandb:

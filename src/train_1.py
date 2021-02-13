@@ -105,12 +105,13 @@ def get_transforms(img_size, data):
 # Dataset
 # ====================================================
 class TrainDataset(Dataset):
-    def __init__(self, df, target_cols, transform=None):
+    def __init__(self, df, target_cols, transform=None, inference=False):
         self.df = df
         self.file_names = df['ID'].values
         target_cols = df.drop(columns=["ID", "fold"]).columns if target_cols == "all" else target_cols
         self.labels = df[target_cols].values
         self.transform = transform
+        self.inference = inference
 
     def __len__(self):
         return len(self.df)
@@ -119,28 +120,18 @@ class TrainDataset(Dataset):
         file_name = self.file_names[idx]
         file_path = f'{TRAIN_PATH}/{file_name}.png'
         image = cv2.imread(file_path)
-        # kernel = np.array([
-        #     [-1, -3, -4, -3, -1],
-        #     [-3, 0, 6, 0, -3],
-        #     [-4, 6, 20, 6, -4],
-        #     [-3, 0, 6, 0, -3],
-        #     [-1, -3, -4, -3, -1]
-        # ], np.float32)
-        # image = cv2.filter2D(image.astype(float), -1, kernel)
-        # image /= image.max()
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
-        # try:
-        #     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        # except:
-        #     print()
-        # image = circle_crop(image)
         if self.transform:
             augmented = self.transform(image=image)
             image = augmented['image']
 
         label = torch.tensor(self.labels[idx]).float()
-        return image, label
+
+        if self.inference:
+            return image
+        else:
+            return image, label
 
 
 class TestDataset(Dataset):
@@ -157,7 +148,6 @@ class TestDataset(Dataset):
         file_path = f'{TEST_PATH}/{file_name}.png'
         image = cv2.imread(file_path)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        # image = circle_crop(image)
         if self.transform:
             augmented = self.transform(image=image)
             image = augmented['image']
@@ -336,6 +326,31 @@ class CHIZUModel(LightningModule):
         return scheduler
 
 
+def test_inf(dataset, model, model_path):
+    model = model.load_from_checkpoint(model_path, cfg=cfg, model_name=cfg.model.model_name).to(device)
+    model.freeze()
+    model.eval()
+    test_loader = DataLoader(
+        dataset,
+        batch_size=cfg.model.batch_size,
+        num_workers=cfg.base.num_workers,
+        shuffle=False,
+        pin_memory=True,
+        drop_last=False
+    )
+
+    for i, img in tqdm(enumerate(test_loader)):
+        y_hat = model(img.to(device))
+        if i == 0:
+            pred = y_hat.cpu().numpy()
+        else:
+            pred = np.append(pred, y_hat.cpu().numpy(), axis=0)
+
+    pred = sigmoid(pred)
+
+    return pred
+
+
 def train_loop(cfg, folds, fold):
     if cfg.wandb.use:
         wandb.init(
@@ -390,11 +405,7 @@ def train_loop(cfg, folds, fold):
     )
 
     trainer.fit(model=model, datamodule=data_module)
-
     model_path = checkpoint_callback.best_model_path
-    pr_model = model.load_from_checkpoint(model_path, cfg=cfg, model_name=cfg.model.model_name).to(device)
-    pr_model.freeze()
-    pr_model.eval()
 
     test_set = TestDataset(
         test,
@@ -403,28 +414,21 @@ def train_loop(cfg, folds, fold):
             "valid"
         )
     )
+    pred = test_inf(test_set, model, model_path)
+    oof = None
 
-    test_loader = DataLoader(
-        test_set,
-        batch_size=cfg.model.batch_size,
-        num_workers=cfg.base.num_workers,
-        shuffle=False,
-        pin_memory=True,
-        drop_last=True
-    )
-
-    for i, img in tqdm(enumerate(test_loader)):
-        y_hat = pr_model(img.to(device))
-        if i == 0:
-            pred = y_hat.cpu().numpy()
-        else:
-            pred = np.append(pred, y_hat.cpu().numpy(), axis=0)
-
-    test_c = test.copy()
-    test_c.iloc[:, 1:] = sigmoid(pred)
-    test_c.to_csv(f"../outputs/{rand}/{rand}-{fold}.csv", index=False)
-
-    return pred
+    if cfg.base.oof:
+        val_set = TrainDataset(
+            valid_folds,
+            cfg.base.target_cols,
+            get_transforms(
+                cfg.model.size,
+                "valid"
+            ),
+            inference=True
+        )
+        oof = test_inf(val_set, model, model_path)
+    return pred, oof
 
 
 def main(cfg):
@@ -436,10 +440,20 @@ def main(cfg):
         folds.loc[val_index, 'fold'] = int(n)
     folds['fold'] = folds['fold'].astype(int)
 
-    oof_df = pd.DataFrame()
+    oof_df = train.copy()
+    test_pred = test.copy()
+    test_pred.iloc[:, 1:] = 0
+
     for fold in range(cfg.base.n_fold):
         if fold in cfg.base.trn_fold:
-            _oof_df = train_loop(cfg, folds, fold)
+            fold_pred, fold_oof = train_loop(cfg, folds, fold)
+            if cfg.base.oof:
+                oof_df.iloc[folds["fold"] == fold, 1:] = fold_oof
+
+            test_pred.iloc[:, 1:] += fold_pred / len(cfg.base.trn_fold)
+
+    test_pred.to_csv(f"../outputs/{rand}/{rand}-{cfg.base.n_fold}-{len(cfg.base.trn_fold)}.csv", index=False)
+    oof_df.to_csv(f"../outputs/{rand}/{rand}-oof.csv", index=False)
 
 
 cfg = OmegaConf.load("../yaml/1.yaml")
