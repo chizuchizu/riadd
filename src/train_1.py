@@ -452,8 +452,8 @@ def main(cfg):
 
             test_pred.iloc[:, 1:] += fold_pred / len(cfg.base.trn_fold)
 
-    test_pred.to_csv(f"../outputs/{rand}/{rand}-{cfg.base.n_fold}-{len(cfg.base.trn_fold)}.csv", index=False)
-    oof_df.to_csv(f"../outputs/{rand}/{rand}-oof.csv", index=False)
+    test_pred.to_csv(f"../outputs/{rand}/{rand}_{cfg.base.n_fold}_{len(cfg.base.trn_fold)}.csv", index=False)
+    oof_df.to_csv(f"../outputs/{rand}/{rand}_oof.csv", index=False)
 
 
 cfg = OmegaConf.load("../yaml/1.yaml")
