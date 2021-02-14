@@ -1,5 +1,6 @@
 base:
-  debug: true
+  train_path: '../data/train_p_1'
+  test_path: '../data/eval_p_1'
   print_freq: 100
   num_workers: 8
   seed: 42
@@ -16,6 +17,14 @@ base:
   train: True
   oof: False
 
+split:
+  name: "MultilabelStratifiedKFold"
+  param: {
+           "n_splits": 4,
+           "shuffle": True,
+           "random_state": 1212
+  }
+
 model:
   model_name: "tf_efficientnet_b0_ns"
   size: 224  # 480
@@ -30,7 +39,7 @@ loss:
 optimizer:
   name: "AdamW"
   param: {
-           "lr": 0.001,
+           "lr": 1e-3,
            "weight_decay": 1e-6,
            "amsgrad": False
   }
@@ -39,7 +48,7 @@ scheduler:
   name: "CosineAnnealingLR"
   param: {
             "T_max": 6,
-            "eta_min": 1e-6,
+            "eta_min": 0,
             "last_epoch": -1
   }
 
@@ -53,13 +62,3 @@ wandb:
           "focal_loss"
           # "aug_7"
   ]
-
-#wandb:
-#  use: true
-#  project: "rfmd-exp-1"
-#  name: "seresnet50"
-#  tags: [
-#          "rfmd",
-#          "seresnet",
-#          "seresnet50"
-#  ]

@@ -17,7 +17,7 @@ from torch.utils.data.dataloader import DataLoader
 # from pytorch_lightning.metrics.functional.classification import auroc
 import cv2
 from pytorch_lightning import LightningDataModule
-from sklearn.model_selection import train_test_split, StratifiedKFold
+from sklearn import model_selection
 import albumentations as A
 from sklearn.metrics import roc_auc_score, accuracy_score
 from pytorch_lightning.core.lightning import LightningModule
@@ -28,6 +28,7 @@ from albumentations import (
     IAAAdditiveGaussianNoise, Transpose, CLAHE, MultiplicativeNoise, IAASharpen
 )
 from torch.autograd import Variable
+from iterstrat.ml_stratifiers import MultilabelStratifiedKFold
 
 from albumentations.pytorch import ToTensorV2
 from albumentations import ImageOnlyTransform
@@ -49,8 +50,8 @@ from pytorch_lightning.loggers import WandbLogger
 import wandb
 
 # os.chdir("/home/jupyter/src")
-TRAIN_PATH = '../data/train_p_1'
-TEST_PATH = "../data/eval_p_1"
+# TRAIN_PATH = '../data/train_p_1'
+# TEST_PATH = "../data/eval_p_1"
 train = pd.read_csv('../data/Training_Set/RFMiD_Training_Labels.csv')
 test = train.iloc[:640, :]
 # test = pd.read_csv('../data/sample_submission.csv')
@@ -107,11 +108,12 @@ def get_transforms(img_size, data):
 # Dataset
 # ====================================================
 class TrainDataset(Dataset):
-    def __init__(self, df, target_cols, transform=None, inference=False):
+    def __init__(self, cfg, df, transform=None, inference=False):
+        self.cfg = cfg
         self.df = df
         self.file_names = df['ID'].values
-        target_cols = df.drop(columns=["ID", "fold"]).columns if target_cols == "all" else target_cols
-        self.labels = df[target_cols].values
+        # target_cols = # df.drop(columns=["ID", "fold"]).columns if target_cols == "all" else target_cols
+        self.labels = df[cfg.base.target_cols].values
         self.transform = transform
         self.inference = inference
 
@@ -120,7 +122,7 @@ class TrainDataset(Dataset):
 
     def __getitem__(self, idx):
         file_name = self.file_names[idx]
-        file_path = f'{TRAIN_PATH}/{file_name}.png'
+        file_path = f'{self.cfg.base.train_path}/{file_name}.png'
         image = cv2.imread(file_path)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
@@ -137,7 +139,8 @@ class TrainDataset(Dataset):
 
 
 class TestDataset(Dataset):
-    def __init__(self, df, transform=None):
+    def __init__(self, cfg, df, transform=None):
+        self.cfg = cfg
         self.df = df
         self.file_names = df['ID'].values
         self.transform = transform
@@ -147,7 +150,7 @@ class TestDataset(Dataset):
 
     def __getitem__(self, idx):
         file_name = self.file_names[idx]
-        file_path = f'{TEST_PATH}/{file_name}.png'
+        file_path = f'{self.cfg.base.test_path}/{file_name}.png'
         image = cv2.imread(file_path)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         if self.transform:
@@ -182,7 +185,7 @@ class CHIZUDataModule(LightningDataModule):
         self.val_df = val_df
 
     def train_dataloader(self):
-        train_dataset = TrainDataset(self.train_df, self.cfg.base.target_cols,
+        train_dataset = TrainDataset(self.cfg, self.train_df,
                                      transform=get_transforms(self.img_sz, data="train"))
 
         return DataLoader(
@@ -195,7 +198,7 @@ class CHIZUDataModule(LightningDataModule):
         )
 
     def val_dataloader(self):
-        valid_dataset = TrainDataset(self.val_df, self.cfg.base.target_cols,
+        valid_dataset = TrainDataset(self.cfg, self.val_df,
                                      transform=get_transforms(self.img_sz, data="valid"))
         return DataLoader(
             valid_dataset,
@@ -252,6 +255,9 @@ __OPTIMIZERS__ = {
 __CRITERIONS__ = {
     "BCEFocalLoss": BCEFocalLoss
 }
+__SPLITS__ = {
+    "MultilabelStratifiedKFold": MultilabelStratifiedKFold
+}
 
 
 def get_optimizer(cfg, model):
@@ -278,7 +284,16 @@ def get_criterion(cfg):
     elif __CRITERIONS__.get(cfg.loss.name) is not None:
         return __CRITERIONS__[cfg.loss.name](**cfg.loss.param)
     else:
-        raise NotImplemented
+        raise NotImplementedError
+
+
+def get_split(cfg):
+    if hasattr(model_selection, cfg.split.name):
+        return model_selection.__getattribute__(cfg.split.name)(**cfg.split.param)
+    elif __SPLITS__.get(cfg.split.name) is not None:
+        return __SPLITS__[cfg.split.name](**cfg.split.param)
+    else:
+        raise NotImplementedError
 
 
 class CHIZUModel(LightningModule):
@@ -362,7 +377,7 @@ class CHIZUModel(LightningModule):
         return [optimizer], [scheduler]
 
 
-def test_inf(dataset, model, model_path):
+def test_inf(cfg, dataset, model, model_path):
     model = model.load_from_checkpoint(model_path, cfg=cfg, model_name=cfg.model.model_name).to(device)
     model.freeze()
     model.eval()
@@ -444,26 +459,27 @@ def train_loop(cfg, folds, fold):
     model_path = checkpoint_callback.best_model_path
 
     test_set = TestDataset(
+        cfg,
         test,
         get_transforms(
             cfg.model.size,
             "valid"
         )
     )
-    pred = test_inf(test_set, model, model_path)
+    pred = test_inf(cfg, test_set, model, model_path)
     oof = None
 
     if cfg.base.oof:
         val_set = TrainDataset(
+            cfg,
             valid_folds,
-            cfg.base.target_cols,
             get_transforms(
                 cfg.model.size,
                 "valid"
             ),
             inference=True
         )
-        oof = test_inf(val_set, model, model_path)
+        oof = test_inf(cfg, val_set, model, model_path)
     return pred, oof
 
 
@@ -471,8 +487,8 @@ def main(cfg):
     seed_torch(seed=cfg.base.seed)
 
     folds = train.copy()
-    Fold = KFold(n_splits=cfg.base.n_fold, shuffle=True, random_state=cfg.base.seed)
-    for n, (train_index, val_index) in enumerate(Fold.split(folds, folds)):
+    Fold = get_split(cfg)
+    for n, (train_index, val_index) in enumerate(Fold.split(folds, folds[cfg.base.target_cols])):
         folds.loc[val_index, 'fold'] = int(n)
     folds['fold'] = folds['fold'].astype(int)
 
@@ -492,5 +508,5 @@ def main(cfg):
     # oof_df.to_csv(f"../exp2/{rand}/{rand}_oof.csv", index=False)
 
 
-cfg = OmegaConf.load("../yaml/2.yaml")
-main(cfg)
+if __name__ == "__main__":
+    main(OmegaConf.load("../yaml/2.yaml"))
