@@ -54,7 +54,7 @@ import wandb
 # os.chdir("/home/jupyter/src")
 # TRAIN_PATH = '../data/train_p_1'
 # TEST_PATH = "../data/eval_p_1"
-train = pd.read_csv('../data/Training_Set/RFMiD_Training_Labels.csv')
+train = pd.read_csv('../data/Training_Set/train_class.csv')
 test = train.iloc[:640, :]
 # test = pd.read_csv('../data/sample_submission.csv')
 rand = random.randint(0, 100000)
@@ -284,14 +284,23 @@ class CHIZUModel(LightningModule):
     def training_step(self, batch, batch_idx):
         x, y = batch
         y_hat = self(x)
-        loss = self.criterion(y_hat, y)
+
+        """
+        クラスタリングの重みをあげる
+        """
+        normal_loss = self.criterion(y_hat[:, :29], y[:, :29])
+        class_loss = self.criterion(y_hat[:, 29:], y[:, 29:])
+        loss = normal_loss * 0.7 + class_loss * 0.3
         # self.log("train_loss", loss, prog_bar=True)
         return loss
 
     def validation_step(self, batch, batch_idx):
         x, y = batch
         y_hat = self(x)
-        loss = self.criterion(y_hat, y)
+        # loss = self.criterion(y_hat, y)
+        normal_loss = self.criterion(y_hat[:, :29], y[:, :29])
+        class_loss = self.criterion(y_hat[:, 29:], y[:, 29:])
+        loss = normal_loss * 0.7 + class_loss * 0.3
         # self.log("valid_loss", loss, prog_bar=True)
         return loss, y_hat.cpu().numpy(), y.cpu().numpy()
 
@@ -461,9 +470,9 @@ def main(cfg):
 
             test_pred.iloc[:, 1:] += fold_pred / len(cfg.base.trn_fold)
 
-    test_pred.to_csv(f"../exp2/{rand}/{rand}_{cfg.base.n_fold}_{len(cfg.base.trn_fold)}.csv", index=False)
+    # test_pred.to_csv(f"../exp2/{rand}/{rand}_{cfg.base.n_fold}_{len(cfg.base.trn_fold)}.csv", index=False)
     # oof_df.to_csv(f"../exp2/{rand}/{rand}_oof.csv", index=False)
 
 
 if __name__ == "__main__":
-    main(OmegaConf.load("../yaml/2.yaml"))
+    main(OmegaConf.load("../yaml/4.yaml"))

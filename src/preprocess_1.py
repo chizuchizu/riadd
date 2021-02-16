@@ -3,6 +3,7 @@ import numpy as np
 import cv2
 from tqdm import tqdm
 import matplotlib.pyplot as plt
+from joblib import Parallel, delayed
 
 
 def crop_image_from_gray(img, tol=7):
@@ -26,11 +27,11 @@ def crop_image_from_gray(img, tol=7):
         return img
 
 
-def circle_crop(img, sigmaX=10):
+def circle_crop(path, spath):
     """
     Create circular crop around image centre
     """
-    img = cv2.imread(img)
+    img = cv2.imread(path)
     img = crop_image_from_gray(img)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
@@ -45,15 +46,24 @@ def circle_crop(img, sigmaX=10):
     img = cv2.bitwise_and(img, img, mask=circle_img)
     # img = crop_image_from_gray(img)
     # img = cv2.addWeighted(img, 4, cv2.GaussianBlur(img, (0, 0), sigmaX), -4, 128)
+
+    cv2.imwrite(spath, img)
     """
     plt.imshow(img)
     plt.show()
     """
-    return img
+    # return img
 
 
-for x in tqdm(glob("../data/Training_Set/Training/*.png")):
-    cv2.imwrite(x.replace("Training_Set/Training", "train_p_1"), circle_crop(x))
+# for x in tqdm(glob("../data/Training_Set/Training/*.png")):
+#     cv2.imwrite(x.replace("Training_Set/Training", "train_p_1"), circle_crop(x))
+#
+# for x in tqdm(glob("../data/Evaluation_Set/*.png")):
+#     cv2.imwrite(x.replace("Evaluation_Set", "eval_p_1"), circle_crop(x))
 
-for x in tqdm(glob("../data/Evaluation_Set/*.png")):
-    cv2.imwrite(x.replace("Evaluation_Set", "eval_p_1"), circle_crop(x))
+
+Parallel(n_jobs=10)(delayed(circle_crop)(x, x.replace("train", "train_p_1").replace("jpeg", "png")) for x in glob("../extra/train/*.jpeg"))
+
+#
+# for x in tqdm(glob("../extra/train/*.jpeg")):
+#     cv2.imwrite(x.replace("train", "train_p_1").replace("jpeg", "png"), circle_crop(x))

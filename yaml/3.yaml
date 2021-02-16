@@ -1,6 +1,7 @@
 base:
   train_path: '../data/train_p_ietk'
   test_path: '../data/eval_p_ietk'
+  extra_path: "../extra/train_p_1"
   print_freq: 100
   num_workers: 8
   seed: 42
@@ -28,7 +29,7 @@ split:
 model:
   model_name: "tf_efficientnet_b0_ns"
   size: 224  # 480
-  batch_size: 64
+  batch_size: 128
   pretrained: true
   epochs: 15
 
@@ -53,7 +54,7 @@ scheduler:
   }
 
 wandb:
-  use: true
+  use: false
   project: "rfmd-exp-2"
   name: "focal-1"
   tags: [

@@ -1,16 +1,16 @@
 base:
-  train_path: '../data/train_p_ietk'
-  test_path: '../data/eval_p_ietk'
+  train_path: '../data/train_p_1'
+  test_path: '../data/eval_p_1'
   print_freq: 100
   num_workers: 8
   seed: 42
-  target_size: 29
+  target_size: 33
   target_cols: [
       "Disease_Risk", "DR", "ARMD", "MH", "DN",
       "MYA", "BRVO", "TSLN", "ERM", "LS", "MS",
       "CSR", "ODC", "CRVO", "TV", "AH", "ODP",
       "ODE", "ST", "AION", "PT", "RT", "RS", "CRS",
-      "EDN", "RPEC", "MHL", "RP", "OTHER"
+      "EDN", "RPEC", "MHL", "RP", "OTHER", "c_0", "c_1", "c_2", "c_3"
   ]
   n_fold: 4
   trn_fold: [0]
@@ -54,8 +54,8 @@ scheduler:
 
 wandb:
   use: true
-  project: "rfmd-exp-2"
-  name: "focal-1"
+  project: "rfmd-exp-3"
+  name: "7_3_blend"
   tags: [
           # "tf_efficientnet_b0_ns",
           "tf_efficientnet_b0_ns",

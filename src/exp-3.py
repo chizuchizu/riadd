@@ -51,10 +51,10 @@ from pytorch_lightning.callbacks import LearningRateMonitor, ModelCheckpoint
 from pytorch_lightning.loggers import WandbLogger
 import wandb
 
-# os.chdir("/home/jupyter/src")
-# TRAIN_PATH = '../data/train_p_1'
-# TEST_PATH = "../data/eval_p_1"
+
 train = pd.read_csv('../data/Training_Set/RFMiD_Training_Labels.csv')
+extra = pd.read_csv("../extra/use_df.csv").iloc[:3000, :]
+extra["fold"] = -1
 test = train.iloc[:640, :]
 # test = pd.read_csv('../data/sample_submission.csv')
 rand = random.randint(0, 100000)
@@ -124,9 +124,16 @@ class TrainDataset(Dataset):
 
     def __getitem__(self, idx):
         file_name = self.file_names[idx]
-        file_path = f'{self.cfg.base.train_path}/{file_name}.png'
+        if "right" in str(file_name) or "left" in str(file_name):
+            file_path = f'{self.cfg.base.extra_path}/{file_name}.png'
+        else:
+            file_path = f'{self.cfg.base.train_path}/{file_name}.png'
         image = cv2.imread(file_path)
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        # image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        try:
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        except:
+            print(file_path)
 
         if self.transform:
             augmented = self.transform(image=image)
@@ -381,6 +388,14 @@ def train_loop(cfg, folds, fold):
     train_folds = folds.loc[trn_idx].reset_index(drop=True)
     valid_folds = folds.loc[val_idx].reset_index(drop=True)
 
+    train_folds = pd.concat(
+        [
+            train_folds,
+            extra
+        ],
+        # axis=1
+    )
+
     data_module = CHIZUDataModule(
         cfg,
         train_folds,
@@ -466,4 +481,4 @@ def main(cfg):
 
 
 if __name__ == "__main__":
-    main(OmegaConf.load("../yaml/2.yaml"))
+    main(OmegaConf.load("../yaml/3.yaml"))
