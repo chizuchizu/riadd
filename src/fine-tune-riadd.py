@@ -46,7 +46,7 @@ from torch.nn import functional as F
 import torch
 from torch.nn.parameter import Parameter
 # from torch.optim import Adam, SGD
-from typing import List, Optional
+from typing import List, Optional, Any
 from torch.optim.lr_scheduler import CosineAnnealingWarmRestarts, CosineAnnealingLR, ReduceLROnPlateau
 import pytorch_lightning as pl
 import torch.optim as optim
@@ -55,12 +55,14 @@ from pl_bolts.models.self_supervised import SSLEvaluator
 
 from pl_bolts.models.self_supervised import SimCLR
 from pl_bolts.models.self_supervised.simclr import SimCLREvalDataTransform, SimCLRTrainDataTransform
-
+from pytorch_lightning.loggers import WandbLogger
+import wandb
 from PIL import Image
 from iterstrat.ml_stratifiers import MultilabelStratifiedKFold
 
 train = pd.read_csv("../data/Training_Set/RFMiD_Training_Labels.csv")  # .iloc[:, 2:]
 rand = random.randint(0, 100000)
+test = train.iloc[:640, :]
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -89,7 +91,7 @@ base:
   oof: False
 
 split:
-  name: "KFold"
+  name: "MultilabelStratifiedKFold"
   param: {
            "n_splits": 4,
            "shuffle": True,
@@ -99,9 +101,10 @@ split:
 model:
   model_name: "tf_efficientnet_b0_ns"
   size: 224  # 480
-  batch_size: 32
+  batch_size: 128
   pretrained: true
-  epochs: 15
+  epochs: 30
+  in_features: 2048
 
 loss:
   name: "MSELoss"
@@ -124,6 +127,14 @@ scheduler:
   }
 wandb:
   use: false
+  project: "fine-tuning-1"
+  name: "1"
+  tags: [
+          # "tf_efficientnet_b0_ns",
+          "resnet50",
+          # "focal_loss"
+          # "aug_7"
+  ]
 """
 
 
@@ -136,17 +147,22 @@ def seed_torch(seed=42):
     torch.backends.cudnn.deterministic = True
 
 
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+
 # ====================================================
 # Dataset
 # ====================================================
 class TrainDataset(Dataset):
-    def __init__(self, cfg, df, transform=None):
+    def __init__(self, cfg, df, transform=None, inference=False):
         self.df = df
         self.cfg = cfg
         self.file_names = df['ID'].values
         # target_cols = # df.drop(columns=["ID", "fold"]).columns if target_cols == "all" else target_cols
         self.labels = df[cfg.base.target_cols].values
         self.transform = transform
+        self.inference = inference
 
     def __len__(self):
         return len(self.df)
@@ -156,17 +172,43 @@ class TrainDataset(Dataset):
         file_path = f'{self.cfg.base.train_path}/{file_name}.png'
         image = cv2.imread(file_path)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        image = Image.fromarray(np.uint8(image)).convert("RGB")
+        # image = Image.fromarray(np.uint8(image)).convert("RGB")
         if self.transform:
             # print(image.shape)
             # image = image.transpose(2, 0, 1)
-            image = self.transform(image)
+            image = self.transform(image=image)["image"]
             # print(image)
             # print(augmented)
             # image = image['image']
         label = torch.tensor(self.labels[idx]).long()
         # label = int(self.labels[idx])
-        return image, label
+
+        if self.inference:
+            return image
+        else:
+            return image, label
+
+
+class TestDataset(Dataset):
+    def __init__(self, cfg, df, transform=None):
+        self.cfg = cfg
+        self.df = df
+        self.file_names = df['ID'].values
+        self.transform = transform
+
+    def __len__(self):
+        return len(self.df)
+
+    def __getitem__(self, idx):
+        file_name = self.file_names[idx]
+        file_path = f'{self.cfg.base.test_path}/{file_name}.png'
+        image = cv2.imread(file_path)
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        # image = Image.fromarray(np.uint8(image)).convert("RGB")
+        if self.transform:
+            image = self.transform(image=image)["image"]
+            # image = augmented['image']
+        return image
 
 
 class CHIZUDataModule(LightningDataModule):
@@ -196,7 +238,7 @@ class CHIZUDataModule(LightningDataModule):
         self.val_df = val_df
 
     def train_dataloader(self):
-        train_dataset = TrainDataset(self.cfg, self.train_df, transform=get_transforms(self.img_sz, data="train"))
+        train_dataset = TrainDataset(self.cfg, self.train_df, transform=get_transforms(self.img_sz, mode="train"))
         return DataLoader(
             train_dataset,
             batch_size=self.batch_size,
@@ -207,7 +249,7 @@ class CHIZUDataModule(LightningDataModule):
         )
 
     def val_dataloader(self):
-        valid_dataset = TrainDataset(self.cfg, self.val_df, transform=get_transforms(self.img_sz, data="valid"))
+        valid_dataset = TrainDataset(self.cfg, self.val_df, transform=get_transforms(self.img_sz, mode="valid"))
         return DataLoader(
             valid_dataset,
             batch_size=self.batch_size,
@@ -219,7 +261,7 @@ class CHIZUDataModule(LightningDataModule):
 
 
 __CRITERIONS__ = {
-    # "BCEFocalLoss": BCEFocalLoss
+    "BCEFocalLoss": BCEFocalLoss
 }
 
 __SPLITS__ = {
@@ -289,15 +331,65 @@ def main(cfg):
 
 #
 # main(OmegaConf.create(conf))
+def get_transforms(img_size: int, mode="train"):
+    if mode == "train":
+        return A.Compose([
+            A.RandomResizedCrop(
+                height=img_size,
+                width=img_size,
+                scale=(0.9, 1.1),
+                ratio=(0.9, 1.1),
+                p=0.5),
+            A.ShiftScaleRotate(
+                shift_limit=0.1,
+                scale_limit=0.1,
+                rotate_limit=180,
+                border_mode=cv2.BORDER_CONSTANT,
+                value=0,
+                mask_value=0,
+                p=0.5),
+            A.RandomBrightnessContrast(
+                brightness_limit=0.1, contrast_limit=0.1, p=0.5),
+            A.HueSaturationValue(
+                hue_shift_limit=5,
+                sat_shift_limit=5,
+                val_shift_limit=5,
+                p=0.5),
+            A.CoarseDropout(max_holes=10, max_height=40, max_width=40, p=0.5),
+            A.Resize(img_size, img_size),
+            A.Normalize(
+                mean=[0.485, 0.456, 0.4406],
+                std=[0.229, 0.224, 0.225],
+                always_apply=True),
+            ToTensorV2()
+        ])
+    elif mode == "valid":
+        return A.Compose([
+            A.Resize(img_size, img_size),
+            A.Normalize(
+                mean=[0.485, 0.456, 0.4406],
+                std=[0.229, 0.224, 0.225],
+                always_apply=True),
+            ToTensorV2()
+        ])
+    else:
+        return A.Compose([
+            A.Resize(img_size, img_size),
+            A.Normalize(
+                mean=[0.485, 0.456, 0.4406],
+                std=[0.229, 0.224, 0.225],
+                always_apply=True),
+            ToTensorV2()
+        ])
 
 
-def get_transforms(img_size, data):
-    if data == 'train':
-        return SimCLRFinetuneTransform(input_height=224, eval_transform=False)
-
-    elif data == 'valid':
-        return SimCLRFinetuneTransform(input_height=224, eval_transform=True)
-
+# def get_transforms(img_size, data):
+#     if data == 'train':
+#         return SimCLRFinetuneTransform(input_height=224, eval_transform=False)
+#
+#     elif data == 'valid':
+#         return SimCLRFinetuneTransform(input_height=224, eval_transform=True)
+#
 
 class SSLEvaluator(nn.Module):
 
@@ -324,6 +416,32 @@ class SSLEvaluator(nn.Module):
     def forward(self, x):
         logits = self.block_forward(x)
         return logits
+
+
+def test_inf(cfg, dataset, model, model_path, backbone):
+    model = model.load_from_checkpoint(model_path, backbone=backbone, cfg=cfg, model_name=cfg.model.model_name).to(
+        device)
+    model.freeze()
+    model.eval()
+    test_loader = DataLoader(
+        dataset,
+        batch_size=cfg.model.batch_size,
+        num_workers=cfg.base.num_workers,
+        shuffle=False,
+        pin_memory=True,
+        drop_last=False
+    )
+
+    for i, img in tqdm(enumerate(test_loader)):
+        y_hat = model(img.to(device))
+        if i == 0:
+            pred = y_hat.cpu().numpy()
+        else:
+            pred = np.append(pred, y_hat.cpu().numpy(), axis=0)
+
+    pred = sigmoid(pred)
+
+    return pred
 
 
 class Flatten(nn.Module):
@@ -363,18 +481,12 @@ class SSLFineTuner(LightningModule):
     def __init__(
             self,
             backbone: torch.nn.Module,
-            in_features: int = 2048,
-            num_classes: int = 1000,
-            epochs: int = 100,
+            cfg: Any,  # OmegaConf
             hidden_dim: Optional[int] = None,
             dropout: float = 0.,
-            learning_rate: float = 0.01,
             weight_decay: float = 1e-6,
             nesterov: bool = False,
-            scheduler_type: str = 'cosine',
-            decay_epochs: List = [60, 80],
-            gamma: float = 0.1,
-            final_lr: float = 0.
+            final_lr: float = 0.,
     ):
         """
         Args:
@@ -385,44 +497,33 @@ class SSLFineTuner(LightningModule):
         """
         super().__init__()
 
-        self.learning_rate = learning_rate
+        self.cfg = cfg
+
+        self.learning_rate = self.cfg.model.lr
         self.nesterov = nesterov
         self.weight_decay = weight_decay
 
-        self.scheduler_type = scheduler_type
-        self.decay_epochs = decay_epochs
-        self.gamma = gamma
-        self.epochs = epochs
+        self.epochs = self.cfg.model.epochs
         self.final_lr = final_lr
 
         self.backbone = backbone
-        self.linear_layer = SSLEvaluator(n_input=in_features, n_classes=num_classes, p=dropout, n_hidden=hidden_dim)
+        self.linear_layer = SSLEvaluator(n_input=self.cfg.model.in_features, n_classes=self.cfg.base.target_size,
+                                         p=dropout,
+                                         n_hidden=hidden_dim)
 
-        self.criterion = BCEFocalLoss()
-
-        # metrics
-        # self.train_acc = Accuracy()
-        # self.val_acc = Accuracy(compute_on_step=False)
-        # self.test_acc = Accuracy(compute_on_step=False)
+        self.criterion = get_criterion(cfg)
 
     def on_train_epoch_start(self) -> None:
         self.backbone.eval()
 
     def training_step(self, batch, batch_idx):
         loss, logits, y = self.shared_step(batch)
-        # acc = self.train_acc(logits, y)
-
-        # self.log('train_loss', loss, prog_bar=True)
-        # self.log('train_acc_step', acc, prog_bar=True)
-        # self.log('train_acc_epoch', self.train_acc)
-
         return loss
 
     def validation_step(self, batch, batch_idx):
         loss, logits, y = self.shared_step(batch)
         # self.val_acc(logits, y)
         self.log('val_loss', loss, prog_bar=True, sync_dist=True)
-        # self.log('val_acc', self.val_acc)
 
         return loss, logits.cpu().numpy(), y.cpu().numpy()
 
@@ -437,7 +538,7 @@ class SSLFineTuner(LightningModule):
                 y_hat_list = np.append(y_hat_list, y_hat[:, j])
                 y_list = np.append(y_list, y[:, j])
 
-            # y_hat_list = sigmoid(y_hat_list)
+            y_hat_list = sigmoid(y_hat_list)
             try:
                 auc = roc_auc_score(y_list, y_hat_list)
             except ValueError:
@@ -476,53 +577,40 @@ class SSLFineTuner(LightningModule):
         logits = self.linear_layer(feats)
         # loss = F.cross_entropy(logits, y)
 
-        loss = self.criterion(logits, y)
+        loss = self.criterion(logits.float(), y.float())
 
         return loss, logits, y
 
     def configure_optimizers(self):
-        # optimizer = torch.optim.SGD(
-        #     self.linear_layer.parameters(),
-        #     lr=self.learning_rate,
-        #     nesterov=self.nesterov,
-        #     momentum=0.9,
-        #     weight_decay=self.weight_decay,
-        # )
-        optimizer = optim.AdamW(
-            self.linear_layer.parameters(),
-            lr=5e-3,
-            weight_decay=1e-6
+        optimizer = get_optimizer(
+            self.cfg,
+            self.linear_layer,
         )
 
-        # set scheduler
-        if self.scheduler_type == "step":
-            scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, self.decay_epochs, gamma=self.gamma)
-        elif self.scheduler_type == "cosine":
-            scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
-                optimizer,
-                self.epochs,
-                eta_min=self.final_lr  # total epochs to run
-            )
+        scheduler = get_scheduler(
+            self.cfg,
+            optimizer
+        )
 
         return [optimizer], [scheduler]
 
 
 def train_loop(cfg, folds, fold):
     global rand
-    # if cfg.wandb.use:
-    # wandb.init(
-    #     name=cfg.wandb.name + f"-fold-{fold}-{rand}",
-    #     project=cfg.wandb.project,
-    #     tags=cfg.wandb.tags + [str(rand)],
-    #     reinit=True
-    # )
-    # wandb_logger = WandbLogger(
-    #     name=cfg.wandb.name + f"-fold-{fold}-{rand}",
-    #     project=cfg.wandb.project,
-    #     tags=cfg.wandb.tags + [str(rand)]
-    # )
-    # wandb_logger.log_hyperparams(dict(cfg))
-    # wandb_logger.log_hyperparams(dict({"rand": rand, "fold": fold, }))
+    if cfg.wandb.use:
+        wandb.init(
+            name=cfg.wandb.name + f"-fold-{fold}-{rand}",
+            project=cfg.wandb.project,
+            tags=cfg.wandb.tags + [str(rand)],
+            reinit=True
+        )
+        wandb_logger = WandbLogger(
+            name=cfg.wandb.name + f"-fold-{fold}-{rand}",
+            project=cfg.wandb.project,
+            tags=cfg.wandb.tags + [str(rand)]
+        )
+        wandb_logger.log_hyperparams(dict(cfg))
+        wandb_logger.log_hyperparams(dict({"rand": rand, "fold": fold, }))
 
     trn_idx = folds[folds['fold'] != fold].index
     val_idx = folds[folds['fold'] == fold].index
@@ -545,7 +633,7 @@ def train_loop(cfg, folds, fold):
     backbone = SimCLR(
         num_samples=1,
         batch_size=cfg.model.batch_size,
-        dataset="cifer10",
+        dataset="imagenet",
         # maxpool1=False,
         # first_conv=False,
         gpus=1
@@ -555,18 +643,8 @@ def train_loop(cfg, folds, fold):
     # backbone = backbone.load_from_checkpoint("exp2/fold-0.ckpt")
     tuner = SSLFineTuner(
         backbone,
-        in_features=2048,
-        # out_features=cfg.base.target_size,
-        num_classes=cfg.base.target_size,
-        epochs=cfg.model.epochs,
+        cfg,
         hidden_dim=None,
-        # dropout=args.dropout,
-        learning_rate=5e-3,
-        # weight_decay=args.weight_decay,
-        # nesterov=args.nesterov,
-        # scheduler_type=args.scheduler_type,
-        # gamma=args.gamma,
-        # final_lr=args.final_lr
     )
 
     checkpoint_callback = ModelCheckpoint(
@@ -583,11 +661,37 @@ def train_loop(cfg, folds, fold):
         gradient_clip_val=0.1,
         precision=16,
         distributed_backend="ddp",
-        # logger=wandb_logger if "wandb_logger" in locals() else None,
+        logger=wandb_logger if "wandb_logger" in locals() else None,
         callbacks=[checkpoint_callback]
     )
     # print(tuner)
     trainer.fit(tuner, data_module)
+
+    model_path = checkpoint_callback.best_model_path
+
+    test_set = TestDataset(
+        cfg,
+        test,
+        get_transforms(
+            cfg.model.size,
+            "valid"
+        )
+    )
+    pred = test_inf(cfg, test_set, tuner, model_path, backbone)
+    oof = None
+
+    if cfg.base.oof:
+        val_set = TrainDataset(
+            cfg,
+            valid_folds,
+            get_transforms(
+                cfg.model.size,
+                "valid"
+            ),
+            inference=True
+        )
+        oof = test_inf(cfg, val_set, tuner, model_path, backbone)
+    return pred, oof
 
 
 main(OmegaConf.create(conf))
