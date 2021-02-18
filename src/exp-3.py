@@ -51,9 +51,8 @@ from pytorch_lightning.callbacks import LearningRateMonitor, ModelCheckpoint
 from pytorch_lightning.loggers import WandbLogger
 import wandb
 
-
 train = pd.read_csv('../data/Training_Set/RFMiD_Training_Labels.csv')
-extra = pd.read_csv("../extra/use_df.csv").iloc[:3000, :]
+extra = pd.read_csv("../extra/use_df.csv").iloc[:0, :]
 extra["fold"] = -1
 test = train.iloc[:640, :]
 # test = pd.read_csv('../data/sample_submission.csv')
@@ -306,9 +305,10 @@ class CHIZUModel(LightningModule):
         auc_l = 0
         acc_l = 0
         acc_f = 0
-        for j in range(29):
+        for j in range(self.cfg.base.target_size):
             loss_list, y_hat_list, y_list = np.array([]), np.array([]), np.array([])
             for i, (loss, y_hat, y) in enumerate(input_):
+                # y_hat_list = np.append(y_hat_list, y_hat.argmax(1))
                 y_hat_list = np.append(y_hat_list, y_hat[:, j])
                 y_list = np.append(y_list, y[:, j])
 
@@ -318,11 +318,11 @@ class CHIZUModel(LightningModule):
             except ValueError:
                 auc = 0
             acc = accuracy_score(y_list, np.round(y_hat_list))
-            auc_l += auc / 29
-            acc_l += acc / 29
+            auc_l += auc / self.cfg.base.target_size
+            acc_l += acc / self.cfg.base.target_size
 
             num = "{0:02d}".format(j + 1)
-            self.log(f"{num}-auc", auc, prog_bar=False)
+            self.log(f"{self.cfg.base.target_cols[j]}-auc", auc, prog_bar=False)
 
             if j == 0:
                 auc_f = auc
@@ -474,9 +474,9 @@ def main(cfg):
             if cfg.base.oof:
                 oof_df.iloc[folds["fold"] == fold, 1:] = fold_oof
 
-            test_pred.iloc[:, 1:] += fold_pred / len(cfg.base.trn_fold)
+            test_pred[list(cfg.base.target_cols)] += fold_pred / len(cfg.base.trn_fold)
 
-    test_pred.to_csv(f"../exp2/{rand}/{rand}_{cfg.base.n_fold}_{len(cfg.base.trn_fold)}.csv", index=False)
+    test_pred[["ID"] + list(cfg.base.target_cols)].to_csv(f"../exp2/{rand}/{rand}_{cfg.base.n_fold}_{len(cfg.base.trn_fold)}.csv", index=False)
     # oof_df.to_csv(f"../exp2/{rand}/{rand}_oof.csv", index=False)
 
 

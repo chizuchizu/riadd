@@ -5,21 +5,24 @@ base:
   print_freq: 100
   num_workers: 8
   seed: 42
-  target_size: 29
-  target_cols: [
-      "Disease_Risk", "DR", "ARMD", "MH", "DN",
-      "MYA", "BRVO", "TSLN", "ERM", "LS", "MS",
-      "CSR", "ODC", "CRVO", "TV", "AH", "ODP",
-      "ODE", "ST", "AION", "PT", "RT", "RS", "CRS",
-      "EDN", "RPEC", "MHL", "RP", "OTHER"
-  ]
+  target_size: 1
+  target_cols: ["TV"]
+#  target_size: 29
+#  target_cols: [
+#      "Disease_Risk", "DR", "ARMD", "MH", "DN",
+#      "MYA", "BRVO", "TSLN", "ERM", "LS", "MS",
+#      "CSR", "ODC", "CRVO", "TV", "AH", "ODP",
+#      "ODE", "ST", "AION", "PT", "RT", "RS", "CRS",
+#      "EDN", "RPEC", "MHL", "RP", "OTHER"
+#  ]
   n_fold: 4
   trn_fold: [0]
   train: True
   oof: False
 
 split:
-  name: "MultilabelStratifiedKFold"
+  name: "KFold"
+  # name: "MultilabelStratifiedKFold"
   param: {
            "n_splits": 4,
            "shuffle": True,
@@ -31,10 +34,10 @@ model:
   size: 224  # 480
   batch_size: 128
   pretrained: true
-  epochs: 15
+  epochs: 10
 
 loss:
-  name: "BCEFocalLoss"
+  name: "BCEWithLogitsLoss"
   param: {}
 
 optimizer:
@@ -56,7 +59,7 @@ scheduler:
 wandb:
   use: false
   project: "rfmd-exp-2"
-  name: "focal-1"
+  name: "TV"
   tags: [
           # "tf_efficientnet_b0_ns",
           "tf_efficientnet_b0_ns",

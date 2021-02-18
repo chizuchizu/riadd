@@ -70,16 +70,21 @@ conf = """
 base:
   train_path: '../data/train_p_1'
   test_path: "../data/eval_p_1"
+  model_path: "exp2/fold-0-v12.ckpt"
   print_freq: 100
   num_workers: 4
   seed: 42
   # target_size: 2
   # target_cols: [
-  #     "TV"
+  #     "Disease_Risk"
   # ]
-  target_size: 1
+  target_size: 29
   target_cols: [
-     "MYA"
+      "Disease_Risk", "DR", "ARMD", "MH", "DN",
+      "MYA", "BRVO", "TSLN", "ERM", "LS", "MS",
+      "CSR", "ODC", "CRVO", "TV", "AH", "ODP",
+      "ODE", "ST", "AION", "PT", "RT", "RS", "CRS",
+      "EDN", "RPEC", "MHL", "RP", "OTHER"
   ]
   n_fold: 4
   trn_fold: [0]
@@ -88,8 +93,7 @@ base:
   oof: False
 
 split:
-  # name: "MultilabelStratifiedKFold"
-  name: "KFold"
+  name: "MultilabelStratifiedKFold"
   param: {
            "n_splits": 4,
            "shuffle": True,
@@ -101,17 +105,17 @@ model:
   size: 224  # 480
   batch_size: 128
   pretrained: true
-  epochs: 10
+  epochs: 30
   in_features: 2048
 
 loss:
-  name: "BCEFocalLoss"
+  name: "MSELoss"
   param: {}
 
 optimizer:
   name: "AdamW"
   param: {
-           "lr": 5e-2,
+           "lr": 5e-3,
            "weight_decay": 1e-6,
            "amsgrad": False
   }
@@ -119,18 +123,17 @@ optimizer:
 scheduler:
   name: "CosineAnnealingLR"
   param: {
-            "T_max": 10,
+            "T_max": 6,
             "eta_min": 0,
             "last_epoch": -1
   }
 wandb:
-  use: true
+  use: false
   project: "fine-tuning-1"
-  name: "MYA"
+  name: "1"
   tags: [
           # "tf_efficientnet_b0_ns",
           "resnet50",
-          "MYA"
           # "focal_loss"
           # "aug_7"
   ]
@@ -331,12 +334,18 @@ def main(cfg):
         if fold in cfg.base.trn_fold:
             fold_pred, fold_oof = train_loop(cfg, folds, fold)
             if cfg.base.oof:
-                oof_df.iloc[folds["fold"] == fold, 1:cfg.base.target_size] = fold_oof
+                oof_df.iloc[folds["fold"] == fold, 1:] = fold_oof
 
-            test_pred[list(cfg.base.target_cols)] += fold_pred / len(cfg.base.trn_fold)
+            test_pred.iloc[:, 1:] += fold_pred / len(cfg.base.trn_fold)
 
-    test_pred[["ID"] + list(cfg.base.target_cols)].to_csv(
-        f"../ft/{rand}_{cfg.base.n_fold}_{len(cfg.base.trn_fold)}.csv", index=False)
+    # idx = test_pred.index
+
+    test_pred[test_pred > 1] = 1
+    test_pred[test_pred < 0] = 0
+
+    test_pred["ID"] = test["ID"].values
+
+    test_pred.to_csv(f"exp2/{rand}_{cfg.base.n_fold}_{len(cfg.base.trn_fold)}.csv", index=False)
 
 
 #
@@ -425,7 +434,6 @@ class SSLEvaluator(nn.Module):
 
     def forward(self, x):
         logits = self.block_forward(x)
-        # logits = torch.sigmoid(logits)
         return logits
 
 
@@ -450,7 +458,7 @@ def test_inf(cfg, dataset, model, model_path, backbone):
         else:
             pred = np.append(pred, y_hat.cpu().numpy(), axis=0)
 
-    pred = sigmoid(pred)
+    # pred = sigmoid(pred)
 
     return pred
 
@@ -542,7 +550,7 @@ class SSLFineTuner(LightningModule):
         auc_l = 0
         acc_l = 0
         acc_f = 0
-        for j in range(self.cfg.base.target_size):
+        for j in range(29):
             loss_list, y_hat_list, y_list = np.array([]), np.array([]), np.array([])
             for i, (loss, y_hat, y) in enumerate(input_):
                 # y_hat_list = np.append(y_hat_list, y_hat.argmax(1))
@@ -555,12 +563,11 @@ class SSLFineTuner(LightningModule):
             except ValueError:
                 auc = 0
             acc = accuracy_score(y_list, np.round(y_hat_list))
-            auc_l += auc / self.cfg.base.target_size
-            acc_l += acc / self.cfg.base.target_size
+            auc_l += auc / 29
+            acc_l += acc / 29
 
             num = "{0:02d}".format(j + 1)
-            self.log(f"{self.cfg.base.target_cols[j]}-auc", auc, prog_bar=False)
-            self.log(f"{self.cfg.base.target_cols[j]}-acc", acc, prog_bar=False)
+            self.log(f"{num}-auc", auc, prog_bar=False)
 
             if j == 0:
                 auc_f = auc
@@ -587,20 +594,11 @@ class SSLFineTuner(LightningModule):
 
         feats = feats.view(feats.size(0), -1)
         logits = self.linear_layer(feats)
-        # logits = torch.sigmoid(logits)
         # loss = F.cross_entropy(logits, y)
 
         loss = self.criterion(logits.float(), y.float())
 
         return loss, logits, y
-
-    def forward(self, x):
-        with torch.no_grad():
-            feats = self.backbone(x)
-
-        feats = feats.view(feats.size(0), -1)
-        logits = self.linear_layer(feats)
-        return logits
 
     def configure_optimizers(self):
         optimizer = get_optimizer(
@@ -614,6 +612,14 @@ class SSLFineTuner(LightningModule):
         )
 
         return [optimizer], [scheduler]
+
+    def forward(self, x):
+        with torch.no_grad():
+            feats = self.backbone(x)
+
+        feats = feats.view(feats.size(0), -1)
+        logits = self.linear_layer(feats)
+        return logits
 
 
 def train_loop(cfg, folds, fold):
@@ -633,23 +639,9 @@ def train_loop(cfg, folds, fold):
         wandb_logger.log_hyperparams(dict(cfg))
         wandb_logger.log_hyperparams(dict({"rand": rand, "fold": fold, }))
 
-    trn_idx = folds[folds['fold'] != fold].index
     val_idx = folds[folds['fold'] == fold].index
 
-    train_folds = folds.loc[trn_idx].reset_index(drop=True)
     valid_folds = folds.loc[val_idx].reset_index(drop=True)
-
-    data_module = CHIZUDataModule(
-        cfg,
-        train_folds,
-        valid_folds,
-        aug_p=0.5,
-        # img_sz=cfg.model.size,
-        batch_size=cfg.model.batch_size,
-        num_workers=cfg.base.num_workers,
-        # dataset="cifer10",
-        # fold_id=fold,
-    )
 
     backbone = SimCLR(
         num_samples=1,
@@ -668,27 +660,7 @@ def train_loop(cfg, folds, fold):
         hidden_dim=None,
     )
 
-    checkpoint_callback = ModelCheckpoint(
-        dirpath=f'exp2/',
-        filename=f"fold-{fold}",
-        # save_top_k=3,
-        mode='min',
-    )
-
-    # trainer
-    trainer = pl.Trainer(
-        gpus=-1,
-        max_epochs=cfg.model.epochs,
-        gradient_clip_val=0.1,
-        precision=16,
-        distributed_backend="ddp",
-        logger=wandb_logger if "wandb_logger" in locals() else None,
-        callbacks=[checkpoint_callback]
-    )
-    # print(tuner)
-    trainer.fit(tuner, data_module)
-
-    model_path = checkpoint_callback.best_model_path
+    model_path = cfg.base.model_path  # checkpoint_callback.best_model_path
 
     test_set = TestDataset(
         cfg,
