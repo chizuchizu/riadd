@@ -22,7 +22,6 @@ class BCEFocalLoss(nn.Module):
             loss = torch.sum(loss)
         return loss
 
-
 __CRITERIONS__ = {
     "BCEFocalLoss": BCEFocalLoss
 }

@@ -5,24 +5,20 @@ base:
   print_freq: 100
   num_workers: 8
   seed: 42
-  target_size: 1
-  target_cols: ["TV"]
-#  target_size: 29
-#  target_cols: [
-#      "Disease_Risk", "DR", "ARMD", "MH", "DN",
-#      "MYA", "BRVO", "TSLN", "ERM", "LS", "MS",
-#      "CSR", "ODC", "CRVO", "TV", "AH", "ODP",
-#      "ODE", "ST", "AION", "PT", "RT", "RS", "CRS",
-#      "EDN", "RPEC", "MHL", "RP", "OTHER"
-#  ]
+#  target_size: 1
+#  target_cols: ["TV"]
+  target_size: 29
+  target_cols: [
+      "ST"
+  ]
   n_fold: 4
   trn_fold: [0]
   train: True
   oof: False
 
 split:
+  #name: "StratifiedKFold"
   name: "StratifiedKFold"
-  # name: "MultilabelStratifiedKFold"
   param: {
            "n_splits": 4,
            "shuffle": True,
@@ -31,38 +27,41 @@ split:
 
 model:
   model_name: "tf_efficientnet_b0_ns"
+  #model_name: "dm_nfnet_f0"
   size: 224  # 480
-  batch_size: 128
+  batch_size: 32
   pretrained: true
-  epochs: 10
+  epochs: 15
+  gem: false  # nfnetのときはfalse
 
 loss:
-  name: "BCEWithLogitsLoss"
+  name: "BCEFocalLoss"
   param: {}
 
 optimizer:
   name: "AdamW"
+  # base: "AdamW"#
   param: {
            "lr": 5e-3,
-           "weight_decay": 1e-6,
-           "amsgrad": False
+           # "weight_decay": 1e-6,
+           # "amsgrad": False
   }
 
 scheduler:
   name: "CosineAnnealingLR"
   param: {
-            "T_max": 6,
+            "T_max": 10,
             "eta_min": 0,
             "last_epoch": -1
   }
 
 wandb:
-  use: true
-  project: "rfmd-exp-2"
-  name: "TV"
+  use: false
+  project: "exp6"
+  name: "ST"
   tags: [
           # "tf_efficientnet_b0_ns",
-          "tf_efficientnet_b0_ns",
-          "focal_loss"
+          "nfnet_f0",
+          # "focal_loss"
           # "aug_7"
   ]

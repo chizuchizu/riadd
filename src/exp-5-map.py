@@ -19,7 +19,7 @@ import cv2
 from pytorch_lightning import LightningDataModule
 from sklearn import model_selection
 import albumentations as A
-from sklearn.metrics import roc_auc_score, accuracy_score
+from sklearn.metrics import roc_auc_score, accuracy_score, average_precision_score, precision_score
 from pytorch_lightning.core.lightning import LightningModule
 
 from albumentations import (
@@ -34,7 +34,7 @@ from albumentations.pytorch import ToTensorV2
 from albumentations import ImageOnlyTransform
 import matplotlib.pyplot as plt
 from pathlib import Path
-import timm
+# import timm
 from google.cloud import storage
 from torchvision import models
 import torch.nn as nn
@@ -50,9 +50,10 @@ from src.loss import get_criterion
 from pytorch_lightning.callbacks import LearningRateMonitor, ModelCheckpoint
 from pytorch_lightning.loggers import WandbLogger
 import wandb
-import warnings
 
-warnings.simplefilter("ignore")
+sys.path.append("../pytorch-image-models")
+import timm
+from timm.utils.agc import adaptive_clip_grad
 
 train = pd.read_csv('../data/Training_Set/RFMiD_Training_Labels.csv')
 extra = pd.read_csv("../extra/use_df.csv").iloc[:0, :]
@@ -75,6 +76,21 @@ def seed_torch(seed=42):
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
     torch.backends.cudnn.deterministic = True
+
+
+def multi_disease_avg_score(y_true: np.ndarray, y_pred: np.ndarray):
+    map_score = average_precision_score(y_true=y_true, y_score=y_pred, average=None)
+    map_score = np.nan_to_num(map_score, nan=0.0).mean()
+
+    scores = []
+    for i in range(len(y_true[0])):
+        if y_true[:, i].mean() > 0.0:
+            auc = roc_auc_score(y_true=y_true[:, i], y_score=y_pred[:, i])
+            scores.append(auc)
+        else:
+            scores.append(0.0)
+    auc_score = np.mean(scores)
+    return 0.5 * map_score + 0.5 * auc_score
 
 
 # ====================================================
@@ -263,22 +279,26 @@ def get_split(cfg):
 
 
 class CHIZUModel(LightningModule):
-    def __init__(self, cfg, model_name="resnext50_32x4d"):
+    def __init__(self, cfg):
         super().__init__()
 
         self.cfg = cfg
         self.wd = 1e-6
-        self.model_name = model_name
-        self.model = timm.create_model(model_name, pretrained=cfg.model.pretrained)
+        self.model_name = cfg.model.model_name
+        self.model = timm.create_model(cfg.model.model_name, pretrained=cfg.model.pretrained)
 
-        if "efficient" not in self.model_name:
+        if "nfnet" in self.model_name:
+            # n_features = self.model.num_classes
+            n_features = self.model.num_features
+            self.model.head.fc = nn.Linear(n_features, cfg.base.target_size)
+        elif "efficient" not in self.model_name:
             n_features = self.model.fc.in_features
             self.model.fc = nn.Linear(n_features, cfg.base.target_size)
         else:
-            "efficient"
             self.model.classifier = nn.Linear(self.model.num_features, cfg.base.target_size)
 
-        self.model.avg_pool = GeM()
+        if self.cfg.model.gem:
+            self.model.avg_pool = GeM()
 
         self.optimizer = get_optimizer(cfg, self.model)
         self.scheduler = get_scheduler(cfg, self.optimizer)
@@ -308,6 +328,7 @@ class CHIZUModel(LightningModule):
         auc_l = 0
         acc_l = 0
         acc_f = 0
+        # map_l = 0
         for j in range(self.cfg.base.target_size):
             loss_list, y_hat_list, y_list = np.array([]), np.array([]), np.array([])
             for i, (loss, y_hat, y) in enumerate(input_):
@@ -321,11 +342,16 @@ class CHIZUModel(LightningModule):
             except ValueError:
                 auc = 0
             acc = accuracy_score(y_list, np.round(y_hat_list))
+            # ap = precision_score(y_list, np.round(y_hat_list), average="macro")
             auc_l += auc / self.cfg.base.target_size
             acc_l += acc / self.cfg.base.target_size
+            # map_l += ap / self.cfg.base.target_size
 
             num = "{0:02d}".format(j + 1)
-            self.log(f"{self.cfg.base.target_cols[j]}-auc", auc, prog_bar=False)
+            if j == 0:
+                self.log(f"{self.cfg.base.target_cols[j]}-auc", auc, prog_bar=True)
+            else:
+                self.log(f"{self.cfg.base.target_cols[j]}-auc", auc, prog_bar=False)
 
             if j == 0:
                 auc_f = auc
@@ -334,14 +360,60 @@ class CHIZUModel(LightningModule):
             loss_list = np.append(loss_list, float(loss.cpu()))
         self.log("valid_loss", loss_list.mean(), prog_bar=True)
         self.log("valid auc", auc_l, prog_bar=True)
+        # self.log("1st auc", auc_f, prog_bar=True)
+
+        sub2_auc = (auc_l - (auc_f / self.cfg.base.target_size)) * (
+                self.cfg.base.target_size + 1) / self.cfg.base.target_size
+
+        # self.log("score", ((map_l + sub2_auc) / 4) + auc_f / 2, prog_bar=True)
         # self.log("valid Acc", acc_l, prog_bar=True)
-        self.log("auc-1st", auc_f, prog_bar=True)
+        # self.log("auc-1st", auc_f, prog_bar=True)
+
+        all_pred, all_true = np.empty((0, self.cfg.base.target_size), dtype=int), np.empty(
+            (0, self.cfg.base.target_size), dtype=int)
+        for i, (loss, y_hat, y) in enumerate(input_):
+            # y_hat_list = np.append(y_hat, y_hat.argmax(1))
+            all_pred = np.append(all_pred, y_hat, axis=0)
+            all_true = np.append(all_true, y, axis=0)
+
+        map = average_precision_score(all_true[:, 1:], np.round(all_pred[:, 1:]), average=None)
+        map = np.nan_to_num(map, nan=0.0)
+        for j in range(self.cfg.base.target_size - 1):
+            self.log(f"{self.cfg.base.target_cols[j]}-map", map[j], prog_bar=False)
+
+        self.log("MdAS", (map.mean() + sub2_auc) / 2, prog_bar=True)
+
+        self.log("score", ((map.mean() + sub2_auc) / 4) + auc_f / 2, prog_bar=True)
+
+    """
+    loss_list, all_pred, all_true = np.empty((0, self.cfg.base.target_size), dtype=int),np.empty((0, self.cfg.base.target_size), dtype=int),np.empty((0, self.cfg.base.target_size), dtype=int)
+    for i, (loss, y_hat, y) in enumerate(input_):
+        # y_hat_list = np.append(y_hat, y_hat.argmax(1))
+        all_pred = np.append(all_pred, y_hat, axis=0)
+        all_true = np.append(all_true, y, axis=0)
+
+    """
 
     def configure_optimizers(self):
         optimizer = self.optimizer
         scheduler = self.scheduler
 
         return [optimizer], [scheduler]
+
+    def optimizer_step(self, current_epoch, batch_nb, optimizer, optimizer_idx, cloosure, second_order_closure=None, on_tpu=False,
+                       using_native_amp=False, using_lbfgs=False):
+        adaptive_clip_grad(self.model.parameters(), clip_factor=0.01, eps=1e-3, norm_type=2.0)
+        optimizer.step(closure=cloosure)
+        optimizer.zero_grad()
+
+class SAMModel(CHIZUModel):
+    def __init__(self, cfg):
+        super().__init__(cfg)
+
+    def optimizer_step(self, epoch, batch_idx, optimizer, optimizer_idx,
+                       optimizer_closure, on_tpu, using_native_amp, using_lbfgs):
+        optimizer.first_step(closure=optimizer_closure, zero_grad=True)
+        optimizer.second_step(closure=optimizer_closure, zero_grad=True)
 
 
 def test_inf(cfg, dataset, model, model_path):
@@ -409,13 +481,17 @@ def train_loop(cfg, folds, fold):
         num_workers=cfg.base.num_workers,
         # fold_id=fold,
     )
-    model = CHIZUModel(
-        cfg,
-        model_name=cfg.model.model_name,
-    )
+    if cfg.optimizer.name == "SAM":
+        model = SAMModel(
+            cfg
+        )
+    else:
+        model = CHIZUModel(
+            cfg
+        )
 
     checkpoint_callback = ModelCheckpoint(
-        dirpath=f'../exp2/{rand}',
+        dirpath=f'../exp5/{rand}',
         filename=f"fold-{fold}",
         # save_top_k=3,
         mode='min',
@@ -479,9 +555,10 @@ def main(cfg):
 
             test_pred[list(cfg.base.target_cols)] += fold_pred / len(cfg.base.trn_fold)
 
-    test_pred[["ID"] + list(cfg.base.target_cols)].to_csv(f"../exp2/{rand}/{rand}_{cfg.base.n_fold}_{len(cfg.base.trn_fold)}.csv", index=False)
+    test_pred[["ID"] + list(cfg.base.target_cols)].to_csv(
+        f"../exp5/{rand}/{rand}_{cfg.base.n_fold}_{len(cfg.base.trn_fold)}.csv", index=False)
     # oof_df.to_csv(f"../exp2/{rand}/{rand}_oof.csv", index=False)
 
 
 if __name__ == "__main__":
-    main(OmegaConf.load("../yaml/3.yaml"))
+    main(OmegaConf.load("../yaml/5.yaml"))

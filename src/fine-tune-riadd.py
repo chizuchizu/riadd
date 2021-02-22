@@ -79,7 +79,7 @@ base:
   # ]
   target_size: 1
   target_cols: [
-     "MYA"
+     "TV"
   ]
   n_fold: 4
   trn_fold: [0]
@@ -89,7 +89,7 @@ base:
 
 split:
   # name: "MultilabelStratifiedKFold"
-  name: "KFold"
+  name: "StratifiedKFold"
   param: {
            "n_splits": 4,
            "shuffle": True,
@@ -126,7 +126,7 @@ scheduler:
 wandb:
   use: true
   project: "fine-tuning-1"
-  name: "MYA"
+  name: "TV"
   tags: [
           # "tf_efficientnet_b0_ns",
           "resnet50",
