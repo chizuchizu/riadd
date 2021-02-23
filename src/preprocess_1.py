@@ -7,6 +7,11 @@ from joblib import Parallel, delayed
 
 
 def crop_image_from_gray(img, tol=7):
+    try:
+        _ = img.ndim
+    except:
+        return None
+
     if img.ndim == 2:
         mask = img > tol
         return img[np.ix_(mask.any(1), mask.any(0))]
@@ -33,6 +38,8 @@ def circle_crop(path, spath):
     """
     img = cv2.imread(path)
     img = crop_image_from_gray(img)
+    if img is None:
+        print(path)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
     height, width, depth = img.shape
@@ -62,7 +69,7 @@ def circle_crop(path, spath):
 #     cv2.imwrite(x.replace("Evaluation_Set", "eval_p_1"), circle_crop(x))
 
 
-Parallel(n_jobs=10)(delayed(circle_crop)(x, x.replace("train", "train_p_1").replace("jpeg", "png")) for x in glob("../extra/train/*.jpeg"))
+Parallel(n_jobs=10)(delayed(circle_crop)(x, x.replace("Training_Set/Training (1)", "train_p_1")) for x in glob("../data/Training_Set/Training (1)/*.png"))
 
 #
 # for x in tqdm(glob("../extra/train/*.jpeg")):

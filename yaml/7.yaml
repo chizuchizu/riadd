@@ -39,14 +39,25 @@ model:
   gem: false  # nfnetのときはfalse
 
 loss:
-  name: "BCEFocalLoss"
-  param: {}
+#  name: "BCEFocalLoss"
+#  param: {}
+  name: "BiT"
+  param: {
+           "t1": 0.3,
+           "t2": 1.0,
+           "label_smoothing": 0.0
+  }
+#  name: "TaylorCrossEntropyLoss"
+#  param: {
+#           "target_size": 29,
+#
+#  }
 
 optimizer:
   name: "AdamW"
   # base: "AdamW"#
   param: {
-           "lr": 1e-3,
+           "lr": 1e-4,
            # "weight_decay": 1e-6,
            # "amsgrad": False
   }
@@ -55,14 +66,15 @@ scheduler:
   name: "CosineAnnealingLR"
   param: {
             "T_max": 10,
-            "eta_min": 1e-5,
+            "eta_min": 0,
             "last_epoch": -1
   }
 
 wandb:
   use: true
-  project: "exp5"
-  name: "custom loss"
+  project: "exp7"
+  # name: "04-15-00-1e-2"
+  name: "0310"
   tags: [
           # "tf_efficientnet_b0_ns",
           "nfnet_f0",

@@ -324,7 +324,7 @@ class CHIZUModel(LightningModule):
         self.scheduler = get_scheduler(cfg, self.optimizer)
         self.criterion = get_criterion(cfg)
         self.sigmoid = nn.Sigmoid()
-        self.sub_loss = nn.BCEWithLogitsLoss()
+        # self.sub_loss = nn.BCEWithLogitsLoss()
         # self.ap = AveragePrecision(num_classes=cfg.base.target_size)
         # self.ap_list = [AveragePrecision(num_classes=1) for _ in range(cfg.base.target_size)]
 
@@ -337,7 +337,7 @@ class CHIZUModel(LightningModule):
         x, y = batch
         y_hat = self(x)
         loss = self.criterion(y_hat, y)
-        sub_loss = self.sub_loss(y_hat, y)
+        # sub_loss = self.sub_loss(y_hat, y)
 
         # for j in range(self.cfg.base.target_size):
         #     if j == 0:
@@ -347,7 +347,7 @@ class CHIZUModel(LightningModule):
         #         loss_[loss_ != loss_] = 0
         #         sub_loss += loss_
         #
-        loss = loss * 0.5 + sub_loss * 0.5
+        # loss = loss * 0.5 + sub_loss * 0.5
         # self.log("train_loss", loss, prog_bar=True)
         return loss
 
@@ -355,8 +355,8 @@ class CHIZUModel(LightningModule):
         x, y = batch
         y_hat = self(x)
         loss = self.criterion(y_hat, y)
-        sub_loss = self.sub_loss(y_hat, y)
-        loss = loss * 0.5 + sub_loss * 0.5
+        # sub_loss = self.sub_loss(y_hat, y)
+        # loss = loss * 0.5 + sub_loss * 0.5
 
         # self.log("valid_loss", loss, prog_bar=True)
         return loss, y_hat.cpu().numpy(), y.cpu().numpy()
@@ -530,7 +530,7 @@ def train_loop(cfg, folds, fold):
         )
 
     checkpoint_callback = ModelCheckpoint(
-        dirpath=f'../exp5/{rand}',
+        dirpath=f'../exp7/{rand}',
         filename=f"fold-{fold}",
         # save_top_k=3,
         mode='min',
@@ -595,9 +595,9 @@ def main(cfg):
             test_pred[list(cfg.base.target_cols)] += fold_pred / len(cfg.base.trn_fold)
 
     test_pred[["ID"] + list(cfg.base.target_cols)].to_csv(
-        f"../exp5/{rand}/{rand}_{cfg.base.n_fold}_{len(cfg.base.trn_fold)}.csv", index=False)
+        f"../exp7/{rand}/{rand}_{cfg.base.n_fold}_{len(cfg.base.trn_fold)}.csv", index=False)
     # oof_df.to_csv(f"../exp2/{rand}/{rand}_oof.csv", index=False)
 
 
 if __name__ == "__main__":
-    main(OmegaConf.load("../yaml/5.yaml"))
+    main(OmegaConf.load("../yaml/7.yaml"))
