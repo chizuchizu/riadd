@@ -16,8 +16,10 @@ def threshold(img):
     ====
     元々の画像　→　明るいところを抽出　→　2値化
     """
-    th_img = cv2.threshold(cv2.cvtColor(cv2.threshold(img, 240, 255, cv2.THRESH_BINARY)[1], cv2.COLOR_BGR2GRAY), 2, 255,
-                           cv2.THRESH_BINARY)[1]
+
+    # ヒストグラム平坦化
+    equ = cv2.equalizeHist(cv2.cvtColor(img, cv2.COLOR_RGB2GRAY))
+    th_img = cv2.threshold(equ, 254, 255, cv2.THRESH_BINARY)[1]
     return th_img
 
 
@@ -87,5 +89,5 @@ def main(path):
     plt.show()
 
 
-path = "../data/train_p_1/19.png"
+path = "../data/train_p_1/7.png"
 main(path)
