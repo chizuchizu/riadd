@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 
 def load_img(path, h, w):
     img = cv2.imread(path)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # 元画像による
     img = cv2.resize(img, (h, w))
     return img
 
@@ -50,7 +51,7 @@ def get_moment(th_img):
     return x, y
 
 
-def main(path):
+def main(path, s_path, img_size_div_2=60, debug=False):
     h = w = 500
     img = load_img(path, h, w)
 
@@ -60,7 +61,6 @@ def main(path):
     # 重心
     x, y = get_moment(th_img)
 
-    img_size_div_2 = 50  # 画像サイズ / 2
     if x - img_size_div_2 < 0:
         # 左にはみ出た場合
         x1 = 0
@@ -85,9 +85,14 @@ def main(path):
         y1 = y - img_size_div_2
         y2 = y + img_size_div_2
 
-    plt.imshow(img[y1:y2, x1:x2, :])
-    plt.show()
+    new_img = img[y1:y2, x1:x2, :]
 
+    if debug:
+        plt.imshow(img[y1:y2, x1:x2, :])
+        plt.show()
+    else:
+        cv2.imwrite(s_path, new_img)
 
-path = "../data/train_p_1/7.png"
-main(path)
+# path = "../data/train_p_1/10.png"
+# # path = "../data/Training_Set/Training (1)/10.png"
+# main(path)
