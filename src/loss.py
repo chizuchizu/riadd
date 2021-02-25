@@ -342,7 +342,7 @@ __CRITERIONS__ = {
 
 def get_criterion(cfg):
     if hasattr(nn, cfg.loss.name):
-        return nn.__getattribute__(cfg.loss.name)(**cfg.loss.param)
+        return getattr(nn, cfg.loss.name)(**cfg.loss.param)
     elif __CRITERIONS__.get(cfg.loss.name) is not None:
         return __CRITERIONS__[cfg.loss.name](**cfg.loss.param)
     else:

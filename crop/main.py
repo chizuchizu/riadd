@@ -49,10 +49,14 @@ def get_moment(th_img):
     x, y = int(mu["m10"] / mu["m00"]), int(mu["m01"] / mu["m00"])
 
     return x, y
+"""
+500 60 120
+1000 120 240
+1500 180 360
+"""
 
-
-def main(path, s_path, img_size_div_2=60, debug=False):
-    h = w = 500
+def main(path, s_path, img_size_div_2=180, debug=False):
+    h = w = 1500
     img = load_img(path, h, w)
 
     # 視神経乳頭らしきものを抽出（ノイズもある）

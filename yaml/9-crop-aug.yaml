@@ -1,0 +1,87 @@
+base:
+  train_path: '../data/train_p_1'
+  test_path: '../data/eval_p_1'
+  extra_path: "../extra/train_p_1"
+  train_crop_path: "../data/train_crop_120"
+  test_crop_path: "../data/eval_crop_120"
+  print_freq: 100
+  num_workers: 8
+  seed: 42
+#  target_size: 1
+#  target_cols: ["TV"]
+  target_size: 29
+  target_cols: [
+      "Disease_Risk", "DR", "ARMD", "MH", "DN",
+      "MYA", "BRVO", "TSLN", "ERM", "LS", "MS",
+      "CSR", "ODC", "CRVO", "TV", "AH", "ODP",
+      "ODE", "ST", "AION", "PT", "RT", "RS", "CRS",
+      "EDN", "RPEC", "MHL", "RP", "OTHER"
+  ]
+  n_fold: 4
+  trn_fold: [0]
+  train: True
+  oof: False
+
+split:
+  #name: "StratifiedKFold"
+  name: "MultilabelStratifiedKFold"
+  param: {
+           "n_splits": 4,
+           "shuffle": True,
+           "random_state": 1212
+  }
+
+model:
+  model_name: "xception41"
+  # model_name: "vit_small_patch16_224"
+  # model_name: "dm_nfnet_f0"
+  size: 224  # 480
+  size_cropped: 120
+  batch_size: 32
+  pretrained: true
+  epochs: 15
+  gem: true  # nfnetのときはfalse
+
+loss:
+  name: "BCEFocalLoss"
+  param: {}
+#  name: "BiT"
+#  param: {
+#           "t1": 0.3,
+#           "t2": 1.0,
+#           "label_smoothing": 0.0
+#  }
+#  name: "TaylorCrossEntropyLoss"
+#  param: {
+#           "target_size": 29,
+#
+#  }
+
+optimizer:
+  name: "AdamW"
+  # base: "AdamW"#
+  param: {
+           "lr": 1e-2,
+           # "weight_decay": 1e-6,
+           # "amsgrad": False
+  }
+
+scheduler:
+  name: "CosineAnnealingLR"
+  param: {
+            "T_max": 10,
+            "eta_min": 0,
+            "last_epoch": -1
+  }
+
+wandb:
+  use: true
+  project: "exp9"
+  # name: "04-15-00-1e-2"
+  name: "xception41-1e-3"
+  tags: [
+          # "tf_efficientnet_b0_ns",
+          "nfnet_f0",
+          # "focal_loss"
+          # "aug_7"
+  ]
